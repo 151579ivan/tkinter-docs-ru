@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>27.3. Строки спецификации ресурсов</h2>
+
+<p>Каждая строка в файле опций определяет значение одной или нескольких опций в одном или нескольких приложениях и имеет один из этих форматов:</p>
+
+<pre><code>app option-pattern: value
+option-pattern: value
+</code></pre>
+
+<p>Первая форма задает опции только в том случае, если имя приложения совпадает с <code>app</code>; вторая форма задает опции для всех приложений.</p>
+
+<p>Например, если ваше приложение называется <em>xparrot</em>, то строка вида</p>
+
+<pre><code>xparrot*background: LimeGreen
+</code></pre>
+
+<p>устанавливает все опции <code>background</code> в приложении <em>xparrot</em> в лаймово-зеленый цвет. (Используйте опцию <code>-name</code> в командной строке при запуске приложения, чтобы задать имя <code>'xparrot'</code>).</p>
+
+<p>Часть <code>option-pattern</code> имеет следующий синтаксис:</p>
+
+<pre><code>{{*|.}name}...option
+</code></pre>
+
+<p>То есть, каждый <code>option-pattern</code> - это список из нуля или более имен, перед каждым из которых стоит звездочка или точка. Последнее имя в серии - это имя опции, которую вы устанавливаете. Каждое из этих имен может быть либо:</p>
+
+<ul>
+<li><p>именем <em>класса виджета</em> (с большой буквы), либо</p></li>
+<li><p>именем <em>экземпляра</em> (маленькими буквами).</p></li>
+</ul>
+
+<p>Принцип работы шаблонов опций немного сложен. Давайте начнем с простого примера:</p>
+
+<pre><code>*font: times 24
+</code></pre>
+
+<p>Эта строка говорит, что все опции <code>font</code> должны по умолчанию иметь 24-строчный шрифт Times. Символ <code>*</code> называется символом <em>свободной привязки</em> и означает, что данный шаблон опций применяется к любой опции <code>font</code> в любом месте любого приложения. Сравните с этим примером:</p>
+
+<pre><code>*Listbox.font: lucidatypewriter 14
+</code></pre>
+
+<p>Точка между <code>Listbox</code> и <code>font</code> называется символом <em>жесткой привязки</em> и означает, что это правило применяется только к опциям <code>font</code> для виджетов класса <code>Listbox</code>.</p>
+
+<p>В качестве другого примера предположим, что в вашем приложении <em>xparrot</em> есть экземпляры виджетов класса <code>Jukebox</code>. Чтобы установить цвет фона по умолчанию для всех виджетов класса <code>Jukebox</code>, вы можете поместить в файл опций строку следующего вида:</p>
+
+<pre><code>xparrot*Jukebox*background: PapayaWhip
+</code></pre>
+
+<p>Символ <em>свободной привязки</em> (<code>*</code>) между <code>Jukebox</code> и <code>background</code> делает это правило применимым к любой опции <code>background</code> любого виджета внутри <code>Jukebox</code>. Сравните с этой строкой опций:</p>
+
+<pre><code>xparrot*Jukebox.background: NavajoWhite
+</code></pre>
+
+<p>Это правило будет применяться к фрейму, составляющему сам виджет <code>Jukebox</code>, но из-за символа <em>жесткой привязки</em> оно не будет применяться к виджетам, находящимся внутри виджета <code>Jukebox</code>.</p>
+
+<p>В следующем разделе мы поговорим о том, как Tkinter определяет, какое именно значение опции использовать, если применяется несколько строк спецификации ресурсов.</p>
+
+<hr />
+
+<p><strong><em><a href="resource-matching.html">&gt;&gt; Правила согласования ресурсов</a></em></strong></p>
+
+</body>
+</html>

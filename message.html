@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>17. Виджет Message</h2>
+
+<p>Этот виджет похож на виджет Label (см. <a href="label.html">Раздел 12, "Виджет Label"</a>), но он предназначен для отображения сообщений в несколько строк. Весь текст будет отображаться одним шрифтом; если вам нужно отобразить текст с несколькими шрифтами, смотрите <a href="text.html">Раздел 24, "Виджет Text"</a>.</p>
+
+<p>Чтобы создать новый виджет <em>Message</em> в качестве дочернего элемента корневого окна или фрейма с именем <code>parent</code>:</p>
+
+<pre><code>w = tk.Message(parent, option, ...)
+</code></pre>
+
+<p>Этот конструктор возвращает новый виджет <code>Message</code>. Опции могут быть любыми из этих:</p>
+
+<p><strong>Таблица 26. Опции виджета Message</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>aspect</code></td>
+  <td>Используйте эту опцию, чтобы указать отношение ширины к высоте в процентах. Например, при <code>aspect=100</code> текстовое сообщение будет помещаться в квадрат; при <code>aspect=200</code> область текста будет в два раза больше по ширине, чем по высоте. Значение по умолчанию равно 150, то есть текст будет помещен в поле, ширина которого на 50% больше высоты.</td>
+</tr>
+<tr>
+  <td><code>bg</code> или <code>background</code></td>
+  <td>Цвет фона за текстом; смотрите <a href="colors.html">Раздел 5.3, "Цвета"</a>.</td>
+</tr>
+<tr>
+  <td><code>bd</code> или <code>borderwidth</code></td>
+  <td>Ширина границы вокруг виджета; смотрите <a href="dimensions.html">Раздел 5.1, "Размеры"</a>. По умолчанию это два пикселя. Результат этой опции виден только в том случае, если опция <code>relief</code> не является <code>tk.FLAT</code>.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Определяет курсор, который появляется при наведении мыши на виджет; см. раздел <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td>Определяет шрифт, используемый для отображения текста в виджете; смотрите <a href="fonts.html">Раздел 5.4, "Шрифты"</a>.</td>
+</tr>
+<tr>
+  <td><code>fg</code> или <code>foreground</code></td>
+  <td>Указывает цвет текста; см. <a href="colors.html">Раздел 5.3, "Цвета"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td><a href="colors.html">Цвет</a> фокусного выделения, когда виджет не имеет фокуса. См. <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td><a href="colors.html">Цвет</a>, отображаемый в подсветке фокуса, когда виджет имеет <a href="focus.html">фокус</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Толщина подсветки <a href="focus.html">фокуса</a>.</td>
+</tr>
+<tr>
+  <td><code>justify</code></td>
+  <td>Используйте эту опцию, чтобы указать, как выравниваются несколько строк текста. Используйте <code>justify=tk.LEFT</code> для получения ровного левого поля; <code>justify=tk.CENTER</code> для центрирования каждой строки; и <code>justify=tk.RIGHT</code> для получения ровного правого поля.</td>
+</tr>
+<tr>
+  <td><code>padx</code></td>
+  <td>Используйте эту опцию, чтобы добавить дополнительное пространство внутри виджета слева и справа от текста. Значение указывается в пикселях.</td>
+</tr>
+<tr>
+  <td><code>pady</code></td>
+  <td>Используйте эту опцию, чтобы добавить дополнительное пространство внутри виджета над и под текстом. Значение указывается в пикселях.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Эта опция задает вид границы вокруг внешней части виджета; см. <a href="relief.html">Раздел 5.6, "Стили рельефа"</a>. По умолчанию используется стиль <code>tk.FLAT</code>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>Обычно виджет <code>Message</code> не получает фокус (см. <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>). Используйте <code>takefocus=True</code>, чтобы добавить виджет в очередь обхода фокуса.</td>
+</tr>
+<tr>
+  <td><code>text</code></td>
+  <td>Значение этой опции - текст, который будет отображаться внутри виджета.</td>
+</tr>
+<tr>
+  <td><code>textvariable</code></td>
+  <td>Если вы хотите иметь возможность изменять сообщение под контролем программы, свяжите эту опцию с экземпляром <code>StringVar</code> (см. <a href="control-variables.html">Раздел 52, "Управляющие переменные: значения за виджетами"</a>). Значение этой переменной - текст, который будет отображаться. Если вы указали оба параметра <code>text</code> и <code>textvariable</code>, параметр <code>text</code> игнорируется.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Используйте эту опцию, чтобы указать ширину текстовой области виджета в пикселях. Ширина по умолчанию зависит от отображаемого текста и значения параметра <code>aspect</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="optionmenu.html">&gt;&gt; Виджет OptionMenu</a></em></strong></p>
+
+</body>
+</html>

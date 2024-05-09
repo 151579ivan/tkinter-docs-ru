@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>43. ttk.Separator</h2>
+
+<p>Используйте этот виджет для размещения горизонтальной или вертикальной линии, отделяющей другие виджеты. Виджет отображается в виде тонкой полосы шириной 2 пикселя. Обязательно используйте опцию <code>sticky</code> в <a href="grid.html">методе .grid()</a>, чтобы растянуть виджет, иначе он будет отображаться только как один пиксель.</p>
+
+<p>Чтобы создать <em>ttk.Separator</em> в качестве дочернего элемента данного виджета <code>parent</code>:</p>
+
+<pre><code>w = ttk.Separator(parent, option=value, ...)
+</code></pre>
+
+<p>Опции:</p>
+
+<p><strong>Таблица 61. Опции ttk.Separator</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>class_</code></td>
+  <td>Имя класса виджета. Оно может быть указано при создании виджета, но не может быть изменено позже. Для объяснения классов виджетов смотрите <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>orient</code></td>
+  <td>Установите <code>orient=tk.HORIZONTAL</code> для горизонтального разделителя, <code>orient=tk.VERTICAL</code> для вертикального (ориентация по умолчанию).</td>
+</tr>
+<tr>
+  <td><code>style</code></td>
+  <td>Стиль, который будет использоваться при отображении этой линии; см. <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>. Единственный параметр стиля, который можно настроить, это <code>background</code>, который задает цвет разделительной линии; по умолчанию используется темно-серый цвет.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Единственными методами, доступными для виджета <em>ttk.Separator</em>, являются методы, перечисленные в <a href="ttk-Widget.html">Раздел 46, "Методы, общие для всех виджетов ttk"</a>.</p>
+
+<hr />
+
+<p><strong><em><a href="ttk-Sizegrip.html">&gt;&gt; ttk.Sizegrip</a></em></strong></p>
+
+</body>
+</html>

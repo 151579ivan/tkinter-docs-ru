@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>50.1. Макеты ttk: Структурирование стиля</h2>
+
+<p>В целом, части виджета собираются с помощью идеи <em>"пустоты"</em>, пустого пространства, которое должно быть заполнено элементами.</p>
+
+<p>Например, в теме <code>classic</code> кнопка состоит из четырех концентрических элементов. Снаружи внутрь это элементы <em>выделение фокуса</em>, <em>граница</em>, <em>подложка</em> и <em>метка</em>.</p>
+
+<p>Каждый из этих элементов имеет атрибут <code>'sticky'</code>, который определяет, к скольким из четырех сторон полости он <em>прилипает</em>. Например, если элемент имеет атрибут <code>sticky='ew'</code>, это означает, что он должен растягиваться, чтобы прилипнуть к левой (западной) и правой (восточной) сторонам своей полости, но не должен растягиваться по вертикали.</p>
+
+<p>Большинство встроенных стилей <em>ttk</em> используют идею <em>"макета"</em> для организации различных слоев, составляющих виджет. Предполагая, что <code>S</code> является экземпляром <code>ttk.Style</code>, для получения макета этого стиля используйте вызов метода такой формы, где <code>widgetClass</code> - это имя класса виджета.</p>
+
+<pre><code>S.layout(widgetClass)
+</code></pre>
+
+<p>Некоторые классы виджетов не имеют макета; в этих случаях вызов метода приведет к возникновению исключения <code>tk.TclError</code>.</p>
+
+<p>Для классов виджетов, у которых есть макет, возвращаемое значение представляет собой список кортежей <code>(eltName, d)</code>. В каждом кортеже <code>eltName</code> - это имя элемента, а <code>d</code> - словарь, описывающий этот элемент.</p>
+
+<p>Этот словарь может иметь значения для следующих ключей:</p>
+
+<p><code>'sticky'</code></p>
+
+<p>Строка, определяющая, как этот элемент должен быть расположен внутри своего родителя. Эта строка может содержать ноль или более символов <code>'n'</code>, <code>'s'</code>, <code>'e'</code> и <code>'w'</code>, относящихся к сторонам поля с соблюдением тех же соглашений, что и для <a href="anchors.html">якорей</a>. Например, значение <code>sticky='nsw'</code> растягивает этот элемент, чтобы он примыкал к северной, южной и западной сторонам полости внутри своего родительского элемента.</p>
+
+<p><code>'side'</code></p>
+
+<p>Для элементов с несколькими дочерними элементами это значение определяет, как дочерние элементы будут располагаться внутри элемента. Значения могут быть <code>'left'</code>, <code>'right'</code>, <code>'top'</code> или <code>'bottom'</code>.</p>
+
+<p><code>'children'</code></p>
+
+<p>Если внутри данного элемента есть элементы, то эта запись в словаре представляет собой расположение дочерних элементов в том же формате, что и расположение верхнего уровня, то есть в виде списка двухэлементных кортежей <code>(eltName, d)</code>.</p>
+
+<p>Давайте разберем макет виджета <code>Button</code> из темы <code>'classic'</code> в этом условном примере.</p>
+
+<pre><code>&gt;&gt;&gt; from tkinter import ttk
+&gt;&gt;&gt; s = ttk.Style()
+&gt;&gt;&gt; s.theme_use('classic')
+&gt;&gt;&gt; b = ttk.Button(None, text='Yo')
+&gt;&gt;&gt; bClass = b.winfo_class()
+&gt;&gt;&gt; bClass
+'TButton'
+&gt;&gt;&gt; layout = s.layout('TButton')
+&gt;&gt;&gt; layout
+[('Button.highlight', {'sticky': 'nswe', 'children':
+[('Button.border', {'sticky': 'nswe', 'border': '1', 'children':
+[('Button.padding', {'sticky': 'nswe', 'children':
+[('Button.label', {'sticky': 'nswe'})]})]})]})]
+</code></pre>
+
+<p>Все эти скобки, скобки и скобки делают эту структуру немного сложной для понимания. Вот как она выглядит в общих чертах:</p>
+
+<ul>
+<li><p>Крайний элемент - это <em>'highlight' (выделение фокуса)</em>; он имеет стиль <code>'Button.highlight'</code>. Его атрибут <code>'sticky'</code> имеет значение <code>'nswe'</code>, что означает, что он должен расширяться во всех четырех направлениях, чтобы заполнить свою полость.</p></li>
+<li><p>Единственным дочерним элементом выделения фокуса является элемент <em>'border' (граница)</em> со стилем <code>'Button.border'</code>. Он имеет ширину <code>'border'</code> в 1 пиксель, а его атрибут <code>'sticky'</code> также указывает, что он прилипает ко всем четырем сторонам своей полости, которая определяется внутренней частью элемента <em>'highlight'</em>.</p></li>
+<li><p>Внутри границы находится <em>'padding' (слой подложки)</em> со стилем <code>'Button.padding'</code>. Его атрибут <code>sticky</code> также указывает, что он заполняет полость.</p></li>
+<li><p>Внутри слоя подложки находится <em>'label' (текст или изображение, или и то, и другое)</em>, который отображается на кнопке. Его стиль - <code>'Button.label'</code>, с атрибутом <code>sticky='nswe'</code>.</p></li>
+</ul>
+
+<p>Каждый элемент имеет словарь <em>опций элемента</em>, которые влияют на внешний вид этого элемента. Имена этих опций - это обычные опции Tkinter, такие как <code>'anchor'</code>, <code>'justify'</code>, <code>'background'</code> или <code>'highlightthickness'</code>.</p>
+
+<p>Чтобы получить список имен опций, используйте вызов метода такой формы, где <code>S</code> - экземпляр класса <code>ttk.Style</code>:</p>
+
+<pre><code>S.element_options(styleName)
+</code></pre>
+
+<p>Результатом будет последовательность строк опций. Продолжая наш условный пример выше, где <code>s</code> - экземпляр класса <code>ttk.Style</code>:</p>
+
+<pre><code>&gt;&gt;&gt; d = s.element_options('Button.highlight')
+&gt;&gt;&gt; d
+('highlightcolor', 'highlightthickness')
+</code></pre>
+
+<p>Чтобы узнать, какие атрибуты связаны с опцией элемента, используйте вызов метода в такой форме:</p>
+
+<pre><code>s.lookup(layoutName, optName)
+</code></pre>
+
+<p>Продолжаем наш пример:</p>
+
+<pre><code>&gt;&gt;&gt; s.lookup('Button.highlight', 'highlightthickness')
+1
+&gt;&gt;&gt; s.lookup('Button.highlight', 'highlightcolor')
+'#d9d9d9'
+&gt;&gt;&gt; print(s.element_options('Button.label'))
+('compound', 'space', 'text', 'font', 'foreground', 'underline', 'width',
+'anchor', 'justify', 'wraplength', 'embossed', 'image', 'stipple', 'background')
+&gt;&gt;&gt; s.lookup('Button.label', 'foreground')
+'black'
+</code></pre>
+
+<hr />
+
+<p><strong><em><a href="ttk-map.html">&gt;&gt; Карты стилей ttk: динамическое изменение внешнего вида</a></em></strong></p>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>49. Использование и настройка стилей ttk</h2>
+
+<p>В рамках данной темы каждый виджет имеет класс <em>widget class</em> по умолчанию; мы используем этот термин, чтобы отличить классы <em>ttk</em> от классов Python.</p>
+
+<p>У каждого виджета также есть стиль <em>style</em>. Стиль по умолчанию для виджета определяется его классом виджета, но вы можете указать другой стиль.</p>
+
+<p>В <em>ttk</em> классы виджетов и стили задаются в виде строк. Во всех случаях, кроме одного, имя стиля виджета по умолчанию - это <code>'T'</code> с префиксом к имени виджета; например, класс виджета кнопки по умолчанию - <code>'TButton'</code>. Есть и исключения:</p>
+
+<p><strong>Таблица 63. Имена стилей для классов виджетов ttk</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:left;">Класс виджета</th>
+  <th style="text-align:left;">Имя стиля</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left;"><code>Button</code></td>
+  <td style="text-align:left;"><code>TButton</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Checkbutton</code></td>
+  <td style="text-align:left;"><code>TCheckbutton</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Combobox</code></td>
+  <td style="text-align:left;"><code>TCombobox</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Entry</code></td>
+  <td style="text-align:left;"><code>TEntry</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Frame</code></td>
+  <td style="text-align:left;"><code>TFrame</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Label</code></td>
+  <td style="text-align:left;"><code>TLabel</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>LabelFrame</code></td>
+  <td style="text-align:left;"><code>TLabelFrame</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Menubutton</code></td>
+  <td style="text-align:left;"><code>TMenubutton</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Notebook</code></td>
+  <td style="text-align:left;"><code>TNotebook</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>PanedWindow</code></td>
+  <td style="text-align:left;"><code>TPanedwindow</code> (<em>не</em> <code>TPanedWindow</code>!)</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Progressbar</code></td>
+  <td style="text-align:left;"><code>Horizontal.TProgressbar</code> или <code>Vertical.TProgressbar</code>, в зависимости от опции <code>orient</code>.</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Radiobutton</code></td>
+  <td style="text-align:left;"><code>TRadiobutton</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Scale</code></td>
+  <td style="text-align:left;"><code>Horizontal.TScale</code> или <code>Vertical.TScale</code>, в зависимости от опции <code>orient</code>.</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Scrollbar</code></td>
+  <td style="text-align:left;"><code>Horizontal.TScrollbar</code> или <code>Vertical.TScrollbar</code>, в зависимости от опции <code>orient</code>.</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Separator</code></td>
+  <td style="text-align:left;"><code>TSeparator</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Sizegrip</code></td>
+  <td style="text-align:left;"><code>TSizegrip</code></td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>Treeview</code></td>
+  <td style="text-align:left;"><code>Treeview</code> (<em>не</em> <code>TTreeview</code>!)</td>
+</tr>
+</tbody>
+</table>
+
+<p>Во время выполнения вы можете получить класс виджета, вызвав его метод <code>.winfo_class()</code>.</p>
+
+<pre><code>&gt;&gt;&gt; b=ttk.Button(None)
+&gt;&gt;&gt; b.winfo_class()
+'TButton'
+&gt;&gt;&gt; t=ttk.Treeview(None)
+&gt;&gt;&gt; t.winfo_class()
+'Treeview'
+&gt;&gt;&gt; b.__class__  # Здесь мы запрашиваем класс Python
+&lt;class 'tkinter.ttk.Button'&gt;
+</code></pre>
+
+<p>Имя стиля может иметь одну из двух форм.</p>
+
+<ul>
+<li><p>Все встроенные стили состоят из одного слова: например, <code>'TFrame'</code> или <code>'TRadiobutton'</code>.</p></li>
+<li><p>Чтобы создать новый стиль, производный от одного из встроенных стилей, используйте имя стиля вида <code>'newName.oldName'</code>. Например, чтобы создать новый стиль виджета <em>Entry</em> для хранения даты, вы можете назвать его <code>'Date.TEntry'</code>.</p></li>
+</ul>
+
+<p>Каждый стиль имеет соответствующий набор <em>опций</em>, которые определяют его внешний вид. Например, у кнопок есть опция <code>foreground</code>, которая изменяет цвет текста кнопки.</p>
+
+<p>Чтобы изменить внешний вид стиля, используйте его метод <code>.configure()</code>. Первым аргументом этого метода является имя стиля, который вы хотите настроить, затем следуют аргументы с ключевыми словами, указывающие имена и значения опций, которые вы хотите изменить. Например, чтобы все ваши кнопки использовали зеленый текст, где <code>s</code> - экземпляр класса <code>ttk.Style</code>:</p>
+
+<pre><code>s.configure('TButton', foreground='green')
+</code></pre>
+
+<p>Чтобы создать новый стиль на основе некоторого стиля <code>oldName</code>, сначала создайте экземпляр <code>ttk.Style</code>, а затем вызовите его метод <code>.configure()</code>, используя имя вида <code>'newName.oldName'</code>. Например, предположим, что вы не хотите использовать бордовый текст на всех кнопках, но хотите создать новый стиль, который будет использовать бордовый текст, и назвать новый стиль <code>'Kim.TButton'</code>:</p>
+
+<pre><code>s = ttk.Style()
+s.configure('Kim.TButton', foreground='maroon')
+</code></pre>
+
+<p>Затем, чтобы создать кнопку в новом классе, вы можете использовать что-то вроде этого:</p>
+
+<pre><code>self.b = ttk.Button(self, text='Friday', style='Kim.TButton', command=self._fridayHandler)
+</code></pre>
+
+<p>Вы даже можете создавать целые иерархии стилей. Например, если вы настроите стиль с именем <code>'Panic.Kim.TButton'</code>, этот стиль унаследует все опции от стиля <code>'Kim.TButton'</code>, то есть любая опция, которую вы не зададите в стиле <code>'Panic.Kim.TButton'</code>, будет такой же, как и в стиле <code>'Kim.TButton'</code>.</p>
+
+<p>Когда <em>ttk</em> определяет, какое значение использовать для опции, он сначала смотрит в стиле <code>'Panic.Kim.TButton'</code>; если в этом стиле нет значения для опции, он смотрит в стиле <code>'Kim.TButton'</code>; и если этот стиль не определяет опцию, он смотрит в стиле <code>'TButton'</code>.</p>
+
+<p>Существует <em>корневой стиль</em>, имя которого <code>'.'</code>. Чтобы изменить вид некоторой характеристики по умолчанию для каждого виджета, вы можете настроить этот стиль. Например, предположим, что вы хотите, чтобы весь текст был набран <em>12 кеглем Helvetica</em> (если это не отменено другим стилем или опцией <code>font</code>). Этого можно добиться с помощью такой конфигурации:</p>
+
+<pre><code>s = ttk.Style()
+s.configure('.', font=('Helvetica', 12))
+</code></pre>
+
+<hr />
+
+<p><strong><em><a href="ttk-element-layer.html">&gt;&gt; Слой элементов ttk</a></em></strong></p>
+
+</body>
+</html>

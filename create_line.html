@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>8.10. Объекты линий на холсте</h2>
+
+<p>В общем случае линия может состоять из любого количества сегментов, соединенных друг с другом, и каждый сегмент может быть прямым или изогнутым. Для создания объекта линии на холсте <code>C</code> используйте:</p>
+
+<pre><code>id = C.create_line(x0, y0, x1, y1, ..., xn, yn, option, ...)
+</code></pre>
+
+<p>Линия проходит через серию точек <code>(x0, y0), (x1, y1), ...(xn, yn)</code>.</p>
+
+<p>Опции включают:</p>
+
+<p><strong>Таблица 10. Опции объекта линии на холсте</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activedash</code><br><code>activefill</code><br><code>activestipple</code><br><code>activewidth</code></td>
+  <td>Эти параметры определяют значения <code>dash</code>, <code>fill</code>, <code>stipple</code> и <code>width</code>, используемые, когда линия активна, то есть когда указатель мыши находится над ней.</td>
+</tr>
+<tr>
+  <td><code>arrow</code></td>
+  <td>По умолчанию линия не имеет стрелок. Используйте <code>arrow=tk.FIRST</code>, чтобы получить стрелку в точке <code>(x0, y0)</code> линии. Используйте <code>arrow=tk.LAST</code>, чтобы получить стрелку в крайней точке. Используйте <code>arrow=tk.BOTH</code> для стрелок в обоих концах.</td>
+</tr>
+<tr>
+  <td><code>arrowshape</code></td>
+  <td>Кортеж <code>(d1, d2, d3)</code>, описывающий форму стрелок, добавленных параметром <code>arrow</code>. По умолчанию <code>(8,10,3)</code> .<br><br><img src="img/arrowshape.png" alt="" /></td>
+</tr>
+<tr>
+  <td><code>capstyle</code></td>
+  <td>Вы можете указать форму концов линии с помощью этой опции; см. <a href="cap-join-styles.html">раздел 5.12, "Стили концов и соединений"</a>. Опция по умолчанию <code>tk.BUTT</code>.</td>
+</tr>
+<tr>
+  <td><code>dash</code></td>
+  <td>Для создания пунктирной линии укажите эту опцию; см. <a href="dash-patterns.html">раздел 5.13, "Шаблоны пунктира"</a>. По умолчанию отображается сплошная линия.</td>
+</tr>
+<tr>
+  <td><code>dashoffset</code></td>
+  <td>Если указана пунктирная линия, то по умолчанию задается начало указанного шаблона с начала линии. Опция <code>dashoffset</code> позволяет указать, что начало шаблона пунктира происходит через определенное расстояние после начала линии. См. <a href="dash-patterns.html">раздел 5.13, "Шаблоны пунктира"</a>.</td>
+</tr>
+<tr>
+  <td><code>disableddash</code><br><code>disabledfill</code><br><code>disabledstipple</code><br><code>disabledwidth</code></td>
+  <td>Параметры <code>dash</code>, <code>fill</code>, <code>stipple</code> и <code>width</code>, используемые, когда элемент находится в состоянии <code>tk.DISABLED</code>.</td>
+</tr>
+<tr>
+  <td><code>fill</code></td>
+  <td><a href="colors.html">Цвет</a>, используемый при рисовании линии. По умолчанию <code>fill='black'</code>.</td>
+</tr>
+<tr>
+  <td><code>joinstyle</code></td>
+  <td>Для линий, состоящих из более чем одного сегмента, эта опция управляет внешним видом соединения между сегментами. Подробнее см. <a href="cap-join-styles.html">раздел 5.12, "Стили концов и соединений"</a>. Стиль по умолчанию <code>tk.ROUND</code>.</td>
+</tr>
+<tr>
+  <td><code>offset</code></td>
+  <td>Для пунктирных линий эта опция используется для согласования шаблона пунктира элемента с шаблонами соседних объектов. См. <a href="stipple-offset.html">раздел 5.14, "Согласование шаблонов пунктира"</a>.</td>
+</tr>
+<tr>
+  <td><code>smooth</code></td>
+  <td>Если <code>True</code>, линия рисуется как набор параболических сплайнов, подходящих к набору точек. По умолчанию <code>False</code>, что отображает линию как набор прямых сегментов.</td>
+</tr>
+<tr>
+  <td><code>splinesteps</code></td>
+  <td>Если параметр <code>smooth</code> установлен в <code>True</code>, каждый сплайн рисуется как определенное количество прямых сегментов. Параметр <code>splinesteps</code> указывает количество сегментов, используемых для приближения каждого участка линии; по умолчанию <code>splinesteps=12</code>.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>Обычно элементы линии создаются в состоянии <code>tk.NORMAL</code>. Установите эту опцию в <code>tk.HIDDEN</code>, чтобы сделать линию невидимой; установите ее в <code>tk.DISABLED</code>, чтобы сделать ее нереагирующей на указатель мыши.</td>
+</tr>
+<tr>
+  <td><code>stipple</code></td>
+  <td>Чтобы нарисовать пунктирную линию, установите эту опцию в рисунок, определяющий шаблон пунктира, например, <code>stipple='gray25'</code>. См. <a href="bitmaps.html">раздел 5.7, "Битовые изображения"</a> для возможных значений.</td>
+</tr>
+<tr>
+  <td><code>tags</code></td>
+  <td>Если это строка, линия помечается этой строкой. Используйте кортеж строк, чтобы пометить линию несколькими метками. См. <a href="canvas-tags.html">раздел 8.4, "Теги холста"</a>.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Ширина линии. По умолчанию 1 пиксель. См. <a href="dimensions.html">раздел 5.1, "Размеры"</a> для возможных значений.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="create_oval.html">&gt;&gt; Объекты овалов на холсте</a></em></strong></p>
+
+</body>
+</html>

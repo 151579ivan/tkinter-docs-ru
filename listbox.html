@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>14. Виджет Listbox</h2>
+
+<p>Виджет Listbox предназначен для отображения ряда строк текста. Обычно он используется для того, чтобы пользователь мог выбрать один или несколько элементов из списка. Во всех строках текста используется один и тот же шрифт. Если вам нужно что-то более напоминающее текстовый редактор, смотрите <a href="text.html">Раздел 24, "Виджет Text"</a>.</p>
+
+<p>Чтобы создать новый виджет Listbox внутри корневого окна или фрейма <code>parent</code>:</p>
+
+<pre><code>w = tk.Listbox(parent, option, ...)
+</code></pre>
+
+<p>Этот конструктор возвращает новый виджет <code>Listbox</code>. Опции:</p>
+
+<p><strong>Таблица 22. Опции виджета Listbox</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activestyle</code></td>
+  <td>Этот параметр задает внешний вид активной строки. Он может иметь любое из этих значений: <br><br><code>'underline'</code> - Активная строка будет подчеркнута. Это вариант по умолчанию. <br><br><code>'dotbox'</code> - Активная строка заключена в пунктирную линию со всех четырех сторон. <br><br><code>'none'</code> - Активной строке не придается никакого особого вида.</td>
+</tr>
+<tr>
+  <td><code>bg</code> или <code>background</code></td>
+  <td><a href="colors.html">Цвет</a> фона в <code>Listbox</code>.</td>
+</tr>
+<tr>
+  <td><code>bd</code> или <code>borderwidth</code></td>
+  <td>Ширина границы вокруг <code>Listbox</code>. По умолчанию - два пикселя. Возможные значения см. в <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который появляется при наведении мыши на <code>Listbox</code>. См. раздел <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>disabledforeground</code></td>
+  <td><a href="colors.html">Цвет</a> текста в <code>Listbox</code>, когда его состояние (<code>state</code>) равно <code>tk.DISABLED</code>.</td>
+</tr>
+<tr>
+  <td><code>exportselection</code></td>
+  <td>По умолчанию пользователь может выделять текст с помощью мыши, и выделенный текст будет экспортирован в буфер обмена. Чтобы отключить это поведение, используйте <code>exportselection=0</code>.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td>Шрифт, используемый для текста в <code>Listbox</code>. См. раздел <a href="fonts.html">Раздел 5.4, "Шрифты"</a>.</td>
+</tr>
+<tr>
+  <td><code>fg</code> или <code>foreground</code></td>
+  <td>Цвет, используемый для текста в <code>Listbox</code>. См. раздел <a href="colors.html">Раздел 5.3, "Цвета"</a>.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td>Количество <em>строк</em> (не пикселей!), отображаемых в <code>Listbox</code>. По умолчанию 10.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td>Цвет подсветки фокуса, когда виджет не имеет фокуса. Смотрите <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td>Цвет, отображаемый в подсветке фокуса, когда виджет имеет <a href="focus.html">фокус</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Толщина выделения <a href="focus.html">фокуса</a>.</td>
+</tr>
+<tr>
+  <td><code>listvariable</code></td>
+  <td>Переменная <code>StringVar</code>, связанная с полным списком значений в <code>Listbox</code> (см. раздел 52, <a href="control-variables.html">"Управляющие переменные: значения за виджетами"</a>). <br><br>Если вы вызовете метод <code>.get()</code> переменной <code>listvariable</code>, то получите строку вида <code>"('v0', 'v1', ...)"</code>, где каждое <code>vi</code> - это содержимое одной строки <code>Listbox</code>. <br><br>Чтобы изменить сразу весь набор строк в <code>Listbox</code>, вызовите <code>.set(s)</code> для <code>listvariable</code>, где <code>s</code> - строка, содержащая значения строк с пробелами между ними. <br><br>Например, если <code>listCon</code> - это <code>StringVar</code>, связанная с параметром <code>listvariable</code> списка <code>Listbox</code>, то этот вызов приведет к тому, что список <code>Listbox</code> будет содержать три строки: <br><br><code>listCon.set('ant bee cicada')</code> <br><br>Этот вызов вернет строку <code>"('ant', 'bee', 'cicada')"</code>: <br><br><code>listCon.get()</code></td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Выбирает трехмерные эффекты границ. По умолчанию используется <code>tk.SUNKEN</code>. Другие значения см. в <a href="relief.html">Раздел 5.6, "Стили рельефа"</a>.</td>
+</tr>
+<tr>
+  <td><code>selectbackground</code></td>
+  <td><a href="colors.html">Цвет фона</a> для отображения выделенного текста.</td>
+</tr>
+<tr>
+  <td><code>selectborderwidth</code></td>
+  <td>Ширина границы, которую следует использовать вокруг выделенного текста. По умолчанию выделенный элемент отображается сплошным блоком цвета <code>selectbackground</code>; если увеличить <code>selectborderwidth</code>, то элементы будут раздвигаться дальше друг от друга, а выделенный элемент будет иметь рельеф <code>tk.RAISED</code> (см. <a href="relief.html">Раздел 5.6, "Стили рельефа"</a>).</td>
+</tr>
+<tr>
+  <td><code>selectforeground</code></td>
+  <td><a href="colors.html">Цвет переднего плана</a> для отображения выделенного текста.</td>
+</tr>
+<tr>
+  <td><code>selectmode</code></td>
+  <td>Определяет, сколько элементов можно выделить и как перетаскивание мышью влияет на выделение: <br><br><code>tk.BROWSE</code>: Обычно в listbox можно выбрать только одну строку. Если вы щелкните на элементе, а затем перетащите его на другую строку, выделение будет следовать за мышью. Это значение используется по умолчанию. <br><br><code>tk.SINGLE</code>: Вы можете выбрать только одну строку, и вы не можете перетаскивать мышь - где бы вы ни нажали кнопку 1, эта строка будет выбрана. <br><br><code>tk.MULTIPLE</code>: Вы можете выбрать любое количество строк одновременно. Щелчок на любой строке определяет, будет ли она выбрана или нет. <br><br><code>tk.EXTENDED</code>: Вы можете выбрать любую соседнюю группу линий одновременно, щелкнув на первой строке и перетащив ее к последней.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>По умолчанию <code>Listbox</code> находится в состоянии <code>tk.NORMAL</code>. Чтобы <code>Listbox</code> не реагировал на события мыши, установите этот параметр в значение <code>tk.DISABLED</code>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>Обычно фокус перемещается по виджетам <code>Listbox</code>. Установите этот параметр в 0, чтобы убрать виджет из последовательности. См. раздел <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Ширина виджета в <em>символах</em> (не пикселях!). Ширина основывается на средней величине символа, поэтому некоторые строки такой длины в непропорциональных шрифтах могут не поместиться. По умолчанию - 20.</td>
+</tr>
+<tr>
+  <td><code>xscrollcommand</code></td>
+  <td>Если вы хотите, чтобы пользователь мог прокручивать <code>Listbox</code> по горизонтали, вы можете связать виджет <code>Listbox</code> с горизонтальной полосой прокрутки. Установите этот параметр в метод <code>.set</code> полосы прокрутки. Подробнее о виджетах <code>Listbox</code> с возможностью прокрутки см. в <a href="listbox-scrolling.html">Раздел 14.1, "Скроллинг виджета Listbox"</a>.</td>
+</tr>
+<tr>
+  <td><code>yscrollcommand</code></td>
+  <td>Если вы хотите позволить пользователю прокручивать <code>Listbox</code> по вертикали, вы можете связать виджет <code>Listbox</code> с вертикальной полосой прокрутки. Установите этот параметр в метод <code>.set</code> полосы прокрутки. Смотрите <a href="listbox-scrolling.html">Раздел 14.1, "Скроллинг виджета Listbox"</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p>Для многих методов объектов <code>Listbox</code> используется специальный набор значений для индекса:</p>
+
+<ul>
+<li><p>Если вы указываете индекс как целое число, он ссылается на строку <code>Listbox</code> с этим индексом, считая от 0.</p></li>
+<li><p>Индекс <code>tk.END</code> ссылается на последнюю строку в <code>Listbox</code>.</p></li>
+<li><p>Индекс <code>tk.ACTIVE</code> ссылается на выбранную строку. Если <code>Listbox</code> допускает множественный выбор, он ссылается на строку, которая была выбрана последней.</p></li>
+<li><p>Строка индекса вида <code>'@x,y'</code> ссылается на строку, ближайшую к координатам (<code>x</code>,<code>y</code>) относительно левого верхнего угла виджета.</p></li>
+</ul>
+
+<p><strong>Методы для объектов Listbox включают:</strong></p>
+
+<p><code>.activate(index)</code></p>
+
+<blockquote>
+  <p>Выбирает строку, указанную по заданному <code>index</code>.</p>
+</blockquote>
+
+<p><code>.bbox(index)</code></p>
+
+<blockquote>
+  <p>Возвращает ограничивающую рамку строки, указанной по <code>index</code>, в виде 4-кортежа <code>(xoffset, yoffset, width, height)</code>, где верхний левый пиксель рамки находится в точке <code>(xoffset, yoffset)</code>, а <code>width</code> и <code>height</code> заданы в пикселях. Возвращаемое значение <code>width</code> включает только ту часть строки, которую занимает текст.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если строка, указанная аргументом <code>index</code>, не видна, метод возвращает <code>None</code>. Если она частично видна, возвращаемое ограничение может выходить за пределы видимой области.</p>
+</blockquote>
+
+<p><code>.curselection()</code></p>
+
+<blockquote>
+  <p>Возвращает кортеж, содержащий номера строк выделенного элемента или элементов, считая от 0. Если ничего не выделено, возвращает пустой кортеж.</p>
+</blockquote>
+
+<p><code>.delete(first, last=None)</code></p>
+
+<blockquote>
+  <p>Удаляет строки, чьи индексы находятся в диапазоне [<code>first</code>, <code>last</code>], <strong>включительно</strong> (в отличие от обычного соглашения в Python, где удаление прекращается до последнего индекса), считая от 0. Если второй аргумент опущен, удаляется единственная строка с индексом <code>first</code>.</p>
+</blockquote>
+
+<p><code>.get(first, last=None)</code></p>
+
+<blockquote>
+  <p>Возвращает кортеж, содержащий текст строк с индексами от <code>first</code> до <code>last</code>, включительно. Если второй аргумент опущен, возвращается текст строки, ближайшей к <code>first</code>.</p>
+</blockquote>
+
+<p><code>.index(i)</code></p>
+
+<blockquote>
+  <p>Если возможно, позиционирует видимую часть <code>Listbox</code> так, чтобы строка, содержащая индекс <code>i</code>, находилась в верхней части виджета.</p>
+</blockquote>
+
+<p><code>.insert(index, *elements)</code></p>
+
+<blockquote>
+  <p>Вставляет одну или несколько новых строк в <code>Listbox</code> перед строкой, указанной <code>index</code>. Используйте <code>tk.END</code> в качестве первого аргумента, если вы хотите добавить новые строки в конец <code>Listbox</code>.</p>
+</blockquote>
+
+<p><code>.itemcget(index, option)</code></p>
+
+<blockquote>
+  <p>Получает одно из значений опций для определенной строки в <code>Listbox</code>. Значения опций см. в разделе <code>itemconfig</code> ниже. Если данная опция не была установлена для данной строки, возвращаемое значение будет пустой строкой.</p>
+</blockquote>
+
+<p><code>.itemconfig(index, option=value, ...)</code></p>
+
+<blockquote>
+  <p>Изменяет опцию конфигурации для строки, указанной в <code>index</code>. Имена опций включают:</p>
+</blockquote>
+
+<blockquote>
+  <p><code>background</code> - <a href="colors.html">Цвет</a> фона данной строки.</p>
+</blockquote>
+
+<blockquote>
+  <p><code>foreground</code> - <a href="colors.html">Цвет</a> текста данной строки.</p>
+</blockquote>
+
+<blockquote>
+  <p><code>selectbackground</code> - <a href="colors.html">Цвет</a> фона данной строки при ее выделении.</p>
+</blockquote>
+
+<blockquote>
+  <p><code>selectforeground</code> - <a href="colors.html">Цвет</a> текста данной строки при ее выделении.</p>
+</blockquote>
+
+<p><code>.nearest(y)</code></p>
+
+<blockquote>
+  <p>Возвращает индекс видимой строки, ближайшей к координате Y относительно виджета <code>Listbox</code>.</p>
+</blockquote>
+
+<p><code>.scan_dragto(x, y)</code></p>
+
+<blockquote>
+  <p>См. <code>scan_mark</code> ниже.</p>
+</blockquote>
+
+<p><code>.scan_mark(x, y)</code></p>
+
+<blockquote>
+  <p>Используйте этот метод для реализации сканирования-быстрой устойчивой прокрутки <code>Listbox</code>. Чтобы получить эту возможность, привяжите событие нажатия кнопки мыши к обработчику, который вызывает <code>scan_mark</code> с текущим положением мыши. Затем привяжите событие <code>&lt;Motion&gt;</code> к обработчику, вызывающему <code>scan_dragto</code> с текущим положением мыши, и <code>Listbox</code> будет прокручиваться со скоростью, пропорциональной расстоянию между положением, зафиксированным <code>scan_mark</code>, и текущим положением.</p>
+</blockquote>
+
+<p><code>.see(index)</code></p>
+
+<blockquote>
+  <p>Регулирует положение <code>Listbox</code> таким образом, чтобы строка, на которую ссылается <code>index</code>, была видна.</p>
+</blockquote>
+
+<p><code>.selection_anchor(index)</code></p>
+
+<blockquote>
+  <p>Помещает "якорь выделения" на строку, выбранную аргументом <code>index</code>. После размещения этого якоря вы можете ссылаться на него с помощью специальной индексной формы <code>tk.ANCHOR</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Например, для <code>Listbox</code> с именем <code>lbox</code> эта последовательность выберет строки 3, 4 и 5:</p>
+</blockquote>
+
+<blockquote>
+<pre><code>lbox.selection_anchor(3)
+lbox.selection_set(tk.ANCHOR,5)
+</code></pre>
+</blockquote>
+
+<p><code>.selection_clear(first, last=None)</code></p>
+
+<blockquote>
+  <p>Снимает выделение со всех строк между индексами <code>first</code> и <code>last</code>, включительно. Если второй аргумент опущен, снимается выделение строки с индексом <code>first</code>.</p>
+</blockquote>
+
+<p><code>.selection_includes(index)</code></p>
+
+<blockquote>
+  <p>Возвращает 1, если строка с заданным <code>index</code> выделена, иначе возвращает 0.</p>
+</blockquote>
+
+<p><code>.selection_set(first, last=None)</code></p>
+
+<blockquote>
+  <p>Выбирает все строки между индексами <code>first</code> и <code>last</code>, включительно. Если второй аргумент опущен, выбирается строка с индексом <code>first</code>.</p>
+</blockquote>
+
+<p><code>.size()</code></p>
+
+<blockquote>
+  <p>Возвращает количество строк в <code>Listbox</code>.</p>
+</blockquote>
+
+<p><code>.xview()</code></p>
+
+<blockquote>
+  <p>Чтобы сделать <code>Listbox</code> горизонтально прокручиваемым, установите опцию <code>command</code> связанной горизонтальной полосы прокрутки на этот метод. См. <a href="listbox-scrolling.html">Раздел 14.1, "Скроллинг виджета Listbox"</a>.</p>
+</blockquote>
+
+<p><code>.xview_moveto(fraction)</code></p>
+
+<blockquote>
+  <p>Прокручивает <code>Listbox</code> так, чтобы крайняя левая часть (<code>fraction</code>) ширины его самой длинной строки находилась за пределами левой стороны <code>Listbox</code>. Фракция находится в диапазоне [0,1].</p>
+</blockquote>
+
+<p><code>.xview_scroll(number, what)</code></p>
+
+<blockquote>
+  <p>Прокручивает <code>Listbox</code> по горизонтали. Для аргумента <code>what</code> используйте либо <code>tk.UNITS</code> для прокрутки по символам, либо <code>tk.PAGES</code> для прокрутки по страницам, то есть по ширине <code>Listbox</code>. Аргумент <code>number</code> указывает, сколько страниц прокручивать; отрицательные значения перемещают текст в <code>Listbox</code> вправо, положительные - влево.</p>
+</blockquote>
+
+<p><code>.yview()</code></p>
+
+<blockquote>
+  <p>Чтобы сделать <code>Listbox</code> вертикально прокручиваемым, установите параметр <code>command</code> связанной вертикальной полосы прокрутки на этот метод. Смотрите <a href="listbox-scrolling.html">Раздел 14.1, "Скроллинг виджета Listbox"</a>.</p>
+</blockquote>
+
+<p><code>.yview_moveto(fraction)</code></p>
+
+<blockquote>
+  <p>Прокручивает <code>Listbox</code> так, чтобы верхняя часть (<code>fraction</code>) ширины его самой длинной строки находилась за пределами левой стороны <code>Listbox</code>. Дробь находится в диапазоне [0,1].</p>
+</blockquote>
+
+<p><code>.yview_scroll(number, what)</code></p>
+
+<blockquote>
+  <p>Прокручивает <code>Listbox</code> по вертикали. Для аргумента <code>what</code> используйте либо <code>tk.UNITS</code> для прокрутки по строкам, либо <code>tk.PAGES</code> для прокрутки по страницам, то есть по высоте <code>Listbox</code>. Аргумент <code>number</code> указывает, сколько страниц прокручивать; отрицательные значения перемещают текст вниз внутри <code>Listbox</code>, а положительные - вверх.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="listbox-scrolling.html">&gt;&gt; Скроллинг виджета Listbox</a></em></strong></p>
+
+</body>
+</html>

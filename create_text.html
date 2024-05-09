@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>8.14. Объекты текста на холсте</h2>
+
+<p>Вы можете отобразить одну или несколько строк текста на холсте <code>C</code>, создав объект текста:</p>
+
+<pre><code>id = C.create_text(x, y, option, ...)
+</code></pre>
+
+<p>Это вернёт <a href="canvas-oid.html">идентификатор объекта</a> текста на холсте <code>C</code>. Опции включают:</p>
+
+<p><strong>Таблица 14. Опции текста на холсте</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activefill</code></td>
+  <td>Цвет текста, используемый, когда текст активен, то есть, когда мышь наведена на него. Для значений опций см. ниже <code>fill</code>.</td>
+</tr>
+<tr>
+  <td><code>activestipple</code></td>
+  <td>Шаблон штриховки, используемый, когда текст активен. Для значений опций см. ниже <code>stipple</code>.</td>
+</tr>
+<tr>
+  <td><code>anchor</code></td>
+  <td>По умолчанию <code>anchor=tk.CENTER</code>, что означает, что текст центрируется вертикально и горизонтально относительно позиции (<code>x</code>, <code>y</code>). См. <a href="anchors.html">Раздел 5.5, “Якоря”</a> для возможных значений. Например, если вы укажете <code>anchor=tk.SW</code>, текст будет расположен так, чтобы его нижний левый угол находился в точке (<code>x</code>, <code>y</code>).</td>
+</tr>
+<tr>
+  <td><code>disabledfill</code></td>
+  <td>Цвет текста, используемый, когда состояние объекта текста - <code>tk.DISABLED</code>. Для значений опций см. ниже <code>fill</code>.</td>
+</tr>
+<tr>
+  <td><code>disabledstipple</code></td>
+  <td>Шаблон штриховки, используемый, когда текст отключен. Для значений опций см. ниже <code>stipple</code>.</td>
+</tr>
+<tr>
+  <td><code>fill</code></td>
+  <td>По умолчанию цвет текста - черный, но вы можете выбрать любой цвет, установив опцию <code>fill</code> на этот цвет. См. <a href="colors.html">Раздел 5.3, “Цвета”</a>.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td>Если вам не нравится шрифт по умолчанию, установите эту опцию на любое значение шрифта. См. <a href="fonts.html">Раздел 5.4, “Шрифты”</a>.</td>
+</tr>
+<tr>
+  <td><code>justify</code></td>
+  <td>Для многострочных текстовых отображений эта опция контролирует, как выравниваются строки: <code>tk.LEFT</code> (по умолчанию), <code>tk.CENTER</code> или <code>tk.RIGHT</code>.</td>
+</tr>
+<tr>
+  <td><code>offset</code></td>
+  <td>Смещение штриховки, используемое при отображении текста. Для получения дополнительной информации см. <a href="stipple-offset.html">Раздел 5.14, “Согласование шаблонов пунктира”</a>.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>По умолчанию состояние элемента текста - <code>tk.NORMAL</code>. Установите эту опцию в <code>tk.DISABLED</code>, чтобы он не реагировал на события мыши, или установите ее в <code>tk.HIDDEN</code>, чтобы сделать его невидимым.</td>
+</tr>
+<tr>
+  <td><code>stipple</code></td>
+  <td>Битовая карта, указывающая, как будет штриховаться текст. По умолчанию - <code>stipple=''</code>, что означает сплошной. Типичное значение - <code>stipple='gray25'</code>. См. <a href="bitmaps.html">Раздел 5.7, “Битовые изображения”</a>.</td>
+</tr>
+<tr>
+  <td><code>tags</code></td>
+  <td>Если это строка, объект текста помечается этой строкой. Используйте кортеж строк, чтобы пометить объект несколькими тегами. См. <a href="canvas-tags.html">Раздел 8.4, “Теги холста”</a>.</td>
+</tr>
+<tr>
+  <td><code>text</code></td>
+  <td>Текст, отображаемый в объекте, в виде строки. Используйте символы новой строки (<code>'\n'</code>) для принудительного переноса строки.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Если вы не указываете опцию <code>width</code>, текст будет установлен внутри прямоугольника длиной в самую длинную строку. Однако вы также можете установить опцию <code>width</code> на размер, и каждая строка текста будет разбита на более короткие строки, если это необходимо, или даже разбита внутри слов, чтобы уместиться в указанной ширине. См. <a href="dimensions.html">Раздел 5.1, “Размеры”</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Вы можете изменить отображаемый текст в элементе текста.</p>
+
+<ul>
+<li><p>Чтобы извлечь текст из элемента с <a href="canvas-oid.html">идентификатором объекта</a> <code>I</code> на холсте <code>C</code>, вызовите <code>C.itemcget(I, 'text')</code>.</p></li>
+<li><p>Чтобы заменить текст в элементе с <a href="canvas-oid.html">идентификатором объекта</a> <code>I</code> на холсте <code>C</code> текстом из строки <code>S</code>, вызовите <code>C.itemconfigure(I, text=S)</code>.</p></li>
+</ul>
+
+<p>Несколько методов холста позволяют вам управлять объектами текста. См. <a href="canvas-methods.html">Раздел 8.6, “Методы виджетов Canvas”</a>, особенно <code>dchars</code>, <code>focus</code>, <code>icursor</code>, <code>index</code> и <code>insert</code>.</p>
+
+<hr />
+
+<p><strong><em><a href="create_window.html">&gt;&gt; Объекты окна холста</a></em></strong></p>
+
+</body>
+</html>

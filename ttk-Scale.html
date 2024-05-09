@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>41. ttk.Scale</h2>
+
+<p>Это ttk-версия виджета <a href="scale.html">Scale</a>. Для создания виджета <em>ttk.Scale</em> в качестве дочернего виджета данного <code>parent</code>:</p>
+
+<pre><code>w = ttk.Scale(parent, option=value, ...)
+</code></pre>
+
+<p>Опции:</p>
+
+<p><strong>Таблица 57. Опции ttk.Scale</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>class_</code></td>
+  <td>Имя класса виджета. Оно может быть указано при создании виджета, но не может быть изменено позже. Для объяснения классов виджетов смотрите <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>command</code></td>
+  <td>Функция, которая будет вызываться при изменении состояния виджета. Эта функция получает один аргумент - новое значение, отображаемое на виджете, в виде <code>float</code>.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который будет появляться при наведении мыши на шкалу; см. <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>from_</code></td>
+  <td>Используйте этот параметр в сочетании с параметром <code>to</code> (описанным ниже), чтобы ограничить значения числовым диапазоном. Например, <code>from_=-10</code> и <code>to=10</code> позволят использовать только значения от -10 до 10 включительно. См. также опцию <code>increment</code> ниже.</td>
+</tr>
+<tr>
+  <td><code>length</code></td>
+  <td>Длина виджета шкалы. Это размер <em>X</em>, если масштаб горизонтальный, или размер <em>Y</em>, если вертикальный. По умолчанию это 100 пикселей. Допустимые значения см. в <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+<tr>
+  <td><code>orient</code></td>
+  <td>Установите <code>orient=tk.HORIZONTAL</code>, если вы хотите, чтобы шкала располагалась вдоль оси <em>X</em>, или <code>orient=tk.VERTICAL</code>, чтобы она шла параллельно оси <em>Y</em>. По умолчанию - вертикально.</td>
+</tr>
+<tr>
+  <td><code>style</code></td>
+  <td>Стиль, который будет использоваться при отображении этой кнопки; смотрите <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>По умолчанию виджет шкалы <em>ttk.Scale</em> будет включен в обход фокуса; см. раздел <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>. Чтобы удалить виджет из обхода фокуса, используйте <code>takefocus=False</code>.</td>
+</tr>
+<tr>
+  <td><code>to</code></td>
+  <td>Значение <code>float</code>, определяющее конец диапазона шкалы; другой конец определяется опцией <code>from_</code>, рассмотренной выше. Значение <code>to</code> может быть как больше, так и меньше значения <code>from_</code>. Для вертикальных шкал значение <code>to</code> определяет нижнюю часть шкалы; для горизонтальных шкал - правый конец. По умолчанию значение равно 100.</td>
+</tr>
+<tr>
+  <td><code>value</code></td>
+  <td>Используйте эту опцию для установки начального значения <code>variable</code> виджета; по умолчанию 0.0.</td>
+</tr>
+<tr>
+  <td><code>variable</code></td>
+  <td>Используйте эту опцию, чтобы связать <a href="control-variables.html">управляющую переменную</a> с виджетом. Обычно это экземпляр <code>tk.DoubleVar</code>, который содержит значение типа <code>float</code>. Вместо этого вы можете использовать экземпляр <code>tk.IntVar</code>, но значения, хранящиеся в нем, будут усечены как тип <code>int</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Эти параметры виджета <em>tkinter.Scale</em> <em>не</em> поддерживаются конструктором виджета <em>ttk.Scale</em>:</p>
+
+<p><strong>Таблица 58. Опции tkinter.Scale, отсутствующие в ttk.Scale</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activebackground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>background</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>background</code> или <code>bg</code></td>
+  <td>Настройте опцию <code>background</code> с помощью стиля; эта опция управляет цветом ползунка. Аббревиатура <code>bg</code> не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>borderwidth</code> или <code>bd</code></td>
+  <td>Настройте эту опцию с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>digits</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>foreground</code> или <code>fg</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>label</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>repeatdelay</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>repeatinterval</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>resolution</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>showvalue</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>sliderlength</code></td>
+  <td>Настройте этот параметр с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>sliderrelief</code></td>
+  <td>Настройте эту опцию с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>В ttk нет опции с таким именем. Механизм состояния был обобщен; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>tickinterval</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>troughcolor</code></td>
+  <td>Настройте эту опцию с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Настройте этот параметр с помощью параметра <code>sliderthickness</code> в стиле.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Методы ttk.Scale включают все методы, описанные в <a href="ttk-Widget.html">Раздел 46, "Методы, общие для всех виджетов ttk"</a>, плюс:</strong>.</p>
+
+<p><code>.get()</code></p>
+
+<blockquote>
+  <p>Возвращает текущее значение, отображаемое на виджете.</p>
+</blockquote>
+
+<p><code>.set(newValue)</code>.</p>
+
+<blockquote>
+  <p>Изменяет текущее значение виджета на <code>newValue</code>.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="ttk-Scrollbar.html">&gt;&gt; ttk.Scrollbar</a></em></strong></p>
+
+</body>
+</html>

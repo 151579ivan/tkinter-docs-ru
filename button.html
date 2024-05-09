@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>7. Виджет Button</h2>
+
+<p>Для создания кнопки в верхнем окне или фрейме с именем <code>parent</code>:</p>
+
+<pre><code>w = tk.Button(parent, option=value, ...)
+</code></pre>
+
+<p>Конструктор возвращает новый виджет <code>Button</code>. Его опции включают:</p>
+
+<p><strong>Таблица 5. Опции виджета Button</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activebackground</code></td>
+  <td><a href="colors.html">Цвет</a> фона, когда кнопка находится под курсором.</td>
+</tr>
+<tr>
+  <td><code>activeforeground</code></td>
+  <td><a href="colors.html">Цвет</a> переднего плана, когда кнопка находится под курсором.</td>
+</tr>
+<tr>
+  <td><code>anchor</code></td>
+  <td>Где текст располагается на кнопке. Смотрите <a href="anchors.html">Раздел 5.5, “Якоря”</a>. Например, <code>anchor=tk.NE</code> поместит текст в верхний правый угол кнопки.</td>
+</tr>
+<tr>
+  <td><code>bd</code> или <code>borderwidth</code></td>
+  <td>Ширина границы вокруг внешней части кнопки; смотрите <a href="dimensions.html">Раздел 5.1, “Размеры”</a>. По умолчанию два пикселя.</td>
+</tr>
+<tr>
+  <td><code>bg</code> или <code>background</code></td>
+  <td>Нормальный <a href="colors.html">цвет</a> фона.</td>
+</tr>
+<tr>
+  <td><code>bitmap</code></td>
+  <td>Имя одного из стандартных <a href="bitmaps.html">битмапов</a> для отображения на кнопке (вместо текста).</td>
+</tr>
+<tr>
+  <td><code>command</code></td>
+  <td>Функция или метод, который будет вызван при нажатии на кнопку.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Выбирает <a href="cursors.html">курсор</a>, который будет отображаться, когда указатель мыши находится над кнопкой.</td>
+</tr>
+<tr>
+  <td><code>default</code></td>
+  <td><code>tk.NORMAL</code> по умолчанию; используйте <code>tk.DISABLED</code>, если кнопка должна быть изначально отключена (серая, не реагирующая на щелчки мыши).</td>
+</tr>
+<tr>
+  <td><code>disabledforeground</code></td>
+  <td><a href="colors.html">Цвет</a> переднего плана, используемый, когда кнопка отключена.</td>
+</tr>
+<tr>
+  <td><code>fg</code> или <code>foreground</code></td>
+  <td>Нормальный <a href="colors.html">цвет</a> переднего плана.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td><a href="fonts.html">Шрифт</a> текста, который будет использоваться для метки кнопки.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td>Высота кнопки в строках текста (для текстовых кнопок) или пикселях (для изображений).</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td><a href="colors.html">Цвет</a> фокусного выделения, когда виджет не имеет <a href="focus.html">фокуса</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td><a href="colors.html">Цвет</a> фокусного выделения, когда виджет имеет <a href="focus.html">фокус</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Толщина фокусного выделения.</td>
+</tr>
+<tr>
+  <td><code>image</code></td>
+  <td><a href="images.html">Изображение</a>, которое будет отображаться на кнопке (вместо текста).</td>
+</tr>
+<tr>
+  <td><code>justify</code></td>
+  <td>Способ отображения нескольких строк текста: <code>tk.LEFT</code> для выравнивания по левому краю каждой строки; <code>tk.CENTER</code> для их центрирования; или <code>tk.RIGHT</code> для выравнивания по правому краю.</td>
+</tr>
+<tr>
+  <td><code>overrelief</code></td>
+  <td>Стиль рельефа, используемый, когда указатель мыши находится на кнопке; стиль рельефа по умолчанию - <code>tk.RAISED</code>. Смотрите <a href="relief.html">Раздел 5.6, “Стили рельефа</a>.</td>
+</tr>
+<tr>
+  <td><code>padx</code></td>
+  <td>Дополнительный отступ слева и справа от текста. Смотрите <a href="dimensions.html">Раздел 5.1, “Размеры”</a> для возможных значений отступа.</td>
+</tr>
+<tr>
+  <td><code>pady</code></td>
+  <td>Дополнительный отступ сверху и снизу от текста.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Указывает тип рельефа для кнопки (смотрите <a href="relief.html">Раздел 5.6, “Стили рельефа</a>). Стиль рельефа по умолчанию - <code>tk.RAISED</code>.</td>
+</tr>
+<tr>
+  <td><code>repeatdelay</code></td>
+  <td>Смотрите <code>repeatinterval</code>, ниже.</td>
+</tr>
+<tr>
+  <td><code>repeatinterval</code></td>
+  <td>Обычно кнопка срабатывает только один раз, когда пользователь отпускает кнопку мыши. Если вы хотите, чтобы кнопка срабатывала с регулярными интервалами, пока кнопка мыши удерживается, установите эту опцию в количество миллисекунд, используемое между повторами, и установите <code>repeatdelay</code> в количество миллисекунд, чтобы дождаться начала повтора. Например, если вы укажете “<code>repeatdelay=500, repeatinterval=100</code>”, кнопка сработает через полсекунды, а затем каждые десятые доли секунды, пока пользователь не отпустит кнопку мыши. Если пользователь не удерживает кнопку мыши хотя бы <code>repeatdelay</code> миллисекунд, кнопка сработает нормально.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>Установите эту опцию в <code>tk.DISABLED</code>, чтобы сделать кнопку серой и нереагирующей. Принимает значение <code>tk.ACTIVE</code>, когда указатель мыши находится над ней. По умолчанию <code>tk.NORMAL</code>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>Обычно <a href="focus.html">фокус</a> клавиатуры посещает кнопки , и символ пробела действует так же, как и щелчок мыши, "нажимая" кнопку. Вы можете установить опцию <code>takefocus</code> в ноль, чтобы предотвратить посещение кнопки фокусом.</td>
+</tr>
+<tr>
+  <td><code>text</code></td>
+  <td>Текст, отображаемый на кнопке. Используйте внутренние символы новой строки для отображения нескольких строк текста.</td>
+</tr>
+<tr>
+  <td><code>textvariable</code></td>
+  <td>Экземпляр <code>StringVar()</code>, связанный с текстом на этой кнопке. Если переменная изменена, новое значение будет отображаться на кнопке. Смотрите <a href="control-variables.html">Раздел 52, “Управляющие переменные: значения за виджетами”</a>.</td>
+</tr>
+<tr>
+  <td><code>underline</code></td>
+  <td>По умолчанию <code>-1</code>, что означает, что ни один символ текста на кнопке не будет подчеркнут. Если неотрицательно, соответствующий символ текста будет подчеркнут. Например, <code>underline=1</code> подчеркнет второй символ текста кнопки.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Ширина кнопки в буквах (если отображается текст) или пикселях (если отображается изображение).</td>
+</tr>
+<tr>
+  <td><code>wraplength</code></td>
+  <td>Если это значение установлено на положительное число, строки текста будут переноситься, чтобы уместиться в эту длину. Для возможных значений смотрите <a href="dimensions.html">Раздел 5.1, “Размеры”</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Методы объектов Button</strong></p>
+
+<p><code>.flash()</code></p>
+
+<blockquote>
+  <p>Позволяет кнопке несколько раз мигать между активными и нормальными цветами. Оставляет кнопку в состоянии, в котором она изначально находилась. Игнорируется, если кнопка отключена.</p>
+</blockquote>
+
+<p><code>.invoke()</code></p>
+
+<blockquote>
+  <p>Вызывает обратный вызов <code>command</code> кнопки и возвращает то, что возвращает эта функция. Не имеет эффекта, если кнопка отключена или нет обратного вызова.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="canvas.html">&gt;&gt; Виджет Canvas</a></em></strong></p>
+
+</body>
+</html>

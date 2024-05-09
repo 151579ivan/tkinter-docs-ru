@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>10.1. Скроллинг виджета Entry</h2>
+
+<p>Чтобы сделать виджет <code>Entry</code> прокручиваемым, вам потребуется немного дополнительного кода, чтобы адаптировать обратный вызов виджета <code>Scrollbar</code> к методам, доступным для виджета <code>Entry</code>. Вот несколько фрагментов кода, иллюстрирующих эту настройку. Во-первых, создание и связывание виджетов <code>Entry</code> и <code>Scrollbar</code>:</p>
+
+<pre><code>self.entry = tk.Entry(self, width=10)
+self.entry.grid(row=0, sticky=tk.E+tk.W)
+
+self.entryScroll = tk.Scrollbar(self, orient=tk.HORIZONTAL,
+    command=self.__scrollHandler)
+self.entryScroll.grid(row=1, sticky=tk.E+tk.W)
+self.entry['xscrollcommand'] = self.entryScroll.set
+</code></pre>
+
+<p>Вот функция адаптера, упомянутая выше:</p>
+
+<pre><code>def __scrollHandler(self, *L):
+    op, howMany = L[0], L[1]
+
+    if op == 'scroll':
+        units = L[2]
+        self.entry.xview_scroll(howMany, units)
+    elif op == 'moveto':
+        self.entry.xview_moveto(howMany)
+</code></pre>
+
+<hr />
+
+<p><strong><em><a href="entry-validation.html">&gt;&gt; Добавление валидации в виджет Entry</a></em></strong></p>
+
+</body>
+</html>

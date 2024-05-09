@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>54.6. Написание обработчика: Класс Event</h2>
+
+<p>В приведенных выше разделах рассказывалось о том, как описать события, которые вы хотите обрабатывать, и как их связать. Теперь перейдем к написанию обработчика, который будет вызван, когда событие действительно произойдет.</p>
+
+<p>Обработчику будет передан объект <em>Event</em>, описывающий произошедшее событие. Обработчик может быть как функцией, так и методом. Вот последовательность вызова обычной функции:</p>
+
+<pre><code>def handlerName(event):
+</code></pre>
+
+<p>И как метод:</p>
+
+<pre><code>def handlerName(self, event):
+</code></pre>
+
+<p>Атрибуты объекта <em>Event</em>, передаваемого обработчику, описаны ниже. Некоторые из этих атрибутов задаются всегда, а некоторые - только для определенных типов событий.</p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>.char</code></td>
+  <td>Если событие связано с нажатием (<code>KeyPress</code>) или отпусканием (<code>KeyRelease</code>) клавиши, которая выдает обычный ASCII-символ, то эта строка будет установлена на этот символ. (Для специальных клавиш, таких как <em>Delete</em>, см. атрибут <code>.keysym</code>, ниже.)</td>
+</tr>
+<tr>
+  <td><code>.delta</code></td>
+  <td>Для событий <code>MouseWheel</code> этот атрибут содержит целое число, знак которого положителен для прокрутки вверх и отрицателен для прокрутки вниз. В Windows это значение будет кратно 120; например, <code>120</code> означает прокрутку на один шаг вверх, а <code>-240</code> - прокрутку на два шага вниз. В MacOS это значение будет кратно 1, поэтому <code>1</code> означает прокрутку вверх на один шаг, а <code>-2</code> - прокрутку вниз на два шага. О поддержке колеса мыши в Linux см. примечание о привязке события <code>Button</code> в <a href="event-types.html">разделе 54.3, "Типы событий"</a>.</td>
+</tr>
+<tr>
+  <td><code>.height</code></td>
+  <td>Если событие было <code>Configure</code>, этот атрибут устанавливается на новую высоту виджета в пикселях.</td>
+</tr>
+<tr>
+  <td><code>.keycode</code></td>
+  <td>Для событий <code>KeyPress</code> или <code>KeyRelease</code> этот атрибут устанавливается в числовой код, идентифицирующий клавишу. Однако он не определяет, какие символы на этой клавише были произведены, так что "<code>x</code>" и "<code>X</code>" имеют одинаковое значение <code>.keyCode</code>. Возможные значения этого поля см. в <a href="key-names.html">разделе 54.5, "Имена клавиш"</a>.</td>
+</tr>
+<tr>
+  <td><code>.keysym</code></td>
+  <td>Для событий <code>KeyPress</code> или <code>KeyRelease</code>, связанных со специальной клавишей, этот атрибут устанавливается в строковое имя клавиши, например, <code>'Prior'</code> для клавиши <em>PageUp</em>. Полный список имен <code>.keysym</code> см. в <a href="key-names.html">разделе 54.5, "Имена клавиш"</a>.</td>
+</tr>
+<tr>
+  <td><code>.keysym_num</code></td>
+  <td>Для событий <code>KeyPress</code> или <code>KeyRelease</code> устанавливается числовая версия поля <code>.keysym</code>. Для обычных клавиш, выдающих один символ, это поле устанавливается в целочисленное значение ASCII-кода клавиши. Для специальных ключей см. <a href="key-names.html">раздел 54.5, "Имена клавиш"</a>.</td>
+</tr>
+<tr>
+  <td><code>.num</code></td>
+  <td>Если событие было связано с кнопкой мыши, этот атрибут устанавливается в номер кнопки (1, 2 или 3). Для поддержки колеса мыши в Linux привяжите события <code>Button-4</code> и <code>Button-5</code>; когда колесо мыши прокручивается вверх, это поле будет равно 4, а при прокрутке вниз - 5.</td>
+</tr>
+<tr>
+  <td><code>.serial</code></td>
+  <td>Целочисленный серийный номер, который увеличивается каждый раз, когда сервер обрабатывает клиентский запрос. Вы можете использовать значения <code>.serial</code> для определения точной временной последовательности событий: события с меньшими значениями произошли раньше.</td>
+</tr>
+<tr>
+  <td><code>.state</code></td>
+  <td>Целое число, описывающее состояние всех ключей-модификаторов. Интерпретацию этого значения см. в таблице масок модификаторов ниже.</td>
+</tr>
+<tr>
+  <td><code>.time</code></td>
+  <td>Этот атрибут устанавливается в целое число, которое не имеет абсолютного значения, но увеличивается каждую миллисекунду. Это позволяет вашему приложению определять, например, продолжительность времени между двумя кликами мыши.</td>
+</tr>
+<tr>
+  <td><code>.type</code></td>
+  <td>Числовой код, описывающий тип события. Интерпретацию этого кода см. в <a href="event-types.html">разделе 54.3, "Типы событий"</a>.</td>
+</tr>
+<tr>
+  <td><code>.widget</code></td>
+  <td>Всегда устанавливается на виджет, вызвавший событие. Например, если событие было кликом мыши, произошедшим на холсте, то этот атрибут будет соответствовать виджету <code>Canvas</code>.</td>
+</tr>
+<tr>
+  <td><code>.width</code></td>
+  <td>Если событие было <code>Configure</code>, этот атрибут будет установлен на новую ширину виджета в пикселях.</td>
+</tr>
+<tr>
+  <td><code>.x</code></td>
+  <td>Координата <code>X</code> мыши в момент события, относительно левого верхнего угла виджета.</td>
+</tr>
+<tr>
+  <td><code>.y</code></td>
+  <td>Координата <code>Y</code> мыши в момент события, относительно левого верхнего угла виджета.</td>
+</tr>
+<tr>
+  <td><code>.x_root</code></td>
+  <td>Координата <code>X</code> мыши в момент события, относительно левого верхнего угла экрана.</td>
+</tr>
+<tr>
+  <td><code>.y_root</code></td>
+  <td>Координата <code>Y</code> мыши в момент события, относительно левого верхнего угла экрана.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p>Используйте эти маски для проверки битов значения <code>.state</code>, чтобы узнать, какие клавиши-модификаторы и кнопки были нажаты во время события:</p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:left;">Маска</th>
+  <th style="text-align:left;">Модификатор</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left;"><code>0x0001</code></td>
+  <td style="text-align:left;">Shift</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>0x0002</code></td>
+  <td style="text-align:left;">Caps Lock</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>0x0004</code></td>
+  <td style="text-align:left;">Control</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>0x0008</code></td>
+  <td style="text-align:left;">Левый Alt</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>0x0010</code></td>
+  <td style="text-align:left;">Num Lock</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>0x0080</code></td>
+  <td style="text-align:left;">Правый Alt</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>0x0100</code></td>
+  <td style="text-align:left;">Кнопка мыши 1</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>0x0200</code></td>
+  <td style="text-align:left;">Кнопка мыши 2</td>
+</tr>
+<tr>
+  <td style="text-align:left;"><code>0x0400</code></td>
+  <td style="text-align:left;">Кнопка мыши 3</td>
+</tr>
+</tbody>
+</table>
+
+<p>Вот пример обработчика событий. В <a href="binding-levels.html">разделе 54.1, "Уровни привязки"</a>, выше, есть пример, показывающий, как привязать нажатие кнопки мыши 2 на холсте с именем <code>self.canv</code> к обработчику с именем <code>self.__drawOrangeBlob()</code>. Вот этот обработчик:</p>
+
+<pre><code>def __drawOrangeBlob(self, event):
+    '''Рисует оранжевый шар в self.canv там, где находится мышь.
+    '''
+    r = 5  # Радиус шара
+    self.canv.create_oval(event.x-r, event.y-r,
+        event.x+r, event.y+r, fill='orange')
+</code></pre>
+
+<p>Когда вызывается этот обработчик, текущая позиция мыши равна <code>(event.x, event.y)</code>. Метод <code>.create_oval()</code> рисует окружность, ограниченную квадратом с центром на этой позиции и сторонами длиной <code>r * 2</code>.</p>
+
+<hr />
+
+<p><strong><em><a href="extra-args.html">&gt;&gt; Трюк с дополнительными аргументами</a></em></strong></p>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>54.3. Типы событий</h2>
+
+<p>Полный набор типов событий довольно велик, но многие из них не часто используются. Вот большинство из них, которые вам понадобятся:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Тип</th>
+  <th style="text-align:center;">Имя</th>
+  <th style="text-align:left;">Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>36</td>
+  <td style="text-align:center;"><code>Activate</code></td>
+  <td style="text-align:left;">Виджет переходит из состояния неактивности в состояние активности. Это относится к изменениям в параметре <code>state</code> виджета, например, кнопка переходит из неактивного состояния (закрашена серым) в активное.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td style="text-align:center;"><code>Button</code></td>
+  <td style="text-align:left;">Пользователь нажал одну из кнопок мыши. В части <code>detail</code> указывается, какую именно кнопку. Для поддержки колеса мыши в Linux используйте <code>Button-4</code> (прокрутка вверх) и <code>Button-5</code> (прокрутка вниз). В Linux ваш обработчик привязки к колесу мыши будет различать прокрутку вверх и прокрутку вниз, исследуя поле <code>.num</code> экземпляра <em>Event</em>; см. <a href="event-handlers.html">раздел 54.6, "Написание обработчика: класс Event"</a>.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td style="text-align:center;"><code>ButtonRelease</code></td>
+  <td style="text-align:left;">Пользователь отпустил кнопку мыши. В большинстве случаев это событие лучше, чем событие <code>Button</code>, потому что если пользователь случайно нажмет на кнопку, он сможет убрать мышь с виджета, чтобы не вызвать событие.</td>
+</tr>
+<tr>
+  <td>22</td>
+  <td style="text-align:center;"><code>Configure</code></td>
+  <td style="text-align:left;">Пользователь изменил размер виджета, например, перетянув угол или сторону окна.</td>
+</tr>
+<tr>
+  <td>37</td>
+  <td style="text-align:center;"><code>Deactivate</code></td>
+  <td style="text-align:left;">Виджет переходит из состояния активности в состояние неактивности. Это относится к изменениям в параметре <code>state</code> виджета, например, радиокнопка переходит из активного состояния в неактивное (закрашивается серым цветом).</td>
+</tr>
+<tr>
+  <td>17</td>
+  <td style="text-align:center;"><code>Destroy</code></td>
+  <td style="text-align:left;">Виджет уничтожается.</td>
+</tr>
+<tr>
+  <td>7</td>
+  <td style="text-align:center;"><code>Enter</code></td>
+  <td style="text-align:left;">Пользователь переместил указатель мыши в видимую часть виджета. (Это отличается от нажатия клавиши Enter, которое является событием <code>KeyPress</code> для клавиши, название которой на самом деле <code>'return'</code>).</td>
+</tr>
+<tr>
+  <td>12</td>
+  <td style="text-align:center;"><code>Expose</code></td>
+  <td style="text-align:left;">Это событие происходит всякий раз, когда хотя бы часть вашего приложения или виджета становится видимой после того, как она была закрыта другим окном.</td>
+</tr>
+<tr>
+  <td>9</td>
+  <td style="text-align:center;"><code>FocusIn</code></td>
+  <td style="text-align:left;">Виджет получил <a href="focus.html">фокус</a> ввода. Это может произойти как в ответ на событие пользователя (например, при использовании клавиши табуляции для перемещения фокуса между виджетами), так и программно (например, ваша программа вызывает <code>.focus_set()</code> на виджете).</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td style="text-align:center;"><code>FocusOut</code></td>
+  <td style="text-align:left;">Фокус ввода был перемещен из виджета. Как и в случае с <code>FocusIn</code>, пользователь может вызвать это событие, или ваша программа может вызвать его.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td style="text-align:center;"><code>KeyPress</code></td>
+  <td style="text-align:left;">Пользователь нажал клавишу на клавиатуре. В части <code>detail</code> указывается, какую именно клавишу. Это ключевое слово может быть сокращено до <code>Key</code>.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td style="text-align:center;"><code>KeyRelease</code></td>
+  <td style="text-align:left;">Пользователь отпустил клавишу.</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td style="text-align:center;"><code>Leave</code></td>
+  <td style="text-align:left;">Пользователь вывел указатель мыши из виджета.</td>
+</tr>
+<tr>
+  <td>19</td>
+  <td style="text-align:center;"><code>Map</code></td>
+  <td style="text-align:left;">Виджет отображается, то есть становится видимым в приложении. Это происходит, например, при вызове метода <code>.grid()</code> виджета.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td style="text-align:center;"><code>Motion</code></td>
+  <td style="text-align:left;">Пользователь перемещает указатель мыши внутри виджета.</td>
+</tr>
+<tr>
+  <td>38</td>
+  <td style="text-align:center;"><code>MouseWheel</code></td>
+  <td style="text-align:left;">Пользователь переместил колесико мыши вверх или вниз. В настоящее время эта привязка работает в Windows и MacOS, но не в Linux. Для Windows и MacOS см. обсуждение поля <code>.delta</code> экземпляра <em>Event</em> в <a href="event-handlers.html">разделе 54.6, "Написание обработчика: класс Event"</a>. Для Linux см. примечание выше в графе <code>Button</code> этой таблицы.</td>
+</tr>
+<tr>
+  <td>18</td>
+  <td style="text-align:center;"><code>Unmap</code></td>
+  <td style="text-align:left;">Виджет отключается и больше не виден. Это происходит, например, при использовании метода <code>.grid_remove()</code> виджета.</td>
+</tr>
+<tr>
+  <td>15</td>
+  <td style="text-align:center;"><code>Visibility</code></td>
+  <td style="text-align:left;">Происходит, когда хотя бы часть окна приложения становится видимой на экране.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="event-modifiers.html">&gt;&gt; Модификаторы событий</a></em></strong></p>
+
+</body>
+</html>

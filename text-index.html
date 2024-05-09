@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>24.1. Индексы виджетов Text</h2>
+
+<p>Индекс - это общий метод указания позиции в содержимом текстового виджета. Индекс - это строка, имеющая одну из следующих форм:</p>
+
+<p><code>'line.column'</code></p>
+
+<blockquote>
+  <p>Позиция непосредственно перед заданным столбцом <em>column</em> (считая от нуля) на заданной строке <em>line</em> (считая от единицы). Примеры: <code>'1.0'</code> - позиция начала текста; <code>'2.3'</code> - позиция перед четвертым символом второй строки.</p>
+</blockquote>
+
+<p><code>'line.end'</code></p>
+
+<blockquote>
+  <p>Позиция непосредственно перед новой строкой в конце данной строки (считая от единицы). Так, например, индекс <code>'10.end'</code> - это позиция в конце десятой строки.</p>
+</blockquote>
+
+<p><code>tk.INSERT</code></p>
+
+<blockquote>
+  <p>Позиция курсора вставки в текстовом виджете. Эта константа равна строке <code>'insert'</code>.</p>
+</blockquote>
+
+<p><code>tk.CURRENT</code></p>
+
+<blockquote>
+  <p>Позиция символа, ближайшего к указателю мыши. Эта константа равна строке <code>'current'</code>.</p>
+</blockquote>
+
+<p><code>tk.END</code></p>
+
+<blockquote>
+  <p>Позиция после последнего символа текста. Эта константа равна строке <code>'end'</code>.</p>
+</blockquote>
+
+<p><code>tk.SEL_FIRST</code></p>
+
+<blockquote>
+  <p>Если часть текста в виджете в данный момент выделена (например, при перетаскивании мыши), то это позиция перед началом выделения. Если вы попытаетесь использовать этот индекс, а ничего не выделено, будет вызвано исключение <code>tk.TclError</code>. Эта константа равна строке <code>'sel.first'</code>.</p>
+</blockquote>
+
+<p><code>tk.SEL_LAST</code></p>
+
+<blockquote>
+  <p>Позиция после конца выделения, если таковая имеется. Как и в случае с <code>SEL_FIRST</code>, вы получите исключение <code>tk.TclError</code>, если вы используете такой индекс, а выделения нет. Эта константа равна строке <code>'sel.last'</code>.</p>
+</blockquote>
+
+<p><code>'markname'</code></p>
+
+<blockquote>
+  <p>Вы можете использовать метку в качестве индекса; просто передайте ее имя там, где ожидается индекс. Смотрите <a href="text-mark.html">Раздел 24.2, "Метки виджета Text"</a>.</p>
+</blockquote>
+
+<p><code>'tag.first'</code></p>
+
+<blockquote>
+  <p>Позиция перед первым символом области с тегом <code>tag</code>; см. <a href="text-tag.html">Раздел 24.5, "Теги виджета Text"</a>.</p>
+</blockquote>
+
+<p><code>'tag.last'</code></p>
+
+<blockquote>
+  <p>Позиция после последнего символа области с тегом.</p>
+</blockquote>
+
+<p><code>'@x,y'</code></p>
+
+<blockquote>
+  <p>Позиция перед символом, ближайшим к координате (<code>x</code>, <code>y</code>).</p>
+</blockquote>
+
+<p><code>embedded-object</code></p>
+
+<blockquote>
+  <p>Если в текстовый виджет встроено изображение или окно, то в качестве индекса можно использовать <code>PhotoImage</code>, <code>BitmapImage</code> или встроенный виджет. Смотрите <a href="text-image.html">Раздел 24.3, "Изображения виджета Text"</a> и <a href="text-window.html">Раздел 24.4, "Окна виджета Text"</a>.</p>
+</blockquote>
+
+<p>В дополнение к приведенным выше вариантам базовых индексов вы можете создавать произвольные сложные выражения, добавляя к базовому индексу или индексному выражению любой из этих суффиксов:</p>
+
+<p><code>+ n chars</code></p>
+
+<blockquote>
+  <p>Начиная с заданного индекса, переместиться вперед на <code>n</code> символов. Эта операция будет пересекать границы строк.</p>
+</blockquote>
+
+<blockquote>
+  <p>Например, предположим, что первая строка выглядит следующим образом:</p>
+</blockquote>
+
+<blockquote>
+<pre><code>abcdef
+</code></pre>
+</blockquote>
+
+<blockquote>
+  <p>Индексное выражение “<code>1.0 + 5 chars</code>” относится к позиции между <code>e</code> и <code>f</code>. Вы можете опускать пробелы и сокращать ключевые слова в этих выражениях, если результат будет однозначным. Этот пример можно сократить до "<code>1.0+5c</code>".</p>
+</blockquote>
+
+<p><code>- n chars</code></p>
+
+<blockquote>
+  <p>Аналогично предыдущей форме, но позиция сдвигается <em>назад</em> на <code>n</code> символов.</p>
+</blockquote>
+
+<p><code>+ n lines</code></p>
+
+<blockquote>
+  <p>Перемещает на <code>n</code> строк за заданный индекс. Tkinter пытается оставить новую позицию в том же столбце, в котором она была в строке, которую он покинул, но если строка в новой позиции короче, то новая позиция будет в конце строки.</p>
+</blockquote>
+
+<p><code>- n lines</code></p>
+
+<blockquote>
+  <p>Перемещает на <code>n</code> строк до заданного индекса.</p>
+</blockquote>
+
+<p><code>linestart</code></p>
+
+<blockquote>
+  <p>Перемещает в позицию перед первым символом заданного индекса. Например, позиция "<code>current linestart</code>" относится к началу строки, ближайшей к указателю мыши.</p>
+</blockquote>
+
+<p><code>lineend</code></p>
+
+<blockquote>
+  <p>Перемещает на позицию после последнего символа заданного индекса. Например, позиция "<code>sel.last lineend</code>" относится к концу строки, содержащей конец текущего выделения.</p>
+</blockquote>
+
+<p><code>wordstart</code></p>
+
+<blockquote>
+  <p>Позиция перед началом слова, содержащего заданный индекс. Например, индекс "<code>11.44 wordstart</code>" указывает на позицию перед словом, содержащим позицию 44 в строке 11.</p>
+</blockquote>
+
+<blockquote>
+  <p>Для этой операции <em>слово</em> представляет собой либо строку из последовательных буквенных, цифровых или подстрочных символов (<code>_</code>), либо одиночный символ, который не относится ни к одному из этих типов. </p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="text-mark.html">&gt;&gt; Метки виджета Text</a></em></strong></p>
+
+</body>
+</html>

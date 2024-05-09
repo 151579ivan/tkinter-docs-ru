@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>32. ttk.Entry</h2>
+
+<p>Виджет <em>Entry</em> предназначен для того, чтобы позволить пользователю ввести или отредактировать одну строку текста. Это ttk-версия виджета <a href="entry.html">Entry</a>.</p>
+
+<p>Чтобы создать виджет <em>ttk.Entry</em> в качестве дочернего элемента данного виджета <code>parent</code>:</p>
+
+<pre><code>w = ttk.Entry(parent, option=value, ...)
+</code></pre>
+
+<p>Опции:</p>
+
+<p><strong>Таблица 40. Опции ttk.Entry</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>class_</code></td>
+  <td>Имя класса виджета. Оно может быть указано при создании виджета, но не может быть изменено позже. Для объяснения классов виджетов смотрите <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который будет появляться при наведении мыши на виджет; см. <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>exportselection</code></td>
+  <td>По умолчанию, если вы выделяете текст в виджете <em>Entry</em>, он автоматически экспортируется в буфер обмена. Чтобы избежать этого экспорта, используйте <code>exportselection=0</code>.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td>Используйте эту опцию, чтобы указать шрифт текста, который будет отображаться в виджете; см. <a href="fonts.html">Раздел 5.4, "Шрифты"</a>. По неясным для автора причинам эта опция не может быть указана со стилем.</td>
+</tr>
+<tr>
+  <td><code>invalidcommand</code></td>
+  <td>Вы можете установить эту опцию в функцию обратного вызова, которая будет вызываться каждый раз, когда проверка не пройдет (то есть когда <code>validatecommand</code> возвращает 0). Смотрите <a href="entry-validation.html">Раздел 10.2, "Добавление проверки в виджет Entry"</a>.</td>
+</tr>
+<tr>
+  <td><code>justify</code></td>
+  <td>Эта опция определяет, как будет располагаться текст в области ввода, если он не полностью заполняет область. Значения могут быть <code>tk.LEFT</code> для выравнивания влево; <code>tk.CENTER</code> для выравнивания по центру; или <code>tk.RIGHT</code> для выравнивания вправо.</td>
+</tr>
+<tr>
+  <td><code>show</code></td>
+  <td>Чтобы защитить такие поля, как пароли, от отображения на экране, установите этот параметр в строку, первый символ которой будет заменен на каждый из реальных символов в поле. Например, если поле содержит "<code>sesame</code>", но вы указали <code>show='*'</code>, поле будет отображаться как "<code>******</code>".</td>
+</tr>
+<tr>
+  <td><code>style</code></td>
+  <td>Стиль, который будет использоваться при отображении этой кнопки; см. <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>По умолчанию <em>ttk.Entry</em> будет включен в обход фокуса; см. <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>. Чтобы удалить виджет из обхода фокуса, используйте <code>takefocus=False</code>.</td>
+</tr>
+<tr>
+  <td><code>textvariable</code></td>
+  <td>Переменная, управляющая текстом, который отображается в области ввода; см. раздел <a href="control-variables.html">Раздел 52, "Управляющие переменные: значения, скрывающиеся за виджетами"</a>.</td>
+</tr>
+<tr>
+  <td><code>validate</code></td>
+  <td>Вы можете использовать эту опцию для указания функции обратного вызова, которая динамически проверяет текстовое содержимое виджета. Смотрите <a href="entry-validation.html">Раздел 10.2, "Добавление проверки в виджет Entry"</a>.</td>
+</tr>
+<tr>
+  <td><code>validatecommand</code></td>
+  <td>См. раздел <a href="entry-validation.html">Раздел 10.2, "Добавление валидации в виджет Entry"</a>.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Этот параметр задает ширину области ввода в виде количества символов. Фактическая ширина будет равна этому числу, умноженному на среднюю ширину символа в используемом шрифте. По умолчанию значение равно 20.</td>
+</tr>
+<tr>
+  <td><code>xscrollcommand</code></td>
+  <td>Если виджет имеет связанную горизонтальную полосу прокрутки, установите этот параметр в метод <code>.set</code> этой полосы прокрутки.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Эти параметры виджета <em>tkinter.Entry</em> <em>не</em> поддерживаются конструктором виджета <em>ttk.Entry</em>:</p>
+
+<p><strong>Таблица 41. Опции tkinter.Entry, отсутствующие в ttk.Entry</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>background</code> или <code>bg</code></td>
+  <td>Настройте опцию <code>background</code> с помощью стиля; см. [Раздел 47, "Настройка и создание тем и стилей ttk"] (ttk-themes.html). Сокращение <code>bg</code> не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>borderwidth</code> или <code>bd</code></td>
+  <td>Настройте этот параметр с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>disabledbackground</code></td>
+  <td>Используйте карту стилей для опции <code>background</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>disabledforeground</code></td>
+  <td>Используйте карту стилей для опции <code>foreground</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамические изменения внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>foreground</code> или <code>fg</code></td>
+  <td>Настройте эту опцию с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td>Чтобы управлять цветом подсветки фокуса, когда кнопка не имеет фокуса, используйте карту стилей для управления опцией <code>highlightcolor</code>; см. <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамические изменения внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td>Вы можете указать цвет подсветки фокуса по умолчанию, установив этот параметр в стиле. Вы также можете управлять цветом подсветки фокуса с помощью карты стилей.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Настройте этот параметр с помощью стиля. Эта опция может работать не во всех темах.</td>
+</tr>
+<tr>
+  <td><code>insertbackground</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>insertborderwidth</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>insertofftime</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>insertontime</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>insertwidth</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>readonlybackground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>background</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Настройте эту опцию с помощью стиля; смотрите <a href="ttk-themes.html">Раздел 47, "Настройка и создание тем и стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>selectbackground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>background</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>selectborderwidth</code></td>
+  <td>Используйте карту стилей для управления параметром <code>borderwidth</code>; см. <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамические изменения внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>selectforeground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>foreground</code>; см. <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамические изменения внешнего вида"</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Методы <em>ttk.Entry</em> включают все методы, описанные в <a href="ttk-Widget.html">разделе 46, "Методы, общие для всех виджетов ttk"</a>, плюс все методы виджета Tkinter, описанные в <a href="entry.html">разделе 10, "Виджет Entry"</a>.</p>
+
+<hr />
+
+<p><strong><em><a href="ttk-Frame.html">&gt;&gt; ttk.Frame</a></em></strong></p>
+
+</body>
+</html>

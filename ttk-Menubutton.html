@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>36. ttk.Menubutton</h2>
+
+<p>Виджет <em>Menubutton</em> - это часть выпадающего меню, которая всегда видна. Он всегда используется в сочетании с виджетом <em>Menu</em>, который управляет тем, что появляется, когда пользователь нажимает на <em>Menubutton</em>.</p>
+
+<p>Не существует ttk-версии виджета <em>Menu</em>. Используйте обычный виджет Tkinter, описанный в <a href="menu.html">Раздел 15, "Виджет меню"</a>.</p>
+
+<p>Чтобы создать новый виджет <em>ttk.Menubutton</em> в качестве дочернего элемента некоторого виджета <code>parent</code>, используйте этот конструктор:</p>
+
+<pre><code>w = ttk.Menubutton(parent, option=value, ...)
+</code></pre>
+
+<p>Опции включают:</p>
+
+<p><strong>Таблица 48. Опции ttk.Menubutton</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>class_</code></td>
+  <td>Имя класса виджета. Оно может быть указано при создании виджета, но не может быть изменено позже. Для объяснения классов виджетов смотрите <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>compound</code></td>
+  <td>Если вы указали оба параметра <code>image</code> и <code>text</code>, параметр <code>compound</code> определяет положение изображения относительно текста. Значение может быть <code>tk.TOP</code> (изображение над текстом), <code>tk.BOTTOM</code> (изображение под текстом), <code>tk.LEFT</code> (изображение слева от текста) или <code>tk.RIGHT</code> (изображение справа от текста). Если указать оба параметра <code>image</code> и <code>text</code>, но не указать параметр <code>compound</code>, изображение появится, а текст - нет.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который будет появляться при наведении мыши на кнопку; смотрите <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>direction</code></td>
+  <td>Этот параметр задает позицию, в которой отображается выпадающее меню относительно <em>menubutton</em>. <br><br><code>above</code> - Меню будет отображаться непосредственно над <em>menubutton</em>. <br><code>below</code> - Меню будет отображаться под кнопкой <em>menubutton</em>. <br><code>flush</code> - Меню будет отображаться над <em>menubutton</em>, так что северо-западный угол меню совпадает с северо-западным углом <em>menubutton</em>. <br><code>left</code> - Меню будет отображаться слева от кнопки <em>menubutton</em>. <br><code>right</code> - Меню появится справа от кнопки <em>menubutton</em>.</td>
+</tr>
+<tr>
+  <td><code>image</code></td>
+  <td>Изображение, которое будет отображаться на <em>menubutton</em>; см. <a href="images.html">Раздел 5.9, "Изображения"</a>.</td>
+</tr>
+<tr>
+  <td><code>menu</code></td>
+  <td>Связанный виджет <em>Menu</em>. Процедуру, используемую для установления этой взаимной связи, см. в <a href="menu.html">Раздел 15, "Виджет Menu"</a>.</td>
+</tr>
+<tr>
+  <td><code>style</code></td>
+  <td>Стиль, который будет использоваться при отображении <em>menubutton</em>; см. <a href="ttk-style-layer.html">раздел 49 "Использование и настройка стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>По умолчанию <em>ttk.Menubutton</em> будет включен в обход фокуса; смотрите <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>. Чтобы удалить виджет из обхода фокуса, используйте <code>takefocus=False</code>.</td>
+</tr>
+<tr>
+  <td><code>text</code></td>
+  <td>Текст, который будет отображаться на <em>menubutton</em>, в виде строки.</td>
+</tr>
+<tr>
+  <td><code>textvariable</code></td>
+  <td>Переменная, управляющая текстом, который появляется на кнопке <em>menubutton</em>; см. <a href="control-variables.html">Раздел 52, "Управляющие переменные: значения за виджетами"</a>.</td>
+</tr>
+<tr>
+  <td><code>underline</code></td>
+  <td>Если эта опция имеет неотрицательное значение <em>n</em>, под символом в позиции <em>n</em> появится подчеркивание.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Если метка текстовая, эта опция задает абсолютную ширину текстовой области на кнопке в виде количества символов; фактическая ширина равна этому числу, умноженному на среднюю ширину символа в текущем шрифте. Для ярлыков изображений этот параметр игнорируется. Параметр также может быть задан в стиле.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Следующие опции кнопки <em>tkinter.Menubutton</em>, описанной в <a href="menubutton.html">разделе 16, "Виджет Menubutton"</a>, <em>не</em> поддерживаются <em>ttk.Menubutton</em>:</p>
+
+<p><strong>Таблица 49. Опции tkinter.Menubutton, отсутствующие в ttk.Menubutton</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activebackground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>background</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамические изменения внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>activeforeground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>foreground</code>.</td>
+</tr>
+<tr>
+  <td><code>anchor</code></td>
+  <td>Настройте этот параметр с помощью стиля; смотрите <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>. Используйте эту опцию, чтобы указать положение текста, когда опция <code>width</code> выделяет дополнительное горизонтальное пространство.</td>
+</tr>
+<tr>
+  <td><code>bitmap</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>borderwidth</code> или <code>bd</code></td>
+  <td>Настройте опцию <code>borderwidth</code> с помощью стиля. Аббревиатура <code>bd</code> не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>buttonbackground</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>buttoncursor</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>buttondownrelief</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>buttonup</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>disabledforeground</code></td>
+  <td>Используйте карту стилей для опции <code>foreground</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамические изменения внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td>Настройте эту опцию с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>foreground</code> или <code>fg</code></td>
+  <td>Настройте опцию <code>foreground</code> с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td>Чтобы управлять цветом подсветки фокуса, когда <em>menubutton</em> не имеет фокуса, используйте карту стилей для управления параметром <code>highlightcolor</code>; см. раздел <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамические изменения внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td>Вы можете указать цвет подсветки фокуса по умолчанию, установив этот параметр в стиле. Вы также можете управлять цветом подсветки фокуса с помощью карты стилей.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Настройте этот параметр с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>justify</code></td>
+  <td>Если текст содержит символы новой строки (<code>'\n'</code>), текст будет занимать несколько строк на <em>menubutton</em>. Параметр <code>justify</code> управляет тем, как каждая строка будет располагаться по горизонтали. Настройте этот параметр с помощью стиля; значения могут быть <code>tk.LEFT</code>, <code>tk.CENTER</code> или <code>tk.RIGHT</code> для строк, выровненных по левому краю, по центру или по правому краю, соответственно.</td>
+</tr>
+<tr>
+  <td><code>padx</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>pady</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Настройте этот параметр с помощью стиля; смотрите <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>wraplength</code></td>
+  <td>Если вы используете стиль с этой опцией, установленной на некоторое значение <a href="dimensions.html">размера</a>, то текст будет нарезан на фрагменты не длиннее этого размера.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="ttk-Notebook.html">&gt;&gt; ttk.Notebook</a></em></strong></p>
+
+</body>
+</html>

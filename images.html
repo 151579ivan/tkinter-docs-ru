@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>5.9. Изображения</h2>
+
+<p>Существуют три общих метода отображения графических изображений в вашем приложении Tkinter.</p>
+
+<ol>
+<li><p>Чтобы отобразить изображения битовых карт (двухцветные) в формате <code>.xbm</code>, обратитесь к разделу <a href="">5.9.1, “Класс BitmapImage”</a> ниже.</p></li>
+<li><p>Чтобы отобразить полноцветные изображения в форматах <code>.gif</code>, <code>.pgm</code> или <code>.ppm</code>, см. раздел <a href="">5.9.2, “Класс PhotoImage”</a> ниже.</p></li>
+<li><p>Библиотека Python Imaging Library (PIL) поддерживает изображения в гораздо более широком спектре форматов. Ее класс <code>ImageTk</code> специально предназначен для отображения изображений в приложениях Tkinter.</p></li>
+</ol>
+
+<hr />
+
+<h3>5.9.1. Класс BitmapImage</h3>
+
+<p>Чтобы отобразить двухцветное изображение в формате <code>.xbm</code>, вам понадобится этот конструктор:</p>
+
+<pre><code>tk.BitmapImage(file=f[, background=b][, foreground=c])
+</code></pre>
+
+<p>где <code>f</code> - это имя файла изображения <code>.xbm</code>.</p>
+
+<p>Обычно передний (1) биты на изображении будут отображаться как черные пиксели, а фоновые (0) биты на изображении будут прозрачными. Чтобы изменить это поведение, используйте дополнительную опцию <code>background=b</code>, чтобы установить фон на цвет <code>b</code>, и дополнительную опцию <code>foreground=c</code>, чтобы установить передний план на цвет <code>c</code>. Для спецификации цвета см. <a href="colors.html">раздел 5.3, “Цвета”</a>.</p>
+
+<p>Этот конструктор возвращает значение, которое можно использовать там, где Tkinter ожидает изображение. Например, чтобы отобразить изображение как метку, используйте виджет <code>Label</code> (см. <a href="label.html">раздел 12, “Виджет Label”</a>) и предоставьте объект <code>BitmapImage</code> в качестве значения опции <code>image</code>:</p>
+
+<pre><code>logo = tk.BitmapImage('logo.xbm', foreground='red')
+Label(image=logo).grid()
+</code></pre>
+
+<hr />
+
+<h3>5.9.2. Класс PhotoImage</h3>
+
+<p>Чтобы отобразить цветное изображение в форматах <code>.gif</code>, <code>.pgm</code> или <code>.ppm</code>, вам понадобится этот конструктор:</p>
+
+<pre><code>tk.PhotoImage(file=f)
+</code></pre>
+
+<p>где <code>f</code> - это имя файла изображения.</p>
+
+<p>Конструктор возвращает значение, которое можно использовать там, где Tkinter ожидает изображение.</p>
+
+<hr />
+
+<p><strong><em><a href="geometry.html">&gt;&gt; Строки геометрии</a></em></strong></p>
+
+</body>
+</html>

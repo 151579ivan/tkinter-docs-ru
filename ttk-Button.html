@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>29. ttk.Button</h2>
+
+<p>Этот виджет является ttk-версией виджета <a href="button.html">Button</a>. Чтобы создать виджет <em>ttk.Button</em>:</p>
+
+<pre><code>w = ttk.Button(parent, option=value, ...)
+</code></pre>
+
+<p>Здесь приведены параметры виджета <em>ttk.Button</em>. Сравните их с версией для Tkinter, рассмотренной в <a href="button.html">разделе 7, "Виджет Button"</a>.</p>
+
+<p><strong>Таблица 35. Опции ttk.Button</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>class_</code></td>
+  <td>Имя класса виджета. Оно может быть указано при создании виджета, но не может быть изменено позже. Для объяснения классов виджетов смотрите <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>command</code></td>
+  <td>Функция, которая будет вызываться при нажатии кнопки.</td>
+</tr>
+<tr>
+  <td><code>compound</code></td>
+  <td>Если вы указали опции <code>image</code> и <code>text</code>, опция <code>compound</code> задает позицию изображения относительно текста. Значение может быть <code>tk.TOP</code> (изображение над текстом), <code>tk.BOTTOM</code> (изображение под текстом), <code>tk.LEFT</code> (изображение слева от текста) или <code>tk.RIGHT</code> (изображение справа от текста). <br><br>Если указать оба параметра <code>image</code> и <code>text</code>, но не указать параметр <code>compound</code>, изображение появится, а текст - нет.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который будет появляться при наведении мыши на кнопку; смотрите <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>image</code></td>
+  <td>Изображение, которое будет отображаться на кнопке; смотрите <a href="images.html">Раздел 5.9, "Изображения"</a>.</td>
+</tr>
+<tr>
+  <td><code>style</code></td>
+  <td>Стиль, который будет использоваться при рендеринге этой кнопки; смотрите <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>По умолчанию ttk.Button будет включен в обход фокуса; смотрите <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>. Чтобы удалить виджет из обхода фокуса, используйте <code>takefocus=False</code>.</td>
+</tr>
+<tr>
+  <td><code>text</code></td>
+  <td>Текст, который будет отображаться на кнопке, в виде строки.</td>
+</tr>
+<tr>
+  <td><code>textvariable</code></td>
+  <td>Переменная, управляющая текстом, который отображается на кнопке; см. <a href="control-variables.html">Раздел 52, "Управляющие переменные: значения, скрывающиеся за виджетами"</a>.</td>
+</tr>
+<tr>
+  <td><code>underline</code></td>
+  <td>Если эта опция имеет неотрицательное значение <em>n</em>, под символом в позиции <em>n</em> появится подчеркивание.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Если метка текстовая, эта опция задает абсолютную ширину текстовой области на кнопке в виде количества символов; фактическая ширина равна этому числу, умноженному на среднюю ширину символа в текущем шрифте. Для ярлыков изображений этот параметр игнорируется. Параметр также может быть задан с помощью стиля.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Эти параметры виджета <em>tkinter.Button</em> <em>не</em> поддерживаются конструктором <em>ttk.Button</em>:</p>
+
+<p><strong>Таблица 36. Опции tkinter.Button, отсутствующие в ttk.Button</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activebackground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>background</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>activeforeground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>foreground</code>.</td>
+</tr>
+<tr>
+  <td><code>anchor</code></td>
+  <td>Настройте этот параметр с помощью стиля; смотрите <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>. Используйте эту опцию, чтобы указать положение текста, когда опция <code>width</code> выделяет дополнительное горизонтальное пространство. <br><br>Например, если указать опции <code>width=20</code> и <code>compound=tk.RIGHT</code> для кнопки, которая отображает и текст, и изображение, и стиль, задающий <code>anchor=tk.E</code> (восток), изображение будет находиться в правом конце двадцатисимвольного пространства, а текст - слева от него. <br><br>Если кнопка отображает изображение, но не текст, этот параметр игнорируется.</td>
+</tr>
+<tr>
+  <td><code>background</code> или <code>bg</code></td>
+  <td>Настройте опцию <code>background</code> с помощью стиля. Сокращение <code>bg</code> не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>bitmap</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>borderwidth</code> или <code>bd</code></td>
+  <td>Настройте опцию <code>borderwidth</code> с помощью стиля. Аббревиатура <code>bd</code> не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который будет появляться при наведении мыши на кнопку проверки; смотрите <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>default</code></td>
+  <td>Не поддерживается; см. <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>disabledforeground</code></td>
+  <td>Используйте карту стилей для опции <code>foreground</code>; см. <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td>Настройте эту опцию с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>foreground</code> или <code>fg</code></td>
+  <td>Настройте этот параметр с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td>Чтобы управлять цветом подсветки фокуса, когда кнопка не имеет фокуса, используйте карту стилей для управления параметром <code>highlightcolor</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td>Вы можете указать цвет подсветки фокуса по умолчанию, установив этот параметр в стиле. Вы также можете управлять цветом подсветки фокуса с помощью карты стилей.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Настройте этот параметр с помощью стиля. Эта опция может работать не во всех темах.</td>
+</tr>
+<tr>
+  <td><code>justify</code></td>
+  <td>Если <code>текст</code> содержит символы новой строки (<code>'\n'</code>), то текст будет занимать несколько строк на кнопке. Параметр <code>justify</code> управляет тем, как каждая строка будет расположена по горизонтали. Настройте этот параметр с помощью стиля; значения могут быть <code>tk.LEFT</code>, <code>tk.CENTER</code> или <code>tk.RIGHT</code> для строк, выровненных по левому краю, по центру или по правому краю, соответственно.</td>
+</tr>
+<tr>
+  <td><code>overrelief</code></td>
+  <td>Используйте карту стилей для управления опцией <code>relief</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>padx</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>pady</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Настройте этот параметр с помощью стиля; смотрите <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>repeatdelay</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>repeatinterval</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>В ttk нет опции с таким именем. Механизм состояния был обобщен; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>wraplength</code></td>
+  <td>Если вы используете стиль с этой опцией, установленной на некоторое значение <a href="dimensions.html">размера</a>, то текст (<code>text</code>) будет нарезан на куски не длиннее этого размера.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Методы <em>ttk.Button</em> включают все те, что описаны в <a href="ttk-Widget.html">разделе 46, "Методы, общие для всех виджетов ttk"</a>, плюс:</p>
+
+<p><code>.invoke()</code>.</p>
+
+<blockquote>
+  <p>Вызывает обратный вызов <code>command</code> кнопки и возвращает то, что возвращает эта функция. Не имеет эффекта, если кнопка отключена или обратный вызов отсутствует.</p>
+</blockquote>
+
+<p>Метод <code>.flash()</code> из <em>tkinter.Button</em> не поддерживается виджетом <em>ttk.Button</em>.</p>
+
+<hr />
+
+<p><strong><em><a href="ttk-Checkbutton.html">&gt;&gt; ttk.Checkbutton</a></em></strong></p>
+
+</body>
+</html>

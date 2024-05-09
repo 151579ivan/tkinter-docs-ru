@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>22.2. Подключение Scrollbar к другому виджету</h2>
+
+<p>Здесь приведен фрагмент кода, показывающий создание холста с горизонтальной и вертикальной полосами прокрутки. В этом фрагменте <code>self</code> подразумевается как виджет <code>Frame</code>.</p>
+
+<pre><code>self.canv = tk.Canvas(self, width=600, height=400,
+    scrollregion=(0, 0, 1200, 800))
+self.canv.grid(row=0, column=0)
+
+self.scrollY = tk.Scrollbar(self, orient=tk.VERTICAL,
+    command=self.canv.yview)
+self.scrollY.grid(row=0, column=1, sticky=tk.N+tk.S)
+
+self.scrollX = tk.Scrollbar(self, orient=tk.HORIZONTAL,
+    command=self.canv.xview)
+self.scrollX.grid(row=1, column=0, sticky=tk.E+tk.W)
+
+self.canv['xscrollcommand'] = self.scrollX.set
+self.canv['yscrollcommand'] = self.scrollY.set
+</code></pre>
+
+<p><em>Примечания:</em></p>
+
+<ul>
+<li><p>Связь идет в обе стороны. Опция <code>xscrollcommand</code> холста должна быть связана с методом <code>.set</code> горизонтальной полосы прокрутки, а опция <code>command</code> полосы прокрутки должна быть связана с методом <code>.xview</code> холста. Вертикальная полоса прокрутки и холст должны иметь одинаковые взаимные связи.</p></li>
+<li><p>Опции <code>sticky</code> в вызовах метода <a href="grid.html">.grid()</a> для полос прокрутки заставляют их растягиваться настолько, чтобы соответствовать соответствующему размеру холста.</p></li>
+</ul>
+
+<hr />
+
+<p><strong><em><a href="spinbox.html">&gt;&gt; Виджет Spinbox</a></em></strong></p>
+
+</body>
+</html>

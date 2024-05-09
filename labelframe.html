@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>13. Виджет LabelFrame</h2>
+
+<p>Виджет <em>LabelFrame</em>, как и виджет <a href="frame.html">Frame</a>, представляет собой пространственный контейнер - прямоугольную область, которая может содержать другие виджеты. Однако, в отличие от виджета <code>Frame</code>, виджет <code>LabelFrame</code> позволяет отображать метку как часть границы вокруг области.</p>
+
+<p><img src="img/labelframe.png" alt="" /></p>
+
+<p>На рисунке показан пример виджета <code>LabelFrame</code>, содержащего два виджета <code>Button</code>. Обратите внимание, что метка " Important controls" разрывает границу. Этот виджет иллюстрирует стандартный рельеф <code>GROOVE</code> (см. <a href="relief.html">Раздел 5.6, "Стили рельефа"</a>) и стандартный якорь метки <code>'nw'</code>, который позиционирует метку в левой части верхней границы рамки.</p>
+
+<p>Чтобы создать новый виджет <code>LabelFrame</code> внутри корневого окна или фрейма <code>parent</code>:</p>
+
+<pre><code>w = tk.LabelFrame(parent, option, ...)
+</code></pre>
+
+<p>Этот конструктор возвращает новый виджет <code>LabelFrame</code>. Опции:</p>
+
+<p><strong>Таблица 21. Параметры виджета LabelFrame</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>bg</code> или <code>background</code></td>
+  <td>Цвет фона, который будет отображаться внутри виджета; смотрите <a href="colors.html">Раздел 5.3, "Цвета"</a>.</td>
+</tr>
+<tr>
+  <td><code>bd</code> или <code>borderwidth</code></td>
+  <td>Ширина границы, проведенной по периметру виджета; см. раздел <a href="dimensions.html">Раздел 5.1, "Размеры"</a>. Значение по умолчанию - два пикселя.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Выбор курсора, который появляется при наведении мыши на виджет; смотрите <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>fg</code> или <code>foreground</code></td>
+  <td><a href="colors.html">Цвет</a>, который будет использоваться для текста метки.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td>Вертикальный <a href="dimensions.html">размер</a> нового фрейма. Это значение будет игнорироваться, если вы также не вызовете <code>.grid_propagate(0)</code> для фрейма; смотрите <a href="grid-methods.html">Раздел 4.2, "Другие методы управления сеткой"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td><a href="colors.html">Цвет</a> выделения фокуса, когда виджет не имеет <a href="focus.html">фокуса</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td><a href="colors.html">Цвет</a> подсветки фокуса, когда виджет имеет <a href="focus.html">фокус</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Толщина выделения <a href="focus.html">фокуса</a>.</td>
+</tr>
+<tr>
+  <td><code>labelanchor</code></td>
+  <td>Используйте эту опцию, чтобы указать положение метки на границе виджета. По умолчанию используется значение <code>'nw'</code>, которое помещает метку в левый конец верхней границы. Двенадцать возможных положений метки см. на этой диаграмме: <br><br><img src="img/labelanchor.png" alt="" /></td>
+</tr>
+<tr>
+  <td><code>labelwidget</code></td>
+  <td>Вместо текстовой метки вы можете использовать любой виджет в качестве метки, передав этот виджет в качестве значения этой опции. Если вы передали оба параметра <code>labelwidget</code> и <code>text</code>, параметр <code>text</code> игнорируется.</td>
+</tr>
+<tr>
+  <td><code>padx</code></td>
+  <td>Используйте эту опцию, чтобы добавить дополнительные отступы слева и справа от рамки виджета. Значение указывается в пикселях.</td>
+</tr>
+<tr>
+  <td><code>pady</code></td>
+  <td>Используйте эту опцию для добавления дополнительных отступов сверху и снизу рамки виджета. Значение указывается в пикселях.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Эта опция управляет внешним видом границы вокруг виджета. По умолчанию используется стиль <code>tk.GROOVE</code>; другие значения см. в <a href="relief.html">Разделе 5.6, "Стили рельефа"</a>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>Обычно виджет не получает фокус; поставьте значение <code>True</code> для этой опции, чтобы сделать виджет частью последовательности обхода фокуса. Для получения дополнительной информации смотрите <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>.</td>
+</tr>
+<tr>
+  <td><code>text</code></td>
+  <td>Текст метки.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Горизонтальный <a href="dimensions.html">размер</a> нового фрейма. Это значение будет игнорироваться, если вы также не вызовете <code>.grid_propagate(0)</code> для фрейма; см. <a href="grid-methods.html">Раздел 4.2, "Другие методы управления сеткой"</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="listbox.html">&gt;&gt; Виджет Listbox</a></em></strong></p>
+
+</body>
+</html>

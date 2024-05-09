@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>Сделать корневое окно изменяемым по размеру</h2>
+
+<p>Хотите ли вы разрешить пользователю изменять размер всего окна вашего приложения и распределять лишнее пространство между его внутренними виджетами? Для этого требуются некоторые операции, которые не так очевидны.</p>
+
+<p>Необходимо использовать техники управления размерами строк и столбцов, описанные в <a href="grid-config.html">настройках размеров столбцов и строк</a>, чтобы сделать сетку вашего виджета <code>Application</code> растяжимой. Однако этого недостаточно.</p>
+
+<p>Рассмотрим <a href="minimal-app.html">тривиальное приложение</a>, которое содержит только кнопку Quit. Если вы запустите это приложение и измените размер окна, кнопка останется тем же размером и останется посередине окна.</p>
+
+<p>Вот версия метода <code>.createWidgets()</code> в <a href="minimal-app.html">минимальном приложении</a>. В этой версии кнопка Quit всегда занимает все доступное пространство.</p>
+
+<pre><code>def createWidgets(self):
+    top = self.winfo_toplevel()        # №1
+    top.rowconfigure(0, weight=1)      # №2
+    top.columnconfigure(0, weight=1)   # №3
+    self.rowconfigure(0, weight=1)     # №4
+    self.columnconfigure(0, weight=1)  # №5
+    self.quit = Button(self, text='Quit', command=self.quit)
+    self.quit.grid(row=0, column=0,    # №6
+        sticky=tk.N+tk.S+tk.E+tk.W)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+  <th>№</th>
+  <th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>«Верхнее окно» - это самое внешнее окно на экране. Однако это окно не является вашим окном <code>Application</code> - это родительский элемент экземпляра <code>Application</code>. Чтобы получить верхнее окно, вызовите метод <code>.winfo_toplevel()</code> на любом виджете вашего приложения.</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Эта строка делает строку 0 сетки верхнего окна растяжимой.</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>Эта строка делает столбец 0 сетки верхнего окна растяжимым.</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>Делает строку 0 сетки виджета <code>Application</code> растяжимой.</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>Делает столбец 0 сетки виджета <code>Application</code> растяжимым.</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>Аргумент <code>sticky=tk.N+tk.S+tk.E+tk.W</code> заставляет кнопку расширяться, чтобы заполнить свою ячейку сетки.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Требуется еще одно изменение. В конструкторе измените вторую строку следующим образом:</p>
+
+<pre><code>def __init__(self, master=None):
+    tk.Frame.__init__(self, master)
+    self.grid(sticky=tk.N+tk.S+tk.E+tk.W)
+    self.createWidgets()
+</code></pre>
+
+<p>Аргумент <code>sticky=tk.N+tk.S+tk.E+tk.W</code> для <code>self.grid()</code> необходим, чтобы виджет <code>Application</code> расширялся, чтобы заполнить свою ячейку сетки верхнего уровня окна.</p>
+
+<hr />
+
+<p><strong><em><a href="std-attrs.html">&gt;&gt; Стандартные атрибуты</a></em></strong></p>
+
+</body>
+</html>

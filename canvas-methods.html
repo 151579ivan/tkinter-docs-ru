@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>8.6. Методы виджетов Canvas</h2>
+
+<p>Все объекты <code>Canvas</code> поддерживают следующие методы:</p>
+
+<p><code>.addtag_above(newTag, tagOrId)</code></p>
+
+<blockquote>
+  <p>Прикрепляет новый <a href="canvas-tags.html">тег</a> к объекту, находящемуся прямо над тем, который указан в <a href="tag-or-id.html">tagOrId</a> в списке отображения. Аргумент <code>newTag</code> - это тег, который вы хотите прикрепить, в виде строки.</p>
+</blockquote>
+
+<p><code>.addtag_all(newTag)</code></p>
+
+<blockquote>
+  <p>Прикрепляет указанный <a href="canvas-tags.html">тег</a> <code>newTag</code> ко всем объектам на холсте.</p>
+</blockquote>
+
+<p><code>.addtag_below(newTag, tagOrID)</code></p>
+
+<blockquote>
+  <p>Прикрепляет новый <a href="canvas-tags.html">тег</a> к объекту, находящемуся прямо под тем, который указан в <a href="tag-or-id.html">tagOrId</a> в списке отображения. Аргумент <code>newTag</code> - это строка тега.</p>
+</blockquote>
+
+<p><code>.addtag_closest(newTag, x, y, halo=None, start=None)</code></p>
+
+<blockquote>
+  <p>Добавляет <a href="canvas-tags.html">тег</a> к объекту, ближайшему к экранным координатам (x, y). Если есть два или более объекта на одинаковом расстоянии, выбирается тот, который выше в <a href="display-list.html">списке отображения</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Используйте аргумент <code>halo</code>, чтобы увеличить эффективный размер точки. Например, значение 5 будет рассматривать любой объект в пределах 5 пикселей от (x, y) как перекрывающийся.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если <a href="canvas-oid.html">идентификатор объекта</a> передается в аргументе <code>start</code>, этот метод помечает объект с наивысшим подходящим значением, находящийся ниже <code>start</code> в списке отображения.</p>
+</blockquote>
+
+<p><code>.addtag_enclosed(newTag, x1, y1, x2, y2)</code></p>
+
+<blockquote>
+  <p>Добавляет <a href="canvas-tags.html">тег</a> <code>newTag</code> ко всем объектам, которые находятся полностью внутри прямоугольника, верхний левый угол которого - (<code>x1</code>, <code>y1</code>), а нижний правый угол - (<code>x2</code>, <code>y2</code>).</p>
+</blockquote>
+
+<p><code>.addtag_overlapping(newTag, x1, y1, x2, y2)</code></p>
+
+<blockquote>
+  <p>Похоже на предыдущий метод, но воздействует на все объекты, которые имеют хотя бы одну общую точку с заданным прямоугольником.</p>
+</blockquote>
+
+<p><code>.addtag_withtag(newTag, tagOrId)</code></p>
+
+<blockquote>
+  <p>Добавляет <a href="canvas-tags.html">тег</a> <code>newTag</code> к объекту или объектам, указанным в <a href="tag-or-id.html">tagOrId</a>.</p>
+</blockquote>
+
+<p><code>.bbox(tagOrId=None)</code></p>
+
+<blockquote>
+  <p>Возвращает кортеж (x1, y1, x2, y2), описывающий прямоугольник, содержащий все объекты, указанные в <a href="tag-or-id.html">tagOrId</a>. Если аргумент опущен, возвращает прямоугольник, содержащий все объекты на холсте. Верхний левый угол прямоугольника - (x1, y1), а нижний правый угол - (x2, y2).</p>
+</blockquote>
+
+<p><code>.canvasx(screenx, gridspacing=None)</code></p>
+
+<blockquote>
+  <p>Преобразует координату x окна <code>screenx</code> в координату холста. Если задан <code>gridspacing</code>, координата холста округляется до ближайшего кратного этому значению.</p>
+</blockquote>
+
+<p><code>.canvasy(screeny, gridspacing=None)</code></p>
+
+<blockquote>
+  <p>Преобразует координату y окна <code>screeny</code> в координату холста. Если задан <code>gridspacing</code>, координата холста округляется до ближайшего кратного этому значению.</p>
+</blockquote>
+
+<p><code>.coords(tagOrId, x0, y0, x1, y1, ..., xn, yn)</code></p>
+
+<blockquote>
+  <p>Если передать только аргумент <a href="tag-or-id.html">tagOrId</a>, возвращает кортеж координат самого нижнего или единственного объекта, указанного этим аргументом. Количество координат зависит от типа объекта. В большинстве случаев это будет 4-кортеж (x1, y1, x2, y2), описывающий ограничивающий прямоугольник объекта.</p>
+</blockquote>
+
+<blockquote>
+  <p>Вы можете перемещать объект, передавая новые координаты.</p>
+</blockquote>
+
+<p><code>.dchars(tagOrId, first=0, last=first)</code></p>
+
+<blockquote>
+  <p>Удаляет символы из текстового элемента или элементов. Символы между <code>first</code> и <code>last</code> <em>включительно</em> удаляются, где эти значения могут быть целочисленными индексами или строкой <code>'end'</code>, обозначающей конец текста. Например, для холста <code>C</code> и элемента <code>I</code>, <code>C.dchars(I, 1, 1)</code> удалит второй символ.</p>
+</blockquote>
+
+<p><code>.delete(tagOrId)</code></p>
+
+<blockquote>
+  <p>Удаляет выбранный объект или объекты, указанные в <a href="tag-or-id.html">tagOrId</a>. Если ни один объект не соответствует <code>tagOrId</code>, это не считается ошибкой.</p>
+</blockquote>
+
+<p><code>.dtag(tagOrId, tagToDelete)</code></p>
+
+<blockquote>
+  <p>Удаляет <a href="canvas-tags.html">тег</a>, указанный в <code>tagToDelete</code>, из объекта или объектов, указанных в <a href="tag-or-id.html">tagOrId</a>.</p>
+</blockquote>
+
+<p><code>.find_above(tagOrId)</code></p>
+
+<blockquote>
+  <p>Возвращает идентификатор объекта, находящегося прямо над объектом, указанным в <a href="tag-or-id.html">tagOrId</a>. Если несколько объектов совпадают, вы получите самый верхний. Возвращает пустой кортеж, если передан идентификатор самого верхнего объекта.</p>
+</blockquote>
+
+<p><code>.find_all()</code></p>
+
+<blockquote>
+  <p>Возвращает список <a href="canvas-oid.html">идентификаторов объектов</a> для всех объектов на холсте, от самого низкого до самого высокого.</p>
+</blockquote>
+
+<p><code>.find_below(tagOrId)</code></p>
+
+<blockquote>
+  <p>Возвращает <a href="canvas-oid.html">идентификатор объекта</a> объекта, находящегося прямо под тем, который указан в <a href="tag-or-id.html">tagOrId</a>. Если несколько объектов совпадают, вы получите самый нижний. Возвращает пустой кортеж, если передан идентификатор самого низкого объекта.</p>
+</blockquote>
+
+<p><code>.find_closest(x, y, halo=None, start=None)</code></p>
+
+<blockquote>
+  <p>Возвращает одноэлементный кортеж, содержащий <a href="canvas-oid.html">идентификатор объекта</a> объекта, ближайшего к точке <code>(x, y)</code>. Если подходящих объектов нет, возвращает пустой кортеж.</p>
+</blockquote>
+
+<blockquote>
+  <p>Используйте аргумент <code>halo</code>, чтобы увеличить эффективный размер точки. Например, <code>halo=5</code> будет рассматривать любой объект в пределах 5 пикселей от <code>(x, y)</code> как перекрывающийся.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если в качестве аргумента <code>start</code> передается идентификатор объекта, этот метод возвращает объект с наивысшим подходящим значением, находящийся ниже <code>start</code> в <a href="display-list.html">списке отображения</a>.</p>
+</blockquote>
+
+<p><code>.find_enclosed(x1, y1, x2, y2)</code></p>
+
+<blockquote>
+  <p>Возвращает список <a href="canvas-oid.html">идентификаторов объектов</a> всех объектов, находящихся полностью внутри прямоугольника, верхний левый угол которого - <code>(x1, y1)</code>, а нижний правый угол - <code>(x2, y2)</code>.</p>
+</blockquote>
+
+<p><code>.find_overlapping(x1, y1, x2, y2)</code></p>
+
+<blockquote>
+  <p>Похож на предыдущий метод, но возвращает список идентификаторов объектов всех объектов, которые имеют хотя бы одну общую точку с данным прямоугольником.</p>
+</blockquote>
+
+<p><code>.find_withtag(tagOrId)</code></p>
+
+<blockquote>
+  <p>Возвращает список <a href="canvas-oid.html">идентификаторов объектов</a> объекта или объектов, указанных в <a href="tag-or-id.html">tagOrId</a>.</p>
+</blockquote>
+
+<p><code>.focus(tagOrId=None)</code></p>
+
+<blockquote>
+  <p>Перемещает фокус на объект, указанный в <a href="tag-or-id.html">tagOrId</a>. Если таких объектов несколько, фокус перемещается на первый в <a href="display-list.html">списке отображения</a>, который позволяет вставить курсор. Если нет соответствующих объектов или холст не имеет фокуса, фокус не перемещается.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если аргумент опущен, возвращает идентификатор объекта, который имеет фокус, или <code>''</code>, если ни один из них не имеет фокуса.</p>
+</blockquote>
+
+<p><code>.gettags(tagOrId)</code></p>
+
+<blockquote>
+  <p>Если <a href="tag-or-id.html">tagOrId</a> - это идентификатор объекта, возвращает список всех тегов, связанных с этим объектом. Если аргумент - это <a href="canvas-tags.html">тег</a>, возвращает все теги для самого нижнего объекта с этим тегом.</p>
+</blockquote>
+
+<p><code>.icursor(tagOrId, index)</code></p>
+
+<blockquote>
+  <p>Предполагая, что выбранный элемент позволяет вставлять текст и имеет фокус, устанавливает курсор вставки в <code>index</code>, который может быть целочисленным индексом или строкой <code>'end'</code>. В противном случае эффекта не имеет.</p>
+</blockquote>
+
+<p><code>.index(tagOrId, specifier)</code></p>
+
+<blockquote>
+  <p>Возвращает целочисленный индекс данного спецификатора <code>specifier</code> в текстовом элементе, указанном в <a href="tag-or-id.html">tagOrId</a> (самый нижний, если <code>tagOrId</code> указывает на несколько объектов). Возвращаемое значение - соответствующая позиция в виде целого числа в соответствии с обычным соглашением Python, где 0 - позиция перед первым символом.</p>
+</blockquote>
+
+<blockquote>
+  <p>Аргумент <code>specifier</code> может быть любым из:</p>
+</blockquote>
+
+<blockquote>
+  <ul>
+  <li><code>tk.INSERT</code>, чтобы вернуть текущую позицию курсора вставки.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+  <li><code>tk.END</code>, чтобы вернуть позицию после последнего символа элемента.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+  <li><code>tk.SEL_FIRST</code>, чтобы вернуть позицию начала текущего текстового выделения. Tkinter выдаст исключение <code>tk.TclError</code>, если текстовый элемент в данный момент не содержит текстового выделения.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+  <li><code>tk.SEL_LAST</code>, чтобы вернуть позицию после конца текущего текстового выделения, или вызвать исключение <code>tk.TclError</code>, если элемент в данный момент не содержит выделения.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+  <li>Строка вида “<code>@x,y</code>”, чтобы вернуть символ, содержащий координаты холста <code>(x, y)</code>. Если эти координаты находятся выше или слева от текстового элемента, метод вернет 0; если координаты справа или ниже элемента, метод вернет индекс конца элемента.</li>
+  </ul>
+</blockquote>
+
+<p><code>.insert(tagOrId, specifier, text)</code></p>
+
+<blockquote>
+  <p>Вставляет заданную <code>строку</code> в объект или объекты, указанные в <a href="tag-or-id.html">tagOrId</a>, в позицию, заданную аргументом <code>specifier</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Значения <code>specifier</code> могут быть:</p>
+</blockquote>
+
+<blockquote>
+  <ul>
+  <li>Любые ключевые слова <code>tk.INSERT</code>, <code>tk.END</code>, <code>tk.SEL_FIRST</code> или <code>tk.SEL_LAST</code>. См. описание метода <code>index</code> выше для интерпретации этих кодов.</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+  <li>Позиция желаемой вставки, используя обычное соглашение Python для позиций в строках.</li>
+  </ul>
+</blockquote>
+
+<p><code>.itemcget(tagOrId, option)</code></p>
+
+<blockquote>
+  <p>Возвращает значение данного параметра конфигурации <code>option</code> в выбранном объекте (или самом нижнем объекте, если <a href="tag-or-id.html">tagOrId</a> указывает на несколько). Это аналогично методу <code>.cget()</code> для объектов Tkinter.</p>
+</blockquote>
+
+<p><code>.itemconfigure(tagOrId, option, ...)</code></p>
+
+<blockquote>
+  <p>Если не заданы аргументы <code>option</code>, возвращает словарь, ключи которого - опции объекта, указанного в <a href="tag-or-id.html">tagOrId</a> (самый нижний, если <code>tagOrId</code> указывает на несколько объектов).</p>
+</blockquote>
+
+<blockquote>
+  <p>Чтобы изменить опцию конфигурации указанного элемента, передайте один или несколько ключевых аргументов в форме <code>option=value</code>.</p>
+</blockquote>
+
+<p><code>.move(tagOrId, xAmount, yAmount)</code></p>
+
+<blockquote>
+  <p>Перемещает объекты, указанные в <a href="tag-or-id.html">tagOrId</a>, добавляя <code>xAmount</code> к их X-координатам и <code>yAmount</code> к их Y-координатам.</p>
+</blockquote>
+
+<p><code>.postscript(option, ...)</code></p>
+
+<blockquote>
+  <p>Генерирует инкапсулированное PostScript-представление текущего содержимого холста. Опции включают: </p>
+</blockquote>
+
+<blockquote>
+  <table>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>colormode</code></td>
+    <td>Используйте <code>'color'</code> для цветного вывода, <code>'gray'</code> для оттенков серого или <code>'mono'</code> для черно-белого.</td>
+  </tr>
+  <tr>
+    <td><code>file</code></td>
+    <td>Если указан, указывает имя файла, куда будет записан PostScript. Если этой опции нет, PostScript возвращается в виде строки.</td>
+  </tr>
+  <tr>
+    <td><code>height</code></td>
+    <td>Сколько высоты Y холста печатать. По умолчанию - вся видимая высота холста.</td>
+  </tr>
+  <tr>
+    <td><code>rotate</code></td>
+    <td>Если false, страница будет отображаться в портретной ориентации; если true, в альбомной.</td>
+  </tr>
+  <tr>
+    <td><code>x</code></td>
+    <td>Левая координата холста области для печати.</td>
+  </tr>
+  <tr>
+    <td><code>y</code></td>
+    <td>Верхняя координата холста области для печати.</td>
+  </tr>
+  <tr>
+    <td><code>width</code></td>
+    <td>Сколько ширины X холста печатать. По умолчанию - видимая ширина холста.</td>
+  </tr>
+  </tbody>
+  </table>
+</blockquote>
+
+<p><code>.scale(tagOrId, xOffset, yOffset, xScale, yScale)</code></p>
+
+<blockquote>
+  <p>Масштабирует все объекты в зависимости от их расстояния от точки P=(<code>xOffset</code>, <code>yOffset</code>). Масштабные коэффициенты <code>xScale</code> и <code>yScale</code> основаны на значении 1.0, что означает отсутствие масштабирования. Каждая точка в объектах, выбранных по <a href="tag-or-id.html">tagOrId</a>, перемещается так, чтобы ее расстояние по X от P умножалось на <code>xScale</code>, а по Y умножалось на <code>yScale</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Этот метод не изменит размер текстового элемента, но может переместить его.</p>
+</blockquote>
+
+<p><code>.scan_dragto(x, y, gain\=10.0)</code></p>
+
+<blockquote>
+  <p>См. метод <code>.scan_mark()</code> ниже.</p>
+</blockquote>
+
+<p><code>.scan_mark(x, y)</code></p>
+
+<blockquote>
+  <p>Этот метод используется для реализации быстрого прокручивания холста. Идея состоит в том, что пользователь нажимает и удерживает кнопку мыши, а затем перемещает мышь вверх, чтобы просканировать (прокрутить) холст горизонтально и вертикально в этом направлении с той скоростью, которая зависит от того, насколько далеко переместилась мышь с момента нажатия кнопки мыши.</p>
+</blockquote>
+
+<blockquote>
+  <p>Для реализации этой функции привяжите событие нажатия кнопки мыши к обработчику, который вызывает <code>scan_mark(x, y)</code>, где <code>x</code> и <code>y</code> - текущие координаты мыши. Привяжите событие <code>&lt;Motion&gt;</code> к обработчику, который, предполагая, что кнопка мыши все еще нажата, вызывает <code>scan_dragto(x, y, gain)</code>, где <code>x</code> и <code>y</code> - текущие координаты мыши.</p>
+</blockquote>
+
+<blockquote>
+  <p>Аргумент <code>gain</code> контролирует скорость сканирования. Этот аргумент имеет значение по умолчанию 10.0. Используйте большие числа для более быстрого сканирования.</p>
+</blockquote>
+
+<p><code>.select_adjust(oid, specifier)</code></p>
+
+<blockquote>
+  <p>Этот метод регулирует границы текущего выделения текста, чтобы включить позицию, заданную аргументом <code>specifier</code>, в текстовый элемент с <a href="canvas-oid.html">идентификатором объекта</a> <code>oid</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Текущая якорная позиция выбора также устанавливается в указанную позицию. Для обсуждения якорной позиции выбора см. метод <code>select_from</code> холста ниже.</p>
+</blockquote>
+
+<blockquote>
+  <p>Для значений <code>specifier</code> см. метод <code>insert</code> холста выше.</p>
+</blockquote>
+
+<p><code>.select_clear()</code></p>
+
+<blockquote>
+  <p>Удаляет текущее выделение текста, если оно установлено. Если текущего выделения нет, метод ничего не делает.</p>
+</blockquote>
+
+<p><code>.select_from(oid, specifier)</code></p>
+
+<blockquote>
+  <p>Этот метод устанавливает <em>якорную позицию</em> выбора в позицию, заданную аргументом <code>specifier</code>, в текстовом элементе с <a href="canvas-oid.html">идентификатором объекта</a> <code>oid</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>В настоящее время выбранный текст на данном холсте определяется тремя позициями: начальной позицией, конечной позицией и якорной позицией выбора, которая может находиться где угодно между этими двумя позициями.</p>
+</blockquote>
+
+<blockquote>
+  <p>Чтобы изменить позицию текущего выбранного текста, используйте этот метод в сочетании с методами холста <code>select_adjust</code>, <code>select_from</code> и <code>select_to</code> (см. ниже).</p>
+</blockquote>
+
+<p><code>.select_item()</code></p>
+
+<blockquote>
+  <p>Если на этом холсте есть текущее выделение текста, возвращает <a href="canvas-oid.html">идентификатор объекта</a> текстового элемента, содержащего выбор. Если текущего выделения нет, этот метод возвращает <code>None</code>.</p>
+</blockquote>
+
+<p><code>.select_to(oid, specifier)</code></p>
+
+<blockquote>
+  <p>Этот метод изменяет текущее выделение текста так, чтобы оно включало якорную позицию и позицию, заданную <code>specifier</code>, в текстовом элементе с <a href="canvas-oid.html">идентификатором объекта</a> <code>oid</code>. Для значений <code>specifier</code> см. метод <code>insert</code> холста выше.</p>
+</blockquote>
+
+<p><code>.tag_bind(tagOrId, sequence=None, function=None, add=None)</code></p>
+
+<blockquote>
+  <p>Привязывает события к объектам на холсте. Для выбранного или выбранных объектов по <a href="tag-or-id.html">tagOrId</a> ассоциирует обработчик <code>function</code> с событием <code>sequence</code>. Если аргумент <code>add</code> является строкой, начинающейся с <code>'+'</code>, новое привязывание добавляется к существующим привязкам для заданной <code>sequence</code>, в противном случае новая привязка заменяет привязку для заданной <code>sequence</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Для общей информации о привязках событий см. <a href="events.html">Раздел 54, “События”</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Обратите внимание, что привязки применяются к элементам, имеющим этот тег на момент вызова метода <code>tag_bind</code>. Если позже теги будут удалены из этих элементов, привязки сохранятся на этих элементах. Если указанный вами тег будет позже применен к элементам, которые не имели этого тега при вызове <code>tag_bind</code>, эта привязка <em>не</em> будет применена к новым помеченным элементам.</p>
+</blockquote>
+
+<p><code>.tag_lower(tagOrId, belowThis)</code></p>
+
+<blockquote>
+  <p>Перемещает объект или объекты, выбранные по <a href="tag-or-id.html">tagOrId</a>, в пределах <a href="display-list.html">списка отображения</a> на позицию, непосредственно ниже первого или единственного объекта, указанного тегом или идентификатором <code>belowThis</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если существует несколько элементов с тегом <code>tagOrId</code>, их относительный порядок слоя сохраняется.</p>
+</blockquote>
+
+<blockquote>
+  <p>Этот метод не влияет на элементы окна холста. Чтобы изменить порядок слоя элемента окна, используйте метод <code>lower</code> или <code>lift</code> на окне.</p>
+</blockquote>
+
+<p><code>.tag_raise(tagOrId, aboveThis)</code></p>
+
+<blockquote>
+  <p>Перемещает объект или объекты, выбранные по <a href="tag-or-id.html">tagOrId</a>, в пределах <a href="display-list.html">списка отображения</a> на позицию, непосредственно выше первого или единственного объекта, указанного тегом или идентификатором <code>aboveThis</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если существует несколько элементов с тегом <code>tagOrId</code>, их относительный порядок слоя сохраняется.</p>
+</blockquote>
+
+<blockquote>
+  <p>Этот метод не влияет на элементы окна холста. Чтобы изменить порядок слоя элемента окна, используйте метод <code>lower</code> или <code>lift</code> на окне.</p>
+</blockquote>
+
+<p><code>.tag_unbind(tagOrId, sequence, funcId=None)</code></p>
+
+<blockquote>
+  <p>Удаляет привязки для обработчика <code>funcId</code> и события <code>sequence</code> из объекта или объектов холста, указанных по <a href="tag-or-id.html">tagOrId</a>. См. <a href="events.html">Раздел 54, “События”</a>.</p>
+</blockquote>
+
+<p><code>.type(tagOrId)</code></p>
+
+<blockquote>
+  <p>Возвращает тип первого или единственного объекта, указанного по <a href="tag-or-id.html">tagOrId</a>. Возвращаемое значение будет одним из строковых значений <code>'arc'</code>, <code>'bitmap'</code>, <code>'image'</code>, <code>'line'</code>, <code>'oval'</code>, <code>'polygon'</code>, <code>'rectangle'</code>, <code>'text'</code> или <code>'window'</code>.</p>
+</blockquote>
+
+<p><code>.xview(tk.MOVETO, fraction)</code></p>
+
+<blockquote>
+  <p>Этот метод прокручивает холст относительно его изображения и предназначен для привязки к опции <code>command</code> соответствующей полосы прокрутки. Холст прокручивается горизонтально к позиции, заданной <code>offset</code>, где 0.0 перемещает холст в его левое положение, а 1.0 - в его правое положение.</p>
+</blockquote>
+
+<p><code>.xview(tk.SCROLL, n, what)</code></p>
+
+<blockquote>
+  <p>Этот метод перемещает холст влево или вправо: аргумент <code>what</code> указывает на то, на сколько переместить, и может быть либо <code>tk.UNITS</code>, либо <code>tk.PAGES</code>, а <code>n</code> указывает, на сколько единиц переместить холст вправо относительно его изображения (или влево, если отрицательно).</p>
+</blockquote>
+
+<blockquote>
+  <p>Размер перемещения для <code>tk.UNITS</code> определяется значением опции <code>xscrollincrement</code> холста; см. <a href="scrollbar.html">Раздел 22, “Виджет Scrollbar”</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Для перемещений по <code>tk.PAGES</code> <code>n</code> умножается на девять десятых  ширины холста.</p>
+</blockquote>
+
+<p><code>.xview_moveto(fraction)</code></p>
+
+<blockquote>
+  <p>Этот метод прокручивает холст так же, как <code>.xview(tk.MOVETO, fraction)</code>.</p>
+</blockquote>
+
+<p><code>.xview_scroll(n, what)</code></p>
+
+<blockquote>
+  <p>То же, что и <code>.xview(tk.SCROLL, n, what)</code>.</p>
+</blockquote>
+
+<p><code>.yview(tk.MOVETO, fraction)</code></p>
+
+<blockquote>
+  <p>Вертикальный эквивалент прокрутки <code>.xview(tk.MOVETO,…)</code>.</p>
+</blockquote>
+
+<p><code>.yview(tk.SCROLL, n, what)</code></p>
+
+<blockquote>
+  <p>Вертикальный эквивалент прокрутки <code>.xview(tk.SCROLL,…)</code>.</p>
+</blockquote>
+
+<p><code>.yview_moveto(fraction)</code></p>
+
+<blockquote>
+  <p>Вертикальный эквивалент прокрутки <code>.xview()</code>.</p>
+</blockquote>
+
+<p><code>.yview_scroll(n, what)</code></p>
+
+<blockquote>
+  <p>Вертикальный эквивалент прокрутки <code>.xview()</code>, <code>.xview_moveto()</code> и <code>.xview_scroll()</code>.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="create_arc.html">&gt;&gt; Объекты дуг на холсте</a></em></strong></p>
+
+</body>
+</html>

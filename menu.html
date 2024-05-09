@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>15. Виджет Menu</h2>
+
+<p>"Выпадающие" меню - популярный способ представить пользователю несколько вариантов выбора, занимая при этом минимум места на экране приложения, когда пользователь не делает выбора.</p>
+
+<ul>
+<li><p><em>Menubutton</em> - это часть, которая всегда отображается в приложении.</p></li>
+<li><p><em>Menu</em> - это список вариантов, который появляется только после того, как пользователь нажимает на кнопку меню.</p></li>
+<li><p>Чтобы выбрать вариант, пользователь может протянуть мышь от кнопки вниз к одному из вариантов. В качестве альтернативы можно нажать и отпустить <em>Menubutton</em>: варианты появятся и останутся, пока пользователь не нажмет на один из них.</p></li>
+<li><p>Версия Tkinter для Unix (по крайней мере) поддерживает "отрывные меню". Если вы, как дизайнер, пожелаете этого, над пунктами меню появится пунктирная линия. Пользователь может щелкнуть на этой линии, чтобы "оторвать" меню: появится новое, отдельное, независимое окно с пунктами меню.</p></li>
+</ul>
+
+<p>О том, как создать Menubutton и подключить его к виджету меню, читайте в <a href="menubutton.html">Раздел 16, "Виджет Menubutton"</a>. Сначала рассмотрим виджет <em>Menu</em>, который отображает список пунктов меню.</p>
+
+<p>Пункты, отображаемые в меню, могут быть любыми из следующих:</p>
+
+<ul>
+<li><p><em>Простая команда</em>: текстовая строка (или изображение), которую пользователь может выбрать для выполнения какой-либо операции.</p></li>
+<li><p><em>Cascade</em>: текстовая строка или изображение, которое пользователь может выбрать, чтобы отобразить еще одно меню с вариантами выбора.</p></li>
+<li><p><em>Checkbutton</em> (см. <a href="checkbutton.html">Раздел 9, "Виджет Checkbutton"</a>).</p></li>
+<li><p><em>Группа радиобаттонов</em> (см. <a href="radiobutton.html">Раздел 20, "Виджет Radiobutton"</a>).</p></li>
+</ul>
+
+<p>Чтобы создать виджет меню, необходимо сначала создать <code>Menubutton</code>, который мы будем называть <code>mb</code>:</p>
+
+<pre><code>w = tk.Menu(mb, option, ...)
+</code></pre>
+
+<p>Этот конструктор возвращает новый виджет <code>Menu</code>. Опции включают:</p>
+
+<p><strong>Таблица 23. Опции виджета Menu</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activebackground</code></td>
+  <td>Цвет фона, который будет отображаться на пункте меню, когда он находится под мышью. См. <a href="colors.html">Раздел 5.3, "Цвета"</a>.</td>
+</tr>
+<tr>
+  <td><code>activeborderwidth</code></td>
+  <td>Указывает ширину границы, рисуемой вокруг пункта меню, когда он находится под мышью. По умолчанию - 1 пиксель. Возможные значения см. в <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+<tr>
+  <td><code>activeforeground</code></td>
+  <td><a href="colors.html">Цвет переднего плана</a>, который будет отображаться на пункте меню, когда он находится под мышью.</td>
+</tr>
+<tr>
+  <td><code>bg</code> или <code>background</code></td>
+  <td><a href="colors.html">Цвет фона</a> для элементов, не находящихся под мышью.</td>
+</tr>
+<tr>
+  <td><code>bd</code> или <code>borderwidth</code></td>
+  <td>Ширина границы вокруг всех пунктов меню; смотрите <a href="dimensions.html">Раздел 5.1, "Размеры"</a>. По умолчанию - один пиксель.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который появляется при наведении мыши на пункты меню, но только когда меню оторвано. См. раздел <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>disabledforeground</code></td>
+  <td><a href="colors.html">Цвет</a> текста для элементов, чей <code>state</code> равен <code>tk.DISABLED</code>.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td>Шрифт по умолчанию для пунктов меню. См. <a href="fonts.html">Раздел 5.4, "Шрифты"</a>.</td>
+</tr>
+<tr>
+  <td><code>fg</code> или <code>foreground</code></td>
+  <td><a href="colors.html">Цвет переднего плана</a>, используемый для пунктов меню, не находящихся под мышью.</td>
+</tr>
+<tr>
+  <td><code>postcommand</code></td>
+  <td>Вы можете установить эту опцию на процедуру, и она будет вызываться каждый раз, когда кто-то вызовет это меню.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>По умолчанию для меню используется 3-D эффект <code>relief=tk.RAISED</code>. Другие варианты см. в <a href="relief.html">Раздел 5.6, "Стили рельефа"</a>.</td>
+</tr>
+<tr>
+  <td><code>selectcolor</code></td>
+  <td>Определяет <a href="colors.html">цвет</a>, отображаемый в <a href="checkbutton.html">checkbutton</a> и <a href="radiobutton.html">radiobutton</a>, когда они выбраны.</td>
+</tr>
+<tr>
+  <td><code>tearoff</code></td>
+  <td>Обычно меню может быть оторвано: первая позиция (позиция 0) в списке пунктов меню занимает оторванный пункт, а дополнительные пункты меню добавляются, начиная с позиции 1. Если задать <code>tearoff=0</code>, меню не будет иметь отрывного пункта, а пункты меню будут добавляться начиная с позиции 0.</td>
+</tr>
+<tr>
+  <td><code>tearoffcommand</code></td>
+  <td>Если вы хотите, чтобы ваша программа получала уведомление, когда пользователь нажимает на отрывной пункт в меню, установите этот параметр в вашей процедуре. Она будет вызываться с двумя аргументами: идентификатором родительского окна и идентификатором корневого окна нового отрывного меню.</td>
+</tr>
+<tr>
+  <td><code>title</code></td>
+  <td>Обычно заголовок окна отрывного меню совпадает с текстом <em>menubutton</em> или <em>каскада</em>, которые ведут к этому меню. Если вы хотите изменить заголовок этого окна, установите для параметра <code>title</code> такую строку.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong>Эти методы доступны для объектов Menu.</strong></p>
+
+<p><strong>Те из них, которые создают пункты в меню, имеют свои собственные опции</strong> <a href="menu-coptions.html">(Смотрите раздел 15.1, "Опции создания пункта меню (coption)")</a>.</p>
+
+<p><code>.add(kind, coption, ...)</code></p>
+
+<blockquote>
+  <p>Добавляет новый элемент <code>kind</code> в качестве следующего доступного пункта в данном меню. Аргумент <code>kind</code> может быть любым из <code>'cascade'</code>, <code>'checkbutton'</code>, <code>'command'</code>, <code>'radiobutton'</code> или <code>'separator'</code>. В зависимости от аргумента <code>kind</code> этот метод эквивалентен <code>.add_cascade()</code>, <code>.add_checkbutton()</code> и так далее; подробности см. в этих методах ниже.</p>
+</blockquote>
+
+<p><code>.add_cascade(coption, ...)</code></p>
+
+<blockquote>
+  <p>Добавляет новый каскадный элемент в качестве следующего доступного пункта в данном меню. Используйте <a href="menu-coptions.html#menu">опцию menu</a> в этом вызове, чтобы связать каскад с меню следующего уровня, объектом типа <em>Menu</em>.</p>
+</blockquote>
+
+<p><code>.add_checkbutton(coption, ...)</code></p>
+
+<blockquote>
+  <p>Добавляет новую кнопку <em>Checkbutton</em> в качестве следующего доступного пункта меню. Опции позволяют настроить кнопку так же, как и объект <a href="checkbutton.html">Checkbutton</a>; смотрите <a href="menu-coptions.html">Раздел 15.1, "Опции создания пункта меню (coption)"</a>.</p>
+</blockquote>
+
+<p><code>.add_command(coption, ...)</code></p>
+
+<blockquote>
+  <p>Добавляет новую команду в качестве следующего доступного пункта меню. Используйте опцию <code>label</code>, <code>bitmap</code> или <code>image</code>, чтобы поместить текст или изображение в меню; используйте опцию <code>command</code>, чтобы связать этот пункт с процедурой, которая будет вызываться при выборе этого пункта меню.</p>
+</blockquote>
+
+<p><code>.add_radiobutton(coption, ...)</code></p>
+
+<blockquote>
+  <p>Добавляет новую радиокнопку в качестве следующего доступного пункта меню. Опции позволяют настроить <em>radiobutton</em> примерно так же, как и объект <a href="radiobutton.html">Radiobutton</a>.</p>
+</blockquote>
+
+<p><code>.add_separator()</code></p>
+
+<blockquote>
+  <p>Добавляет разделитель после последней определенной в данный момент опции. Это просто горизонтальная линия, которую можно использовать для выделения групп пунктов меню. Разделители считаются как пункты меню, поэтому если у вас уже есть три варианта, и вы добавляете разделитель, он займет позицию 3 (считая от 0).</p>
+</blockquote>
+
+<p><code>.delete(index1, index2=None)</code></p>
+
+<blockquote>
+  <p>Этот метод удаляет пункты меню, пронумерованные от <code>index1</code> до <code>index2</code> включительно. Чтобы удалить один пункт меню, опустите аргумент <code>index2</code>. Вы не можете использовать этот метод для удаления отрывного пункта меню, но вы можете сделать это, установив параметр <code>tearoff</code> объекта меню в 0.</p>
+</blockquote>
+
+<p><code>.entrycget(index, coption)</code></p>
+
+<blockquote>
+  <p>Чтобы получить текущее значение некоторого <a href="menu-coptions.html">coption</a> для пункта меню, вызовите этот метод с <code>index</code>, установленным на индекс этого пункта, и <code>coption</code>, установленным на имя желаемой опции.</p>
+</blockquote>
+
+<p><code>.entryconfigure(index, coption, ...)</code></p>
+
+<blockquote>
+  <p>Чтобы изменить текущее значение некоторого <a href="menu-coptions.html">coption</a> для пункта меню, вызовите этот метод с <code>index</code>, установленным на индекс этого пункта, и одним или несколькими аргументами <code>coption=value</code>.</p>
+</blockquote>
+
+<p><code>.index(i)</code></p>
+
+<blockquote>
+  <p>Возвращает позицию пункта меню, указанного индексом <code>i</code>. Например, вы можете использовать <code>.index(tk.END)</code>, чтобы найти индекс последнего пункта меню (или <code>None</code>, если пунктов меню нет).</p>
+</blockquote>
+
+<p><code>.insert_cascade(index, coption, ...)</code></p>
+
+<blockquote>
+  <p>Вставляет новый каскад в позицию, заданную <code>index</code>, считая от 0. Любые пункты меню после этой позиции перемещаются на один вниз. Параметры те же, что и для <code>.add_cascade()</code>, описанного выше.</p>
+</blockquote>
+
+<p><code>.insert_checkbutton(index, coption, ...)</code></p>
+
+<blockquote>
+  <p>Вставляет новый чекбокс в позицию, указанную индексом. Параметры те же, что и для <code>.add_checkbutton()</code>, описанного выше.</p>
+</blockquote>
+
+<p><code>.insert_command(index, coption, ...)</code></p>
+
+<blockquote>
+  <p>Вставляет новую команду в позицию <code>index</code>. Параметры те же, что и для <code>.add_command()</code>, выше.</p>
+</blockquote>
+
+<p><code>.insert_radiobutton(index, coption, ...)</code></p>
+
+<blockquote>
+  <p>Вставляет новую радиокнопку в позицию <code>index</code>. Параметры те же, что и для <code>.add_radiobutton()</code>, выше.</p>
+</blockquote>
+
+<p><code>.insert_separator(index)</code></p>
+
+<blockquote>
+  <p>Вставляет новый разделитель в позицию, указанную <code>index</code>.</p>
+</blockquote>
+
+<p><code>.invoke(index)</code></p>
+
+<blockquote>
+  <p>Вызывает обратный вызов <code>command</code>, связанный с пунктом меню в позиции <code>index</code>. Если это чекбокс, то его состояние переключается между установленным и очищенным; если радиокнопка, то этот пункт меню будет включен.</p>
+</blockquote>
+
+<p><code>.post(x, y)</code></p>
+
+<blockquote>
+  <p>Отображает это меню в позиции <code>(x, y)</code> относительно корневого окна.</p>
+</blockquote>
+
+<p><code>.type(index)</code></p>
+
+<blockquote>
+  <p>Возвращает тип пункта меню, указанного <code>index</code>: либо <code>tk.CASCADE</code>, <code>tk.CHECKBUTTON</code>, <code>tk.COMMAND</code>, <code>tk.RADIOBUTTON</code>, <code>tk.SEPARATOR</code>, либо <code>tk.TEAROFF</code>.</p>
+</blockquote>
+
+<p><code>.yposition(n)</code></p>
+
+<blockquote>
+  <p>Для <code>n-го</code> пункта меню возвращает вертикальное смещение в пикселях относительно верхней части меню. Цель этого метода - позволить вам разместить всплывающее меню точно относительно текущей позиции мыши.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="menu-coptions.html">&gt;&gt; Опции создания пункта меню (coption)</a></em></strong></p>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>8.8. Объекты битовых изображений на холсте</h2>
+
+<p>Объект битмапа на холсте отображается двумя цветами: цветом фона (для значений <code>0</code>) и цветом переднего плана (для значений <code>1</code>).</p>
+
+<p>Чтобы создать объект битмапа на холсте <code>C</code>, используйте:</p>
+
+<pre><code>id = C.create_bitmap(x, y, option, ...)
+</code></pre>
+
+<p>Этот метод возвращает целочисленный идентификатор объекта изображения для данного холста.</p>
+
+<p>Значения <code>x</code> и <code>y</code> представляют собой опорную точку, которая определяет местоположение битмапа.</p>
+
+<p>Опции включают в себя:</p>
+
+<p><strong>Таблица 8. Опции объекта битового изображеня на холсте</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activebackground</code><br><code>activebitmap</code><br><code>activeforeground</code></td>
+  <td>Эти параметры определяют значения <code>background</code>, <code>bitmap</code> и <code>foreground</code>, когда указатель мыши находится над битовым изображением.</td>
+</tr>
+<tr>
+  <td><code>anchor</code></td>
+  <td>Битовое изображение позиционируется относительно точки <code>(x, y)</code>. По умолчанию устанавливается <code>anchor=tk.CENTER</code>, что означает, что битовое изображение центрируется по позиции <code>(x, y)</code>. См. <a href="anchors.html">Раздел 5.5, "Якоря"</a> для различных значений параметра <code>anchor</code>. Например, если указано <code>anchor=tk.NE</code>, битовое изображение будет позиционировано так, чтобы точка <code>(x, y)</code> находилась в северо-восточном (верхнем правом) углу битового изображения.</td>
+</tr>
+<tr>
+  <td><code>background</code></td>
+  <td><a href="colors.html">Цвет</a>, который будет отображаться там, где значения в битовом изображении равны <code>0</code>. По умолчанию установлено <code>background=''</code>, что означает прозрачность.</td>
+</tr>
+<tr>
+  <td><code>bitmap</code></td>
+  <td>Используемое битовое изображение; см. <a href="bitmaps.html">Раздел 5.7, "Битовые изображения"</a>.</td>
+</tr>
+<tr>
+  <td><code>disabledbackground</code><br><code>disabledbitmap</code><br><code>disabledforeground</code></td>
+  <td>Эти параметры определяют фон, битовое изображение и передний план, которые будут использоваться, когда состояние битового изображения <code>state</code> равно <code>tk.DISABLED</code>.</td>
+</tr>
+<tr>
+  <td><code>foreground</code></td>
+  <td><a href="colors.html">Цвет</a>, который будет отображаться там, где значения в битовом изображении равны <code>1</code>. По умолчанию установлено <code>foreground='black'</code>.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>По умолчанию элементы создаются с <code>state=tk.NORMAL</code>. Используйте <code>tk.DISABLED</code>, чтобы сделать элемент серым и нереагирующим на события; используйте <code>tk.HIDDEN</code>, чтобы сделать элемент невидимым.</td>
+</tr>
+<tr>
+  <td><code>tags</code></td>
+  <td>Если это строка, битовое изображение помечается этой строкой. Используйте кортеж строк, чтобы пометить битовое изображение несколькими тегами. См. <a href="canvas-tags.html">Раздел 8.4, "Теги холста"</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="create_image.html">&gt;&gt; Объекты изображений на холсте</a></em></strong></p>
+
+</body>
+</html>

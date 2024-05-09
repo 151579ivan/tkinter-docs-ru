@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>54.8. Виртуальные события</h2>
+
+<p>Вы можете создавать собственные новые виды событий, называемые <em>виртуальными событиями</em>. Вы можете дать им любое имя, лишь бы оно было заключено в двойные пары <code>&lt;&lt;...&gt;&gt;</code>.</p>
+
+<p>Например, предположим, вы хотите создать новое событие под названием <code>&lt;&lt;panic&gt;&gt;</code>, которое будет вызываться либо кнопкой мыши 3, либо клавишей паузы. Чтобы создать это событие, вызовите этот метод на любом виджете <code>w</code>:</p>
+
+<pre><code>w.event_add('&lt;&lt;panic&gt;&gt;', '&lt;Button-3&gt;', '&lt;KeyPress-Pause&gt;')
+</code></pre>
+
+<p>Затем вы можете использовать <code>'&lt;&lt;panic&gt;&gt;'</code> в любой последовательности событий. Например, если вы используете этот вызов:</p>
+
+<pre><code>w.bind('&lt;&lt;panic&gt;&gt;', h)
+</code></pre>
+
+<p>любая кнопка мыши 3 или нажатие клавиши паузы в виджете <code>w</code> вызовет обработчик <code>h</code>.</p>
+
+<p>Дополнительную информацию о создании и управлении виртуальными событиями смотрите в описаниях к методам <a href="universal.html#event_add">.event_add()</a>, <a href="universal.html#event_delete">.event_delete()</a> и <a href="universal.html#event_info">.event_info()</a> в разделе 26 <a href="universal.html">"Универсальные методы виджетов"</a>.</p>
+
+<hr />
+
+<p><strong><em><a href="dialogs.html">&gt;&gt; Всплывающие диалоги</a></em></strong></p>
+
+</body>
+</html>
