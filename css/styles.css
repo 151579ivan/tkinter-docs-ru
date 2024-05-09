@@ -1,0 +1,83 @@
+/* Стиль для body */
+body {
+    background-color: #291200; /* Задаем темный фон */
+    color: #ccc; /* Задаем светлый текст */
+    font-size: 25px; /* Задаем размер шрифта 18 пикселя */
+    margin-left: 2ch;
+    margin-right: 8ch;
+}
+
+strong {
+   color: #F2F29E;
+}
+
+/* Стиль для всех ссылок */
+a {
+    color: #E49403; /* Задаем оранжевый цвет */
+    text-decoration: none; /* Отключаем подчеркивание */
+    font-size: 25px; /* Устанавливаем размер шрифта 18 пикселей */
+}
+
+/* Стиль для заголовков h1 */
+h1 {
+    color: aaa; /* Задаем серый цвет */
+}
+
+/* Стиль для заголовков h2 */
+h2 {
+    color: #CCCC10; /* Задаем желтый цвет */
+}
+
+/* Стиль для заголовков h3 */
+h3 {
+    color: #1BB01C; /* Задаем зелёный цвет */
+}
+
+/* Устанавливаем зеленую рамку толщиной 2 пикселя вокруг таблицы */
+table {
+    border: 1px solid green;
+    border-collapse: collapse; /* Объединение границ ячеек */
+}
+
+/* Устанавливаем зеленую границу толщиной 2 пикселя для всех ячеек в таблице */
+table td, table th {
+    border: 2px solid green;
+    padding: 5px; /* Добавляем отступ внутри ячеек для лучшего визуального восприятия */
+}
+
+/* Задаем фон и цвет текста для заголовков таблицы */
+table th {
+    background-color: #210F00;
+    color: #888A85;
+}
+
+/* Выравниваем первую колонку по центру */
+table tr td:first-child {
+    text-align: center;
+}
+
+/* Выравниваем остальные колонки по левому краю */
+table tr td:not(:first-child) {
+    text-align: left;
+}
+
+/* Стилизация кнопки */
+.copy-button {
+    padding: 2px 20px;
+    background-color: black;
+    color: #C6C800;
+    border: 1px solid #08A701;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* Стиль для текста внутри тега <code> */
+code {
+    background-color: #0d0d0d; /* Задаем цвет фона */
+    color: white; /* Задаем цвет текста */
+    padding: 1px 8px; /* Добавляем отступы для текста внутри <code> */
+    border-radius: 15px;
+    font-size: 18px; /* Задаем моноширинный шрифт */
+}
+

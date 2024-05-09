@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p>Этот документ является переводом на русский язык справочника по <strong>библиотеке Tkinter 8.5 для Python 2.7 от Джона Шипмана</strong>, находящегося по адресу <a href="https://tkdocs.com/shipman/index.html">https://tkdocs.com/shipman/index.html</a>.</p>
+
+<p>Автор перевода старался адаптировать этот документ для <strong>Python 3</strong>, хотя ошибки, здесь не исключены.</p>
+
+<hr />
+
+<h2>Справочник по Tkinter 8.5: графический интерфейс для Python</h2>
+
+<h4>Аннотация:</h4>
+
+<p>Описывает набор элементов управления Tkinter для создания графических пользовательских интерфейсов (GUI) на языке программирования Python.</p>
+
+<p>Включает описание тематических элементов управления ttk.</p>
+
+<h3>Содержание</h3>
+
+<ol>
+<li><p><a href="intro.html">Кросс-платформенный конструктор графического интерфейса пользователя для Python</a></p></li>
+<li><p><a href="minimal-app.html">Минимальное приложение</a></p></li>
+<li><p><a href="glossary.html">Определения</a></p></li>
+<li><p><a href="layout-mgt.html">Управление макетом</a></p>
+
+<ul>
+<li>4.1. <a href="grid.html">Метод .grid()</a></li>
+<li>4.2. <a href="grid-methods.html">Другие методы управления сеткой</a></li>
+<li>4.3. <a href="grid-config.html">Настройка размеров столбцов и строк</a></li>
+<li>4.4. <a href="root-resize.html">Сделать корневое окно изменяемым по размеру</a></li>
+</ul></li>
+<li><p><a href="std-attrs.html">Стандартные атрибуты</a></p>
+
+<ul>
+<li>5.1. <a href="dimensions.html">Размеры</a></li>
+<li>5.2. <a href="coordinates.html">Система координат</a></li>
+<li>5.3. <a href="colors.html">Цвета</a></li>
+<li>5.4. <a href="fonts.html">Шрифты</a></li>
+<li>5.5. <a href="anchors.html">Якоря</a></li>
+<li>5.6. <a href="relief.html">Стили рельефа</a></li>
+<li>5.7. <a href="bitmaps.html">Битовые изображения</a></li>
+<li>5.8. <a href="cursors.html">Курсоры</a></li>
+<li>5.9. <a href="images.html">Изображения</a></li>
+<li>5.10. <a href="geometry.html">Строки геометрии</a></li>
+<li>5.11. <a href="window-names.html">Имена окон</a></li>
+<li>5.12. <a href="cap-join-styles.html">Стили концов и соединений</a></li>
+<li>5.13. <a href="dash-patterns.html">Шаблоны пунктира</a></li>
+<li>5.14. <a href="stipple-offset.html">Согласование шаблонов пунктира</a></li>
+</ul></li>
+<li><p><a href="ttk-exceptions.html">Обработка исключений</a></p></li>
+<li><p><a href="button.html">Виджет Button (Кнопка)</a></p></li>
+<li><p><a href="canvas.html">Виджет Canvas (Холст)</a></p>
+
+<ul>
+<li>8.1. <a href="canvas-window-coords.html">Координаты холста</a></li>
+<li>8.2. <a href="display-list.html">Список отображаемых объектов холстa</a></li>
+<li>8.3. <a href="canvas-oid.html">Идентификаторы объектов холста</a></li>
+<li>8.4. <a href="canvas-tags.html">Теги холста</a></li>
+<li>8.5. <a href="tag-or-id.html">Аргументы тега или ID холста (tagOrId)</a></li>
+<li>8.6. <a href="canvas-methods.html">Методы виджетов Canvas</a></li>
+<li>8.7. <a href="create_arc.html">Объекты дуг на холсте</a></li>
+<li>8.8. <a href="create_bitmap.html">Объекты битовых изображений на холсте</a></li>
+<li>8.9. <a href="create_image.html">Объекты изображений на холсте</a></li>
+<li>8.10. <a href="create_line.html">Объекты линий на холсте</a></li>
+<li>8.11. <a href="create_oval.html">Объекты овалов на холсте</a></li>
+<li>8.12. <a href="create_polygon.html">Объекты многоугольников на холсте</a></li>
+<li>8.13. <a href="create_rectangle.html">Объекты прямоугольников на холсте</a></li>
+<li>8.14. <a href="create_text.html">Объекты текста на холсте</a></li>
+<li>8.15. <a href="create_window.html">Объекты окон на холсте</a></li>
+</ul></li>
+<li><p><a href="checkbutton.html">Виджет Checkbutton (Флажок)</a></p></li>
+<li><p><a href="entry.html">Виджет Entry (Поле ввода)</a></p>
+
+<ul>
+<li>10.1. <a href="entry-scrolling.html">Скроллинг виджета Entry</a></li>
+<li>10.2. <a href="entry-validation.html">Добавление валидации ввода в виджет Entry</a></li>
+</ul></li>
+<li><p><a href="frame.html">Виджет Frame (Рамка)</a></p></li>
+<li><p><a href="label.html">Виджет Label (Метка)</a></p></li>
+<li><p><a href="labelframe.html">Виджет LabelFrame (Рамка метки)</a></p></li>
+<li><p><a href="listbox.html">Виджет Listbox (Список)</a></p>
+
+<ul>
+<li>14.1. <a href="listbox-scrolling.html">Скроллинг виджета Listbox</a></li>
+</ul></li>
+<li><p><a href="menu.html">Виджет Menu (Меню)</a></p>
+
+<ul>
+<li>15.1. <a href="menu-coptions.html">Опции создания элемента меню (coption)</a></li>
+<li>15.2. <a href="menu-toplevel.html">Меню верхнего уровня</a></li>
+</ul></li>
+<li><p><a href="menubutton.html">Виджет Menubutton (Кнопка меню)</a></p></li>
+<li><p><a href="message.html">Виджет Message (Сообщение)</a></p></li>
+<li><p><a href="optionmenu.html">Виджет OptionMenu (Меню опций)</a></p></li>
+<li><p><a href="panedwindow.html">Виджет PanedWindow (Разделительное окно)</a></p>
+
+<ul>
+<li>19.1. <a href="pane-options.html">Опции конфигурации дочерних объектов PanedWindow</a></li>
+</ul></li>
+<li><p><a href="radiobutton.html">Виджет Radiobutton (Радиокнопка)</a></p></li>
+<li><p><a href="scale.html">Виджет Scale (Шкала, Ползунок)</a></p></li>
+<li><p><a href="scrollbar.html">Виджет Scrollbar (Полоса прокрутки)</a></p>
+
+<ul>
+<li>22.1. <a href="scrollbar-callback.html">Обратный вызов команды Scrollbar</a></li>
+<li>22.2. <a href="connecting-scrollbars.html">Подключение полосы прокрутки к другому виджету</a></li>
+</ul></li>
+<li><p><a href="spinbox.html">Виджет Spinbox (Контрольная строка)</a></p></li>
+<li><p><a href="text.html">Виджет Text (Текст)</a></p>
+
+<ul>
+<li>24.1. <a href="text-index.html">Индексы виджета Text</a></li>
+<li>24.2. <a href="text-mark.html">Метки виджета Text</a></li>
+<li>24.3. <a href="text-image.html">Изображения виджета Text</a></li>
+<li>24.4. <a href="text-window.html">Окна виджета Text</a></li>
+<li>24.5. <a href="text-tag.html">Теги виджета Text</a></li>
+<li>24.6. <a href="text-tabs.html">Установка табуляции в виджете Text</a></li>
+<li>24.7. <a href="text-undo-stack.html">Отмена/возврат действий в виджете Text</a></li>
+<li>24.8. <a href="text-methods.html">Методы на виджетах Text</a></li>
+</ul></li>
+<li><p><a href="toplevel.html">Toplevel: Методы окна верхнего уровня</a></p></li>
+<li><p><a href="universal.html">Универсальные методы виджетов</a></p></li>
+<li><p><a href="option-database.html">Стандартизация внешнего вида</a></p>
+
+<ul>
+<li>27.1. <a href="new-widget-class.html">Как назвать класс виджета</a></li>
+<li>27.2. <a href="naming-widgets.html">Как назвать экземпляр виджета</a></li>
+<li>27.3. <a href="resource-lines.html">Строки спецификации ресурсов</a></li>
+<li>27.4. <a href="resource-matching.html">Правила сопоставления ресурсов</a></li>
+</ul></li>
+<li><p><a href="ttk.html">ttk: Тематические виджеты</a></p>
+
+<ul>
+<li>28.1. <a href="ttk-setup.html">Импорт ttk</a></li>
+<li>28.2. <a href="ttk-widget-set.html">Набор виджетов ttk</a></li>
+</ul></li>
+<li><p><a href="ttk-Button.html">ttk.Button</a></p></li>
+<li><p><a href="ttk-Checkbutton.html">ttk.Checkbutton</a></p></li>
+<li><p><a href="ttk-Combobox.html">ttk.Combobox</a></p></li>
+<li><p><a href="ttk-Entry.html">ttk.Entry</a></p></li>
+<li><p><a href="ttk-Frame.html">ttk.Frame</a></p></li>
+<li><p><a href="ttk-Label.html">ttk.Label</a></p></li>
+<li><p><a href="ttk-LabelFrame.html">ttk.LabelFrame</a></p></li>
+<li><p><a href="ttk-Menubutton.html">ttk.Menubutton</a></p></li>
+<li><p><a href="ttk-Notebook.html">ttk.Notebook</a></p>
+
+<ul>
+<li>37.1. <a href="ttk-Notebook-events.html">Виртуальные события для виджета ttk.Notebook</a></li>
+</ul></li>
+<li><p><a href="ttk-PanedWindow.html">ttk.PanedWindow</a></p></li>
+<li><p><a href="ttk-Progressbar.html">ttk.Progressbar</a></p></li>
+<li><p><a href="ttk-Radiobutton.html">ttk.Radiobutton</a></p></li>
+<li><p><a href="ttk-Scale.html">ttk.Scale</a></p></li>
+<li><p><a href="ttk-Scrollbar.html">ttk.Scrollbar</a></p></li>
+<li><p><a href="ttk-Separator.html">ttk.Separator</a></p></li>
+<li><p><a href="ttk-Sizegrip.html">ttk.Sizegrip</a></p></li>
+<li><p><a href="ttk-Treeview.html">ttk.Treeview</a></p>
+
+<ul>
+<li>45.1. <a href="ttk-Treeview-events.html">Виртуальные события для виджета ttk.Treeview</a></li>
+</ul></li>
+<li><p><a href="ttk-Widget.html">Методы общие для всех виджетов ttk</a></p>
+
+<ul>
+<li>46.1. <a href="ttk-state-spec.html">Указание состояний виджетов в ttk</a></li>
+</ul></li>
+<li><p><a href="ttk-themes.html">Настройка и создание тем и стилей ttk</a></p></li>
+<li><p><a href="ttk-theme-layer.html">Поиск и использование тем ttk</a></p></li>
+<li><p><a href="ttk-style-layer.html">Использование и настройка стилей ttk</a></p></li>
+<li><p><a href="ttk-element-layer.html">Слой элементов ttk</a></p>
+
+<ul>
+<li>50.1. <a href="ttk-layouts.html">Макеты ttk: Структурирование стиля</a></li>
+<li>50.2. <a href="ttk-map.html">Карты стилей ttk: динамические изменения внешнего вида</a></li>
+</ul></li>
+<li><p><a href="connecting.html">Подключение логики вашего приложения к виджетам</a></p></li>
+<li><p><a href="control-variables.html">Управляющие переменные: значения, стоящие за виджетами</a></p></li>
+<li><p><a href="focus.html">Фокус: маршрутизация ввода с клавиатуры</a></p>
+
+<ul>
+<li>53.1. <a href="ttk-focus.html">Фокус в виджетах ttk</a></li>
+</ul></li>
+<li><p><a href="events.html">События</a></p>
+
+<ul>
+<li>54.1. <a href="binding-levels.html">Уровни привязки</a></li>
+<li>54.2. <a href="event-sequences.html">Последовательности событий</a></li>
+<li>54.3. <a href="event-types.html">Типы событий</a></li>
+<li>54.4. <a href="event-modifiers.html">Модификаторы событий</a></li>
+<li>54.5. <a href="key-names.html">Наименования клавиш</a></li>
+<li>54.6. <a href="event-handlers.html">Написание собственного обработчика: Класс Event</a></li>
+<li>54.7. <a href="extra-args.html">Хитрость с дополнительными аргументами</a></li>
+<li>54.8. <a href="virtual-events.html">Виртуальные события</a></li>
+<li>54.9. <a href="keysyms-manual.html">Руководство по значениям Tk keysym</a></li>
+</ul></li>
+<li><p><a href="dialogs.html">Всплывающие диалоговые окна</a></p>
+
+<ul>
+<li>55.1. <a href="tkMessageBox.html">Модуль диалоговых окон tkMessageBox</a></li>
+<li>55.2. <a href="tkFileDialog.html">Модуль диалогового выбора файла tkFileDialog</a></li>
+<li>55.3. <a href="tkColorChooser.html">Модуль выбора цвета tkColorChooser</a></li>
+</ul></li>
+</ol>
+
+</body>
+</html>
