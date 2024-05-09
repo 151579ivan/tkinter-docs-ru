@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>55.3. Модуль ColorChooser</h2>
+
+<p>Чтобы предоставить пользователю вашего приложения всплывающее окно, с помощью которого он может выбрать цвет, импортируйте модуль <em>"colorchooser"</em></p>
+
+<pre><code>from tkinter import colorchooser
+</code></pre>
+
+<p>и вызовите функцию <em>"askcolor":</em></p>
+
+<pre><code>result = colorchooser.askcolor(color, option=value, ...)
+</code></pre>
+
+<p>Аргументами являются:</p>
+
+<p><code>color</code></p>
+
+<blockquote>
+  <p>Начальный цвет, который будет отображаться. По умолчанию начальным цветом является светло-серый.</p>
+</blockquote>
+
+<p><code>title=text</code></p>
+
+<blockquote>
+  <p>Указанный <code>text</code> отображается в области заголовка всплывающего окна. По умолчанию используется заголовок <em>"Color"</em>.</p>
+</blockquote>
+
+<p><code>parent=W</code></p>
+
+<blockquote>
+  <p>Заставляет всплывающее окно отображаться поверх окна <code>W</code>. По умолчанию оно отображается поверх корневого окна.</p>
+</blockquote>
+
+<p>Если пользователь нажмет кнопку <em>"OK"</em> во всплывающем окне, то возвращаемым значением будет кортеж <code>(triple, color)</code>, где <code>triple</code> - кортеж <code>(R, G, B)</code>, содержащий значения красного, зеленого и синего в диапазоне [0,255] соответственно, а <code>color</code> - выбранный цвет в формате <code>'#RRGGBB'</code>.</p>
+
+<p>Если пользователь нажмет кнопку отмены <em>"Cancel"</em>, эта функция вернет <code>(None, None)</code>.</p>
+
+<p>Вот как выглядит всплывающее окно на системе автора:</p>
+
+<p><img src="img/askcolor.png" alt="" /></p>
+
+</body>
+</html>

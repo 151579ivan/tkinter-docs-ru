@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>54.5. Наименования клавиш</h2>
+
+<p><a href="event-sequences.html">Часть <code>detail</code></a> шаблона события <code>KeyPress</code> или <code>KeyRelease</code> указывает, какую клавишу вы привязываете. (См. <a href="event-modifiers.html">модификатор <code>Any</code></a> выше, если вы хотите получить все нажатия или отпускания клавиш).</p>
+
+<p>В таблице ниже показано несколько различных способов именования клавиш. Дополнительные сведения об объектах <em>Event</em>, атрибуты которых описывают ключи теми же способами, см. ниже в <a href="event-handlers.html">разделе 54.6, "Написание обработчика: класс Event"</a>.</p>
+
+<ul>
+<li><p>Колонка <code>.keysym</code> показывает "символ ключа", строковое имя ключа. Это соответствует атрибуту <code>.keysym</code> объекта <em>Event</em>.</p></li>
+<li><p>Колонка <code>.keycode</code> - это "код клавиши". Он определяет, какая клавиша была нажата, но этот код не отражает состояние различных модификаторов, таких как клавиши <em>Shift</em> и <em>Control</em>, а также клавиши <em>NumLock</em>. Так, например, клавиши <code>a</code> и <code>A</code> имеют одинаковый код.</p></li>
+<li><p>Колонка <code>.keysym_num</code> показывает числовой код, эквивалентный символу клавиши. В отличие от <code>.keycode</code>, эти коды различны для разных модификаторов. Например, цифра 2 на цифровой клавиатуре (символ клавиши <code>KP_2</code>) и стрелка вниз на цифровой клавиатуре (символ клавиши <code>KP_Down</code>) имеют одинаковый код клавиши (88), но разные значения <code>.keysym_num</code> (65433 и 65458, соответственно).</p></li>
+<li><p>В столбце <code>Ключ</code> указан текст, который обычно встречается на физической клавише, например Tab.</p></li>
+</ul>
+
+<p>Для международных наборов символов существует гораздо больше названий клавиш. В этой таблице представлен только набор "Latin-1" для обычной 101-клавишной клавиатуры типа USA. Поддерживаемые в настоящее время наборы см. на <a href="http://www.tcl.tk/man/tcl8.4/TkCmd/keysyms.htm">странице руководства по значениям Tk keysym</a> или <a href="keysyms-manual.html">здесь</a> (локальный файл).</p>
+
+<table>
+<thead>
+<tr>
+  <th><code>.keysym</code></th>
+  <th style="text-align:left;"><code>.keycode</code></th>
+  <th style="text-align:left;"><code>.keysym_num</code></th>
+  <th style="text-align:left;"><code>Ключ</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>Alt_L</code></td>
+  <td style="text-align:left;"><code>64</code></td>
+  <td style="text-align:left;"><code>65513</code></td>
+  <td style="text-align:left;">Левая клавиша <em>Alt</em></td>
+</tr>
+<tr>
+  <td><code>Alt_R</code></td>
+  <td style="text-align:left;"><code>113</code></td>
+  <td style="text-align:left;"><code>65514</code></td>
+  <td style="text-align:left;">Правая клавиша <em>Alt</em></td>
+</tr>
+<tr>
+  <td><code>BackSpace</code></td>
+  <td style="text-align:left;"><code>22</code></td>
+  <td style="text-align:left;"><code>65288</code></td>
+  <td style="text-align:left;"><em>BackSpace</em></td>
+</tr>
+<tr>
+  <td><code>Cancel</code></td>
+  <td style="text-align:left;"><code>110</code></td>
+  <td style="text-align:left;"><code>65387</code></td>
+  <td style="text-align:left;"><em>Break</em></td>
+</tr>
+<tr>
+  <td><code>Caps_Lock</code></td>
+  <td style="text-align:left;"><code>66</code></td>
+  <td style="text-align:left;"><code>65549</code></td>
+  <td style="text-align:left;"><em>CapsLock</em></td>
+</tr>
+<tr>
+  <td><code>Control_L</code></td>
+  <td style="text-align:left;"><code>37</code></td>
+  <td style="text-align:left;"><code>65507</code></td>
+  <td style="text-align:left;">Левая клавиша <em>Control</em></td>
+</tr>
+<tr>
+  <td><code>Control_R</code></td>
+  <td style="text-align:left;"><code>109</code></td>
+  <td style="text-align:left;"><code>65508</code></td>
+  <td style="text-align:left;">Правая клавиша <em>Control</em></td>
+</tr>
+<tr>
+  <td><code>Delete</code></td>
+  <td style="text-align:left;"><code>107</code></td>
+  <td style="text-align:left;"><code>65535</code></td>
+  <td style="text-align:left;"><em>Delete</em></td>
+</tr>
+<tr>
+  <td><code>Down</code></td>
+  <td style="text-align:left;"><code>104</code></td>
+  <td style="text-align:left;"><code>65364</code></td>
+  <td style="text-align:left;">↓</td>
+</tr>
+<tr>
+  <td><code>End</code></td>
+  <td style="text-align:left;"><code>103</code></td>
+  <td style="text-align:left;"><code>65367</code></td>
+  <td style="text-align:left;"><em>End</em></td>
+</tr>
+<tr>
+  <td><code>Escape</code></td>
+  <td style="text-align:left;"><code>9</code></td>
+  <td style="text-align:left;"><code>65307</code></td>
+  <td style="text-align:left;"><em>Esc</em></td>
+</tr>
+<tr>
+  <td><code>Execute</code></td>
+  <td style="text-align:left;"><code>111</code></td>
+  <td style="text-align:left;"><code>65378</code></td>
+  <td style="text-align:left;"><em>SysReq</em></td>
+</tr>
+<tr>
+  <td><code>F1</code></td>
+  <td style="text-align:left;"><code>67</code></td>
+  <td style="text-align:left;"><code>65470</code></td>
+  <td style="text-align:left;">Функциональная клавиша <em>F1</em></td>
+</tr>
+<tr>
+  <td><code>F2</code></td>
+  <td style="text-align:left;"><code>68</code></td>
+  <td style="text-align:left;"><code>65471</code></td>
+  <td style="text-align:left;">Функциональная клавиша <em>F2</em></td>
+</tr>
+<tr>
+  <td><code>Fi</code></td>
+  <td style="text-align:left;"><code>66+i</code></td>
+  <td style="text-align:left;"><code>65469+i</code></td>
+  <td style="text-align:left;">Функциональная клавиша <em>Fi</em></td>
+</tr>
+<tr>
+  <td><code>F12</code></td>
+  <td style="text-align:left;"><code>96</code></td>
+  <td style="text-align:left;"><code>65481</code></td>
+  <td style="text-align:left;">Функциональная клавиша <em>F12</em></td>
+</tr>
+<tr>
+  <td><code>Home</code></td>
+  <td style="text-align:left;"><code>97</code></td>
+  <td style="text-align:left;"><code>65360</code></td>
+  <td style="text-align:left;"><em>Home</em></td>
+</tr>
+<tr>
+  <td><code>Insert</code></td>
+  <td style="text-align:left;"><code>106</code></td>
+  <td style="text-align:left;"><code>65379</code></td>
+  <td style="text-align:left;"><em>Insert</em></td>
+</tr>
+<tr>
+  <td><code>Left</code></td>
+  <td style="text-align:left;"><code>100</code></td>
+  <td style="text-align:left;"><code>65361</code></td>
+  <td style="text-align:left;">←</td>
+</tr>
+<tr>
+  <td><code>Linefeed</code></td>
+  <td style="text-align:left;"><code>54</code></td>
+  <td style="text-align:left;"><code>106</code></td>
+  <td style="text-align:left;"><em>Linefeed</em> (control-J)</td>
+</tr>
+<tr>
+  <td><code>KP_0</code></td>
+  <td style="text-align:left;"><code>90</code></td>
+  <td style="text-align:left;"><code>65438</code></td>
+  <td style="text-align:left;">0 на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_1</code></td>
+  <td style="text-align:left;"><code>87</code></td>
+  <td style="text-align:left;"><code>65436</code></td>
+  <td style="text-align:left;">1 на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_2</code></td>
+  <td style="text-align:left;"><code>88</code></td>
+  <td style="text-align:left;"><code>65433</code></td>
+  <td style="text-align:left;">2 на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_3</code></td>
+  <td style="text-align:left;"><code>89</code></td>
+  <td style="text-align:left;"><code>65435</code></td>
+  <td style="text-align:left;">3 на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_4</code></td>
+  <td style="text-align:left;"><code>83</code></td>
+  <td style="text-align:left;"><code>65430</code></td>
+  <td style="text-align:left;">4 на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_5</code></td>
+  <td style="text-align:left;"><code>84</code></td>
+  <td style="text-align:left;"><code>65437</code></td>
+  <td style="text-align:left;">5 на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_6</code></td>
+  <td style="text-align:left;"><code>85</code></td>
+  <td style="text-align:left;"><code>65432</code></td>
+  <td style="text-align:left;">6 на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_7</code></td>
+  <td style="text-align:left;"><code>79</code></td>
+  <td style="text-align:left;"><code>65429</code></td>
+  <td style="text-align:left;">7 на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_8</code></td>
+  <td style="text-align:left;"><code>80</code></td>
+  <td style="text-align:left;"><code>65431</code></td>
+  <td style="text-align:left;">8 на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_9</code></td>
+  <td style="text-align:left;"><code>81</code></td>
+  <td style="text-align:left;"><code>65434</code></td>
+  <td style="text-align:left;">9 на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Add</code></td>
+  <td style="text-align:left;"><code>86</code></td>
+  <td style="text-align:left;"><code>65451</code></td>
+  <td style="text-align:left;"><code>+</code> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Begin</code></td>
+  <td style="text-align:left;"><code>84</code></td>
+  <td style="text-align:left;"><code>65437</code></td>
+  <td style="text-align:left;">Центральная клавиша (такая же, как 5) на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Decimal</code></td>
+  <td style="text-align:left;"><code>91</code></td>
+  <td style="text-align:left;"><code>65439</code></td>
+  <td style="text-align:left;">Десятичная дробь (<code>.</code>) на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Delete</code></td>
+  <td style="text-align:left;"><code>91</code></td>
+  <td style="text-align:left;"><code>65439</code></td>
+  <td style="text-align:left;"><em>Delete</em> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Divide</code></td>
+  <td style="text-align:left;"><code>112</code></td>
+  <td style="text-align:left;"><code>65455</code></td>
+  <td style="text-align:left;"><code>/</code> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Down</code></td>
+  <td style="text-align:left;"><code>88</code></td>
+  <td style="text-align:left;"><code>65433</code></td>
+  <td style="text-align:left;"><code>↓</code> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_End</code></td>
+  <td style="text-align:left;"><code>87</code></td>
+  <td style="text-align:left;"><code>65436</code></td>
+  <td style="text-align:left;"><em>End</em> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Enter</code></td>
+  <td style="text-align:left;"><code>108</code></td>
+  <td style="text-align:left;"><code>65421</code></td>
+  <td style="text-align:left;"><em>Enter</em> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Home</code></td>
+  <td style="text-align:left;"><code>79</code></td>
+  <td style="text-align:left;"><code>65429</code></td>
+  <td style="text-align:left;"><em>Home</em> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Insert</code></td>
+  <td style="text-align:left;"><code>90</code></td>
+  <td style="text-align:left;"><code>65438</code></td>
+  <td style="text-align:left;"><em>Insert</em> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Left</code></td>
+  <td style="text-align:left;"><code>83</code></td>
+  <td style="text-align:left;"><code>65430</code></td>
+  <td style="text-align:left;"><code>←</code> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Multiply</code></td>
+  <td style="text-align:left;"><code>63</code></td>
+  <td style="text-align:left;"><code>65450</code></td>
+  <td style="text-align:left;"><code>×</code> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Next</code></td>
+  <td style="text-align:left;"><code>89</code></td>
+  <td style="text-align:left;"><code>65435</code></td>
+  <td style="text-align:left;">PageDown на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Prior</code></td>
+  <td style="text-align:left;"><code>81</code></td>
+  <td style="text-align:left;"><code>65434</code></td>
+  <td style="text-align:left;">PageUp на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Right</code></td>
+  <td style="text-align:left;"><code>85</code></td>
+  <td style="text-align:left;"><code>65432</code></td>
+  <td style="text-align:left;"><code>→</code> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Subtract</code></td>
+  <td style="text-align:left;"><code>82</code></td>
+  <td style="text-align:left;"><code>65453</code></td>
+  <td style="text-align:left;"><code>-</code> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>KP_Up</code></td>
+  <td style="text-align:left;"><code>80</code></td>
+  <td style="text-align:left;"><code>65431</code></td>
+  <td style="text-align:left;"><code>↑</code> на клавиатуре</td>
+</tr>
+<tr>
+  <td><code>Next</code></td>
+  <td style="text-align:left;"><code>105</code></td>
+  <td style="text-align:left;"><code>65366</code></td>
+  <td style="text-align:left;"><em>PageDown</em></td>
+</tr>
+<tr>
+  <td><code>Num_Lock</code></td>
+  <td style="text-align:left;"><code>77</code></td>
+  <td style="text-align:left;"><code>65407</code></td>
+  <td style="text-align:left;"><em>NumLock</em></td>
+</tr>
+<tr>
+  <td><code>Pause</code></td>
+  <td style="text-align:left;"><code>110</code></td>
+  <td style="text-align:left;"><code>65299</code></td>
+  <td style="text-align:left;"><em>Pause</em></td>
+</tr>
+<tr>
+  <td><code>Print</code></td>
+  <td style="text-align:left;"><code>111</code></td>
+  <td style="text-align:left;"><code>65377</code></td>
+  <td style="text-align:left;"><em>PrintScrn</em></td>
+</tr>
+<tr>
+  <td><code>Prior</code></td>
+  <td style="text-align:left;"><code>99</code></td>
+  <td style="text-align:left;"><code>65365</code></td>
+  <td style="text-align:left;"><em>PageUp</em></td>
+</tr>
+<tr>
+  <td><code>Return</code></td>
+  <td style="text-align:left;"><code>36</code></td>
+  <td style="text-align:left;"><code>65293</code></td>
+  <td style="text-align:left;">Клавиша ввода <code>Enter</code> (control-M). Название <code>Enter</code> относится к событию, связанному с мышью, а не с нажатием клавиши; см. <a href="events.html">раздел 54, "События"</a></td>
+</tr>
+<tr>
+  <td><code>Right</code></td>
+  <td style="text-align:left;"><code>102</code></td>
+  <td style="text-align:left;"><code>65363</code></td>
+  <td style="text-align:left;">→</td>
+</tr>
+<tr>
+  <td><code>Scroll_Lock</code></td>
+  <td style="text-align:left;"><code>78</code></td>
+  <td style="text-align:left;"><code>65300</code></td>
+  <td style="text-align:left;"><em>ScrollLock</em></td>
+</tr>
+<tr>
+  <td><code>Shift_L</code></td>
+  <td style="text-align:left;"><code>50</code></td>
+  <td style="text-align:left;"><code>65505</code></td>
+  <td style="text-align:left;">Левая клавиша <em>Shift</em></td>
+</tr>
+<tr>
+  <td><code>Shift_R</code></td>
+  <td style="text-align:left;"><code>62</code></td>
+  <td style="text-align:left;"><code>65506</code></td>
+  <td style="text-align:left;">Правая клавиша <em>Shift</em></td>
+</tr>
+<tr>
+  <td><code>Tab</code></td>
+  <td style="text-align:left;"><code>23</code></td>
+  <td style="text-align:left;"><code>65289</code></td>
+  <td style="text-align:left;">Клавиша табуляции <em>Tab</em></td>
+</tr>
+<tr>
+  <td><code>Up</code></td>
+  <td style="text-align:left;"><code>98</code></td>
+  <td style="text-align:left;"><code>65362</code></td>
+  <td style="text-align:left;">↑</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="event-handlers.html">&gt;&gt; Написание обработчика: класс Event</a></em></strong></p>
+
+</body>
+</html>

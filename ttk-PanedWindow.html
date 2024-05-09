@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>38. ttk.PanedWindow</h2>
+
+<p>Это ttk-версия виджета <a href="panedwindow.html">PanedWindow</a>. Чтобы создать виджет <em>ttk.PanedWindow</em> в качестве дочернего виджета данного <code>parent</code>:</p>
+
+<pre><code>w = ttk.PanedWindow(parent, option=value, ...)
+</code></pre>
+
+<p>Опции:</p>
+
+<p><strong>Таблица 52. Опции ttk.PanedWindow</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>class_</code></td>
+  <td>Имя класса виджета. Оно может быть указано при создании виджета, но не может быть изменено позже. Для объяснения классов виджетов смотрите <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который будет появляться при наведении мыши на виджет; см. раздел <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td><a href="dimensions.html">Размер</a> высоты виджета.</td>
+</tr>
+<tr>
+  <td><code>orient</code></td>
+  <td>Чтобы сложить дочерние виджеты рядом друг с другом, используйте <code>orient=tk.HORIZONTAL</code>. Чтобы сложить их в стопку, используйте <code>orient=tk.VERTICAL</code>. По умолчанию используется опция <code>tk.VERTICAL</code>.</td>
+</tr>
+<tr>
+  <td><code>style</code></td>
+  <td>Стиль, который будет использоваться при отрисовке этого виджета; см. <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>По умолчанию <em>ttk.PanedWindow</em> не будет включаться в обход фокуса; см. раздел <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>. Чтобы добавить виджет в обход фокуса, используйте <code>takefocus=True</code>.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td><a href="dimensions.html">Размер</a> ширины виджета.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Эти параметры виджета <em>tkinter.PanedWindow</em> <em>не</em> поддерживаются конструктором <em>ttk.PanedWindow</em>:</p>
+
+<p><strong>Таблица 53. Опции tkinter.PanedWindow, отсутствующие в ttk`.PanedWindow</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>background</code> или <code>bg</code></td>
+  <td>Настройте опцию <code>background</code> с помощью стиля. Сокращение <code>bg</code> не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>borderwidth</code> или <code>bd</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который будет появляться при наведении мыши на виджет; см. <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>handlepad</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>handlesize</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>opaqueresize</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>sashrelief</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>sashwidth</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>showhandle</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Методы ttk.PanedWindow включают все те, что описаны в <a href="ttk-Widget.html">Раздел 46, "Методы, общие для всех виджетов ttk"</a>, плюс:</strong></p>
+
+<p><code>.add(w[, weight=N])</code>.</p>
+
+<blockquote>
+  <p>Добавляет новую панель в окно, где <code>w</code> - любой виджет (но обычно <code>Frame</code>). Если вы указываете параметр <code>weight</code>, он описывает размер панели в стеке, относительно других панелей. Например, для <code>orient=tk.VERTICAL</code>, если панель 0 имеет <code>weight=1</code>, а панель 1 - <code>weight=3</code>, то первоначально первая панель будет иметь 1/4 высоты, а вторая - 3/4.</p>
+</blockquote>
+
+<p><code>.forget(what)</code>.</p>
+
+<blockquote>
+  <p>Удалить панель. Аргументом может быть либо индекс панели, считая с нуля, либо дочерний виджет.</p>
+</blockquote>
+
+<p><code>.insert(where, w[, weight=N])</code>.</p>
+
+<blockquote>
+  <p>Добавляет новую панель <code>w</code> в окно в позицию, указанную <code>where</code>, где <code>where</code> может быть либо индексом, либо виджетом панели, перед которой вы хотите вставить новую панель. Параметр <code>weight</code> описан выше, в методе <code>.add()</code></p>
+</blockquote>
+
+<p><code>.panes()</code></p>
+
+<blockquote>
+  <p>Этот метод возвращает список дочерних виджетов <em>PanedWindow</em>.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="ttk-Progressbar.html">&gt;&gt; ttk.Progressbar</a></em></strong></p>
+
+</body>
+</html>

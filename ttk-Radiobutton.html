@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>40. ttk.Radiobutton</h2>
+
+<p>Этот виджет является ttk-версией виджета <a href="radiobutton.html">Radiobutton</a>. Чтобы создать виджет <em>ttk.Radiobutton</em> в качестве дочернего виджета данного <code>parent</code>:</p>
+
+<pre><code>w = ttk.Radiobutton(parent, option=value, ...)
+</code></pre>
+
+<p>Опции:</p>
+
+<p><strong>Таблица 55. Опции ttk.Radiobutton</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>class_</code></td>
+  <td>Имя класса виджета. Оно может быть указано при создании виджета, но не может быть изменено позже. Для объяснения классов виджетов смотрите <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>command</code></td>
+  <td>Функция, которая будет вызываться при изменении состояния этой радиокнопки.</td>
+</tr>
+<tr>
+  <td><code>compound</code></td>
+  <td>Этот параметр определяет относительную позицию изображения относительно текста, когда вы указываете оба параметра. Значение может быть <code>tk.TOP</code> (изображение над текстом), <code>tk.BOTTOM</code> (изображение под текстом), <code>tk.LEFT</code> (изображение слева от текста) или <code>tk.RIGHT</code> (изображение справа от текста). Если указать оба параметра <code>image</code> и <code>text</code>, но не указать значение <code>compound</code>, появится только изображение.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который будет появляться при наведении мыши на радиобаттон; смотрите <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>image</code></td>
+  <td>Изображение, которое будет отображаться на радиокнопке; см. раздел <a href="images.html">Раздел 5.9, "Изображения"</a>.</td>
+</tr>
+<tr>
+  <td><code>style</code></td>
+  <td>Стиль, который будет использоваться при отображении этой кнопки; смотрите <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>По умолчанию <em>ttk.Radiobutton</em> будет включен в обход фокуса; см. <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>. Чтобы удалить виджет из обхода фокуса, используйте <code>takefocus=False</code>.</td>
+</tr>
+<tr>
+  <td><code>text</code></td>
+  <td>Текст, который будет отображаться рядом с радиобаттоном, в виде строки.</td>
+</tr>
+<tr>
+  <td><code>textvariable</code></td>
+  <td>Переменная, управляющая текстом, который отображается на радиокнопке; см. <a href="control-variables.html">Раздел 52, "Управляющие переменные: значения за виджетами"</a>.</td>
+</tr>
+<tr>
+  <td><code>underline</code></td>
+  <td>Если эта опция имеет неотрицательное значение <em>n</em>, под символом текста (<code>text</code>) в позиции <em>n</em> появится подчеркивание.</td>
+</tr>
+<tr>
+  <td><code>value</code></td>
+  <td>Значение, связанное с этой радиокнопкой. Когда эта кнопка является выбранной в группе, значение этого параметра будет сохранено в управляющей переменной для группы.</td>
+</tr>
+<tr>
+  <td><code>variable</code></td>
+  <td>Управляющая переменная, разделяемая другими радиобаттонами в группе; см. [Раздел 52, "Управляющие переменные: значения, скрывающиеся за виджетами"] (control-variables.html). Тип этой переменной будет таким же, как и тип, указанный в опциях <code>value</code> для радиобаттонов в группе.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Используйте эту опцию, чтобы задать фиксированную или минимальную ширину. Значение указывается в символах; положительное значение задает фиксированную ширину, равную количеству символов среднего размера, а отрицательное - минимальную ширину. Вы также можете указать значение <code>width</code> в связанном стиле. Если значения указаны и в вызове конструктора виджета, и в стиле, приоритет имеет первое.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Эти опции виджета <em>tkinterRadiobutton</em> <em>не</em> поддерживаются конструктором <em>ttk.Radiobutton</em>:</p>
+
+<p><strong>Таблица 56. Опции tkinter.Radiobutton, отсутствующие в ttk`.Radiobutton</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activebackground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>background</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>activeforeground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>foreground</code>.</td>
+</tr>
+<tr>
+  <td><code>anchor</code></td>
+  <td>Настройте этот параметр с помощью стиля; смотрите <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>. Используйте эту опцию, чтобы указать положение текста, когда опция <code>width</code> выделяет дополнительное горизонтальное пространство. Например, если вы укажете опции <code>width=30</code> и <code>compound=tk.BOTTOM</code> для радиобаттона, который отображает и текст, и изображение, и стиль, задающий <code>anchor=tk.W</code> (запад), изображение будет находиться в левом конце тридцатисимвольного пространства, а текст - прямо над ним. Если радиобаттон отображает изображение, но не текст, этот параметр игнорируется.</td>
+</tr>
+<tr>
+  <td><code>background</code> или <code>bg</code></td>
+  <td>Настройте опцию <code>background</code> с помощью стиля. Сокращение <code>bg</code> не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>bitmap</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>borderwidth</code> или <code>bd</code></td>
+  <td>Настройте эту опцию с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>disabledforeground</code></td>
+  <td>Используйте карту стилей для опции <code>foreground</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td>Настройте эту опцию с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>foreground</code> или <code>fg</code></td>
+  <td>Настройте опцию <code>foreground</code> с помощью стиля. Аббревиатура <code>fg</code> не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td>Чтобы управлять цветом подсветки фокуса, когда радиокнопка не имеет фокуса, используйте карту стилей для управления опцией <code>highlightcolor</code>; см. <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td>Вы можете указать цвет подсветки фокуса по умолчанию, установив этот параметр в стиле. Вы также можете управлять цветом подсветки фокуса с помощью карты стилей.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Настройте этот параметр с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>indicatoron</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>justify</code></td>
+  <td>Управляет тем, как несколько строк будут располагаться горизонтально относительно друг друга. Настройте этот параметр с помощью стиля; значения могут быть <code>tk.LEFT</code>, <code>tk.CENTER</code> или <code>tk.RIGHT</code> для выравнивания по левому краю, по центру или по правому краю соответственно.</td>
+</tr>
+<tr>
+  <td><code>offrelief</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>overrelief</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>padx</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>pady</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Настройте этот параметр с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>selectcolor</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>selectimage</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>В ttk нет опции с таким именем. Механизм состояния был обобщен; см. раздел <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>wraplength</code></td>
+  <td>Если вы используете стиль, для которого эта опция установлена в некоторое значение <a href="dimensions.html">размерности</a>, то текст (<code>text</code>) будет нарезан на фрагменты не длиннее этой размерности.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Методы ttk.Radiobutton включают все те, что описаны в <a href="ttk-Widget.html">разделе 46, "Методы, общие для всех виджетов ttk"</a>, плюс:</strong></p>
+
+<p><code>.invoke()</code>.</p>
+
+<blockquote>
+  <p>Когда вы вызываете этот метод на ttk.Radiobutton, результат будет таким же, как если бы пользователь кликнул по нему: индикатор будет включен, а связанная с ним <code>variable</code> будет установлена в значение <code>value</code> radiobutton. Если с этой кнопкой связана команда (<code>command</code>), то вызывается связанная функция, а метод <code>.invoke()</code> возвращает то, что вернула функция; в противном случае возвращается <code>None</code>.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="ttk-Scale.html">&gt;&gt; ttk.Scale</a></em></strong></p>
+
+</body>
+</html>

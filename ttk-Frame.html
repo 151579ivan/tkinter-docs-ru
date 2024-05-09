@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>33. ttk.Frame</h2>
+
+<p>Как и виджет <em>tkinter.Frame</em>, виджет <em>ttk.Frame</em> представляет собой прямоугольный контейнер для других виджетов. Чтобы создать виджет <em>ttk.Frame</em> в качестве дочернего виджета данного <code>parent</code>:</p>
+
+<pre><code>w = ttk.Frame(parent, option=value, ...)
+</code></pre>
+
+<p>Опции включают:</p>
+
+<p><strong>Таблица 42. Опции ttk.Frame</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>borderwidth</code></td>
+  <td>Используйте эту опцию, чтобы указать ширину элемента границы; по умолчанию она равна нулю.</td>
+</tr>
+<tr>
+  <td><code>class_</code></td>
+  <td>Вы можете указать имя класса виджета при создании этого виджета. Это имя может быть использовано для настройки внешнего вида виджета; см. раздел <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>. После создания виджета имя класса виджета не может быть изменено.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Используйте эту опцию для указания внешнего вида курсора мыши при наведении его на виджет; см. раздел <a href="cursors.html">Раздел 5.8, "Курсоры"</a>. Значение по умолчанию (пустая строка) указывает, что курсор наследуется от родительского виджета.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td>Этот параметр представляет собой <a href="dimensions.html">размер</a>, задающий высоту рамки. Если вы хотите заставить рамку иметь определенную высоту, вызовите <code>.grid_propagate(0)</code> на виджете; смотрите <a href="grid-methods.html">Раздел 4.2, "Другие методы управления сеткой"</a>.</td>
+</tr>
+<tr>
+  <td><code>padding</code></td>
+  <td>Чтобы создать пустую область внутри рамки и за пределами содержащихся в ней виджетов, установите этот параметр в нужное значение <a href="dimensions.html">размера</a>. Например, <code>padding='0.5i'</code> освободит область шириной в полдюйма внутри фрейма и вокруг виджетов, находящихся в нем.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Задает стиль рельефа для границы; см. <a href="relief.html">Раздел 5.6, "Стили рельефа"</a>. Это не имеет никакого эффекта, если вы также не увеличите <code>borderwidth</code>.</td>
+</tr>
+<tr>
+  <td><code>style</code></td>
+  <td>Используйте эту опцию для указания имени пользовательского стиля виджета; смотрите <a href="ttk-themes.html">Раздел 47, "Настройка и создание тем и стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>Используйте эту опцию, чтобы указать, будет ли виджет посещаться во время обхода фокуса; см. <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>. Укажите <code>takefocus=True</code>, если вы хотите, чтобы виджет принимал фокус; укажите <code>takefocus=False</code>, если виджет не должен принимать фокус. Значение по умолчанию - пустая строка; по умолчанию виджеты <em>ttk.Frame</em> не получают фокус.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Эта опция представляет собой <a href="dimensions.html">размер</a>, задающий ширину фрейма. Если вы хотите заставить рамку иметь определенную ширину, вызовите <code>.grid_propagate(0)</code> для виджета; см. <a href="grid-methods.html">Раздел 4.2, "Другие методы управления сеткой"</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Эти опции виджета <em>tkinter.Frame</em> <em>не</em> доступны в качестве опций конструктора <em>ttk.Frame</em>:</p>
+
+<p><strong>Таблица 43. Опции tkinter.Frame, отсутствующие в ttk.Frame</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>background</code> или <code>bg</code></td>
+  <td>Настройте этот параметр с помощью стиля; смотрите [Раздел 47, "Настройка и создание тем и стилей ttk"] (ttk-themes.html).</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td>Чтобы управлять цветом подсветки фокуса, когда фрейм не имеет фокуса, используйте карту стилей для управления опцией <code>highlightcolor</code>; см. <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамическое изменение внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td>Вы можете указать цвет подсветки фокуса по умолчанию, установив этот параметр в стиле. Вы также можете управлять цветом подсветки фокуса с помощью карты стилей.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Настройте этот параметр с помощью стиля. Эта опция может работать не во всех темах.</td>
+</tr>
+<tr>
+  <td><code>padx</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>pady</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="ttk-Label.html">&gt;&gt; ttk.Label</a></em></strong></p>
+
+</body>
+</html>

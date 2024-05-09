@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>26. Универсальные методы виджетов</h2>
+
+<p>Ниже определены методы для всех виджетов. В описаниях <code>w</code> может быть любым виджетом любого типа.</p>
+
+<p><code>w.after(delay_ms, callback=None, *args)</code></p>
+
+<blockquote>
+  <p>Запрашивает Tkinter вызвать функцию <code>callback</code> с аргументами <code>args</code> после задержки не менее <code>delay_ms</code> миллисекунд. Нет верхнего предела того, сколько времени это займет на самом деле, но ваш обратный вызов не будет вызван раньше, чем вы запросите, и он будет вызван только один раз.</p>
+</blockquote>
+
+<blockquote>
+  <p>Этот метод возвращает целое число <em>(идентификатор after)</em>, которое можно передать методу <code>.after_cancel()</code>, если вы хотите отменить обратный вызов.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если вы не передали аргумент <code>callback</code>, этот метод ожидает <code>delay_ms</code> миллисекунд, как в функции <code>.sleep()</code> из <a href="http://docs.python.org/library/time.html">стандартного модуля Python time</a>.</p>
+</blockquote>
+
+<p><code>w.after_cancel(id)</code></p>
+
+<blockquote>
+  <p>Отменяет запрос на обратный вызов, установленный ранее <code>.after()</code>. Аргумент <code>id</code> - это результат, возвращенный исходным вызовом <code>.after()</code>.</p>
+</blockquote>
+
+<p><code>w.after_idle(func, *args)</code></p>
+
+<blockquote>
+  <p>Запрашивает, чтобы Tkinter вызвал функцию <code>func</code> с аргументами <code>args</code> в следующий раз, когда система будет простаивать, то есть когда не будет событий для обработки. Обратный вызов будет вызван только один раз. Если вы хотите, чтобы ваш обратный вызов был вызван еще раз, вы должны снова вызвать метод <code>.after_idle</code>.</p>
+</blockquote>
+
+<p><code>w.bell()</code></p>
+
+<blockquote>
+  <p>Издает звук, обычно похожий на гудок.</p>
+</blockquote>
+
+<p><a id="bind"></a>
+<code>w.bind(sequence=None, func=None, add=None)</code></p>
+
+<blockquote>
+  <p>Этот метод используется для привязки события к виджету. Обзор привязок событий см. в <a href="events.html">Раздел 54, "События"</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Аргумент <code>sequence</code> описывает, какое событие мы ожидаем, а аргумент <code>func</code> - это функция, которая будет вызвана, когда это событие произойдет с виджетом. Если для данного виджета уже была привязка для этого события, то обычно старый обратный вызов заменяется на <code>func</code>, но вы можете сохранить оба обратных вызова, передав <code>add='+'</code>.</p>
+</blockquote>
+
+<p><a id="bind_all"></a>
+<code>w.bind_all(sequence=None, func=None, add=None)</code></p>
+
+<blockquote>
+  <p>Аналогично <code>.bind()</code>, но применяется ко всем виджетам во всем приложении.</p>
+</blockquote>
+
+<p><a id="bind_class"></a>
+<code>w.bind_class(className, sequence=None, func=None, add=None)</code></p>
+
+<blockquote>
+  <p>Аналогично <code>.bind()</code>, но применяется ко всем виджетам с именем <code>className</code> (например, <code>'Button'</code>).</p>
+</blockquote>
+
+<p><code>w.bindtags(tagList=None)</code></p>
+
+<blockquote>
+  <p>Если вы вызовете этот метод, он вернет <em>"теги привязки"</em> для виджета в виде последовательности строк. Тег привязки - это имя окна (начинающееся с <code>'.'</code>) или имя класса (например, <code>'Listbox'</code>).</p>
+</blockquote>
+
+<blockquote>
+  <p>Вы можете изменить порядок вызова уровней привязки, передав в качестве аргумента последовательность тегов привязки, которую вы хотите, чтобы использовал виджет.</p>
+</blockquote>
+
+<blockquote>
+  <p>Обсуждение уровней привязки и их связи с тегами см. в <a href="events.html">Раздел 54, "События"</a>.</p>
+</blockquote>
+
+<p><code>w.cget(option)</code></p>
+
+<blockquote>
+  <p>Возвращает текущее значение <code>option</code> в виде строки. Вы также можете получить значение опции для виджета <code>w</code> в виде <code>w[option]</code>.</p>
+</blockquote>
+
+<p><code>w.clipboard_append(text)</code></p>
+
+<blockquote>
+  <p>Добавляет заданную строку <code>text</code> в буфер обмена дисплея, где хранятся вырезанные и вставленные строки для всех приложений этого дисплея.</p>
+</blockquote>
+
+<p><code>w.clipboard_clear()</code></p>
+
+<blockquote>
+  <p>Очищает буфер обмена дисплея (см. <code>.clipboard_append()</code> выше).</p>
+</blockquote>
+
+<p><code>w.column_configure()</code></p>
+
+<blockquote>
+  <p>См. раздел <a href="grid-methods.html">Раздел 4.2, "Другие методы управления сеткой"</a>.</p>
+</blockquote>
+
+<p><code>w.config(option=value, ...)</code></p>
+
+<blockquote>
+  <p>Аналогично <code>w.configure()</code>(см. ниже).</p>
+</blockquote>
+
+<p><code>w.configure(option=value, ...)</code></p>
+
+<blockquote>
+  <p>Устанавливает значения одной или нескольких опций. Для опций, имена которых являются зарезервированными словами Python (<code>class</code>, <code>from</code>, <code>in</code>), используйте нижнее подчеркивание: <code>'class_'</code>, <code>'from_'</code>, <code>'in_'</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Вы также можете установить значение опции для виджета <code>w</code> с помощью оператора</p>
+</blockquote>
+
+<blockquote>
+<pre><code>w[option] = value
+</code></pre>
+</blockquote>
+
+<blockquote>
+  <p>Если вы вызовете метод <code>.config()</code> для виджета без аргументов, вы получите словарь всех текущих опций виджета. Ключи - это имена опций (включая псевдонимы, например <code>bd</code> для <code>borderwidth</code>). Значение каждого ключа:</p>
+</blockquote>
+
+<blockquote>
+  <ul>
+  <li>для большинства записей - кортеж из пяти элементов: (имя опции, ключ базы данных опций, класс базы данных опций, значение по умолчанию, текущее значение); или,</li>
+  </ul>
+</blockquote>
+
+<blockquote>
+  <ul>
+  <li>для имен псевдонимов (например, <code>'fg'</code>) - два кортежа: (имя псевдонима, эквивалентное стандартное имя).</li>
+  </ul>
+</blockquote>
+
+<p><code>w.destroy()</code></p>
+
+<blockquote>
+  <p>Вызов <code>w.destroy()</code> на виджете <code>w</code> уничтожает <code>w</code> и все его дочерние элементы.</p>
+</blockquote>
+
+<p><a id="event_add"></a>
+<code>w.event_add(virtual, *sequences)</code></p>
+
+<blockquote>
+  <p>Этот метод создает виртуальное событие, имя которого задается строковым аргументом <code>virtual</code>. Каждый дополнительный аргумент описывает одну последовательность <em>sequence</em>, то есть описание физического события. Когда это событие происходит, запускается новое виртуальное событие.</p>
+</blockquote>
+
+<blockquote>
+  <p>Общее описание виртуальных событий см. в <a href="events.html">Раздел 54, "События"</a>.</p>
+</blockquote>
+
+<p><a id="event_delete"></a>
+<code>w.event_delete(virtual, *sequences)</code></p>
+
+<blockquote>
+  <p>Удаляет физические события из виртуального события, имя которого задано строкой <code>virtual</code>. Если из данного виртуального события удалены все физические события, то это виртуальное событие больше не произойдет.</p>
+</blockquote>
+
+<p><code>w.event_generate(sequence, **kw)</code></p>
+
+<blockquote>
+  <p>Этот метод вызывает событие без какого-либо внешнего стимула. Обработка события происходит так же, как если бы оно было вызвано внешним стимулом. Аргумент <code>sequence</code> описывает событие, которое должно быть вызвано. Вы можете задать значения для выбранных полей объекта <code>Event</code>, предоставив аргументы <code>keyword`=value</code>, где <code>keyword</code> указывает имя поля в объекте <code>Event</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Полное обсуждение событий см. в <a href="events.html">Раздел 54, "События"</a>.</p>
+</blockquote>
+
+<p><a id="event_info"></a>
+<code>w.event_info(virtual=None)</code></p>
+
+<blockquote>
+  <p>Если вы вызовете этот метод без аргумента, то получите в ответ последовательность всех определенных в данный момент имен виртуальных событий.</p>
+</blockquote>
+
+<blockquote>
+  <p>Чтобы получить физические события, связанные с виртуальным событием, передайте этому методу имя виртуального события, и вы получите последовательность физических имен <code>sequence</code>, или <code>None</code>, если данное виртуальное событие никогда не было определено.</p>
+</blockquote>
+
+<p><code>w.focus_displayof()</code></p>
+
+<blockquote>
+  <p>Возвращает имя окна, которое в данный момент имеет фокус ввода на том же дисплее, что и виджет. Если ни одно из таких окон не имеет фокуса ввода, возвращается <code>None</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Общее описание фокуса ввода см. в <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>.</p>
+</blockquote>
+
+<p><code>w.focus_force()</code></p>
+
+<blockquote>
+  <p>Принудительное перемещение фокуса ввода на виджет. Это невежливо. Лучше подождать, пока оконный менеджер передаст вам фокус. См. также <code>.grab_set_global()</code> ниже.</p>
+</blockquote>
+
+<p><code>w.focus_get()</code></p>
+
+<blockquote>
+  <p>Возвращает виджет, имеющий фокус в данном приложении, если таковой имеется - в противном случае возвращается <code>None</code>.</p>
+</blockquote>
+
+<p><code>w.focus_lastfor()</code></p>
+
+<blockquote>
+  <p>Этот метод извлекает имя виджета, который последним имел фокус ввода в окне верхнего уровня, содержащем <code>w</code>. Если ни один из виджетов этого верхнего уровня никогда не имел фокуса ввода, то возвращается имя виджета верхнего уровня. Если у этого приложения нет фокуса ввода, <code>.focus_lastfor()</code> вернет имя виджета, который получит фокус в следующий раз, когда вернется к этому приложению.</p>
+</blockquote>
+
+<p><code>w.focus_set()</code></p>
+
+<blockquote>
+  <p>Если приложение <code>w</code> имеет фокус ввода, то фокус перейдет к <code>w</code>. Если приложение <code>w</code> не имеет фокуса, Tk вспомнит, что нужно передать его <code>w</code> в следующий раз, когда приложение получит фокус.</p>
+</blockquote>
+
+<p><code>w.grab_current()</code></p>
+
+<blockquote>
+  <p>Если для дисплея <code>w</code> действует захват <em>(grab)</em>, возвращает его идентификатор, в противном случае возвращает <code>None</code>. Обсуждение захватов см. в <a href="events.html">Раздел 54, "События"</a>.</p>
+</blockquote>
+
+<p><code>w.grab_release()</code></p>
+
+<blockquote>
+  <p>Если в <code>w</code> действует захват, освободить его.</p>
+</blockquote>
+
+<p><code>w.grab_set()</code></p>
+
+<blockquote>
+  <p>Виджет <code>w</code> захватывает все события для приложения <code>w</code>. Если действовал другой захват, он исчезает. Обсуждение захватов см. в <a href="events.html">Раздел 54, "События"</a>.</p>
+</blockquote>
+
+<p><code>w.grab_set_global()</code></p>
+
+<blockquote>
+  <p>Виджет <code>w</code> захватывает все события для всего экрана. Это считается невежливым и должно использоваться только в случае крайней необходимости. Любой другой захват в силе. Постарайтесь использовать эту потрясающую силу только для сил добра и никогда для сил зла, хорошо?</p>
+</blockquote>
+
+<p><code>w.grab_status()</code></p>
+
+<blockquote>
+  <p>Если действует локальный захват (заданный командой <code>.grab_set()</code>), этот метод возвращает строку <code>'local'</code>. Если действует глобальный захват (установленный с помощью <code>.grab_set_global()</code>), то возвращается строка <code>'global'</code>. Если захват не действует, возвращается <code>None</code>.</p>
+</blockquote>
+
+<p><code>w.grid_forget()</code></p>
+
+<blockquote>
+  <p>См. раздел <a href="grid-methods.html">Раздел 4.2, "Другие методы управления сеткой"</a>.</p>
+</blockquote>
+
+<p><code>w.grid_propagate()</code></p>
+
+<blockquote>
+  <p>См. раздел <a href="grid-methods.html">Раздел 4.2, "Другие методы управления сеткой"</a>.</p>
+</blockquote>
+
+<p><code>w.grid_remove()</code></p>
+
+<blockquote>
+  <p>См. раздел <a href="grid-methods.html">Раздел 4.2, "Другие методы управления сеткой"</a>.</p>
+</blockquote>
+
+<p><code>w.image_names()</code></p>
+
+<blockquote>
+  <p>Возвращает имена всех изображений в приложении <code>w</code> в виде последовательности строк.</p>
+</blockquote>
+
+<p><code>w.keys()</code></p>
+
+<blockquote>
+  <p>Возвращает имена опций для виджета в виде последовательности строк.</p>
+</blockquote>
+
+<p><code>w.lift(aboveThis=None)</code></p>
+
+<blockquote>
+  <p>Если аргумент равен <code>None</code>, то окно, содержащее <code>w</code>, перемещается в верхнюю часть стека окон. Чтобы переместить окно непосредственно над некоторым <code>Toplevel</code> окном <code>w</code>, передайте <code>w</code> в качестве аргумента.</p>
+</blockquote>
+
+<p><code>w.lower(belowThis=None)</code></p>
+
+<blockquote>
+  <p>Если аргумент равен <code>None</code>, окно, содержащее <code>w</code>, перемещается в самый низ порядка стекания окон. Чтобы переместить окно чуть ниже некоторого <code>Toplevel</code> окна <code>w</code>, передайте <code>w</code> в качестве аргумента.</p>
+</blockquote>
+
+<p><code>w.mainloop()</code></p>
+
+<blockquote>
+  <p>Этот метод должен быть вызван, как правило, после создания всех статических виджетов, чтобы начать обработку событий. Вы можете выйти из главного цикла с помощью метода <code>.quit()</code> (см. ниже). Вы также можете вызвать этот метод внутри обработчика событий, чтобы возобновить работу главного цикла.</p>
+</blockquote>
+
+<p><code>w.nametowidget(name)</code></p>
+
+<blockquote>
+  <p>Этот метод возвращает актуальный виджет, чье имя пути равно <code>name</code>. Смотрите <a href="window-names.html">Раздел 5.11, "Имена окон"</a>. Если <code>name</code> неизвестно, этот метод вызовет <code>KeyError</code>.</p>
+</blockquote>
+
+<p><a id="option_add"></a>
+<code>w.option_add(pattern, value, priority=None)</code></p>
+
+<blockquote>
+  <p>Этот метод добавляет значения опций по умолчанию в базу данных опций Tkinter. Шаблон <code>pattern</code> - это строка, задающая значение по умолчанию для опций одного или нескольких виджетов. Значения <code>priority</code> являются одними из:</p>
+</blockquote>
+
+<blockquote>
+  <table>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>20</td>
+    <td>Для глобальных свойств виджетов по умолчанию.</td>
+  </tr>
+  <tr>
+    <td>40</td>
+    <td>Для свойств по умолчанию конкретных приложений.</td>
+  </tr>
+  <tr>
+    <td>60</td>
+    <td>Для опций, полученных из пользовательских файлов, таких как файл <code>.Xdefaults</code>.</td>
+  </tr>
+  <tr>
+    <td>80</td>
+    <td>Для параметров, которые устанавливаются после запуска приложения. Это уровень приоритета по умолчанию.</td>
+  </tr>
+  </tbody>
+  </table>
+</blockquote>
+
+<blockquote>
+  <p>Приоритеты более высокого уровня имеют приоритет над приоритетами более низкого уровня. Обзор базы данных опций см. в <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>. Синтаксис аргумента <code>pattern</code> для <code>.option_add()</code> такой же, как и у <code>option-pattern</code> в строке спецификации ресурса.</p>
+</blockquote>
+
+<blockquote>
+  <p>Например, чтобы получить эффект от этой строки спецификации ресурса:</p>
+</blockquote>
+
+<blockquote>
+<pre><code>\*Button\*font: times 24 bold
+</code></pre>
+</blockquote>
+
+<blockquote>
+  <p>ваше приложение (в данном примере <code>self</code>) может включить следующие строки:</p>
+</blockquote>
+
+<blockquote>
+<pre><code>self.bigFont = tkFont.Font(family='times', size=24, weight='bold')
+self.option\_add('\*Button\*font', self.bigFont)
+</code></pre>
+</blockquote>
+
+<blockquote>
+  <p>Любые виджеты <code>Button</code>, созданные после выполнения этих строк, по умолчанию будут использовать полужирный шрифт Times 24 (если не переопределить опцию <code>font</code> в конструкторе <code>Button</code>).</p>
+</blockquote>
+
+<p><code>w.option_clear()</code></p>
+
+<blockquote>
+  <p>Этот метод удаляет все опции из базы данных опций Tkinter. В результате все опции возвращаются к значениям по умолчанию.</p>
+</blockquote>
+
+<p><code>w.option_get(name, classname)</code></p>
+
+<blockquote>
+  <p>Этот метод используется для получения текущего значения опции из базы данных опций Tkinter. Первым аргументом является ключ экземпляра, а вторым - ключ класса. Если есть совпадения, возвращается значение опции, которая лучше всего подходит. Если совпадений нет, возвращается <code>''</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Подробнее о том, как ключи сопоставляются с опциями, см. в <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>.</p>
+</blockquote>
+
+<p><a id="option_readfile"></a>
+<code>w.option_readfile(fileName, priority=None)</code></p>
+
+<blockquote>
+  <p>Для удобства пользовательской конфигурации вы можете назначить именованный файл, в который пользователи могут поместить свои предпочтительные опции, используя тот же формат, что и в файле <code>.Xdefaults</code>. Затем, когда ваше приложение инициализируется, вы можете передать имя этого файла в этот метод, и опции из этого файла будут добавлены в базу данных. Если файл не существует или его формат неверен, этот метод вызовет ошибку <code>tk.TclError</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>См. раздел <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a> для ознакомления с базой данных опций и форматом файлов опций.</p>
+</blockquote>
+
+<p><code>w.register(function)</code></p>
+
+<blockquote>
+  <p>Этот метод создает Tcl-обертку вокруг функции Python и возвращает имя Tcl-обертки в виде строки. Пример использования этого метода приведен в <a href="entry-validation.html">Раздел 10.2, "Добавление валидации в виджет Entry"</a>.</p>
+</blockquote>
+
+<p><code>w.quit()</code></p>
+
+<blockquote>
+  <p>Этот метод завершает работу главного цикла. Обсуждение главного цикла см. в разделе <code>.mainloop()</code>, выше.</p>
+</blockquote>
+
+<p><code>w.rowconfigure()</code></p>
+
+<blockquote>
+  <p>См. раздел <a href="grid-methods.html">Раздел 4.2, "Другие методы управления сеткой"</a>.</p>
+</blockquote>
+
+<p><code>w.selection_clear()</code></p>
+
+<blockquote>
+  <p>Если в данный момент в <code>w</code> есть выделение (например, выделенный фрагмент текста в виджете ввода), снимите это выделение.</p>
+</blockquote>
+
+<p><code>w.selection_get()</code></p>
+
+<blockquote>
+  <p>Если в данный момент в <code>w</code> есть выделение, этот метод возвращает выделенный текст. Если выделения нет, то возникает ошибка <code>tk.TclError</code>.</p>
+</blockquote>
+
+<p><code>w.selection_own()</code></p>
+
+<blockquote>
+  <p>Делает <code>w</code> владельцем выделения в отображении <code>w</code>, забирая его у предыдущего владельца, если таковой имеется.</p>
+</blockquote>
+
+<p><code>w.selection_own_get()</code></p>
+
+<blockquote>
+  <p>Возвращает виджет, которому в данный момент принадлежит выделение на экране <code>w</code>. Вызывает <code>tk.TclError</code>, если такого выделения не существует.</p>
+</blockquote>
+
+<p><code>w.tk_focusFollowsMouse()</code></p>
+
+<blockquote>
+  <p>Обычно фокус ввода проходит через последовательность виджетов, определяемую их иерархией и порядком создания; смотрите <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>. Вместо этого вы можете указать Tkinter, что фокус будет находиться там, где находится мышь; просто вызовите этот метод. Однако нет простого способа отменить это.</p>
+</blockquote>
+
+<p><code>w.tk_focusNext()</code></p>
+
+<blockquote>
+  <p>Возвращает виджет, следующий за <code>w</code> в последовательности обхода фокуса. Обсуждение обхода фокуса см. в <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>.</p>
+</blockquote>
+
+<p><code>w.tk_focusPrev()</code></p>
+
+<blockquote>
+  <p>Возвращает виджет, который предшествует <code>w</code> в последовательности обхода фокуса.</p>
+</blockquote>
+
+<p><code>w.unbind(sequence, funcid=None)</code></p>
+
+<blockquote>
+  <p>Этот метод удаляет привязки к <code>w</code> для события, описанного <code>sequence</code>. Если второй аргумент является обратным вызовом, привязанным к этой последовательности, то этот обратный вызов удаляется, а остальные, если они есть, остаются на месте. Если второй аргумент опущен, все привязки удаляются.</p>
+</blockquote>
+
+<blockquote>
+  <p>Общее обсуждение привязок к событиям см. ниже в <a href="events.html">Раздел 54, "События"</a>.</p>
+</blockquote>
+
+<p><code>w.unbind_all(sequence)</code></p>
+
+<blockquote>
+  <p>Удаляет все привязки событий в приложении для события, описанного заданной 'sequence'.</p>
+</blockquote>
+
+<p><code>w.unbind_class(className, sequence)</code></p>
+
+<blockquote>
+  <p>Аналогично <code>.unbind()</code>, но применяется ко всем виджетам с именем <code>className</code> (например, <code>'Entry'</code> или <code>'Listbox'</code>).</p>
+</blockquote>
+
+<p><code>w.update()</code></p>
+
+<blockquote>
+  <p>Этот метод принудительно обновляет дисплей. Его следует использовать только в том случае, если вы знаете, что делаете, поскольку он может привести к непредсказуемому поведению или зацикливанию. Его никогда не следует вызывать из обратного вызова события или функции, которая вызывается из обратного вызова события.</p>
+</blockquote>
+
+<p><a id="idletasks"></a>
+<code>w.update_idletasks()</code></p>
+
+<blockquote>
+  <p>Некоторые задачи обновления дисплея, такие как изменение размеров и перерисовка виджетов, называются <em>idle tasks</em>, потому что они обычно откладываются до тех пор, пока приложение не закончит обработку событий и не вернется в главный цикл для ожидания новых событий.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если вы хотите заставить дисплей обновляться до того, как приложение перейдет в режим ожидания, вызовите метод <code>w.update_idletasks()</code> для любого виджета.</p>
+</blockquote>
+
+<p><code>w.wait_variable(v)</code></p>
+
+<blockquote>
+  <p>Ждет, пока значение переменной <code>v</code> не будет установлено, даже если значение не изменяется. Этот метод входит в локальный цикл ожидания, поэтому он не блокирует работу остальной части приложения.</p>
+</blockquote>
+
+<p><code>w.wait_visibility(w)</code></p>
+
+<blockquote>
+  <p>Подождать, пока виджет <code>w</code> (обычно <code>Toplevel</code>) станет видимым.</p>
+</blockquote>
+
+<p><code>w.wait_window(w)</code></p>
+
+<blockquote>
+  <p>Подождите, пока окно <code>w</code> не будет уничтожено.</p>
+</blockquote>
+
+<p><code>w.winfo_children()</code></p>
+
+<blockquote>
+  <p>Возвращает список всех дочерних окон <code>w</code> в порядке их расположения от самого низкого (нижнего) до самого высокого (верхнего).</p>
+</blockquote>
+
+<p><code>w.winfo_class()</code></p>
+
+<blockquote>
+  <p>Возвращает имя класса <code>w</code> (например, <code>'Button'</code>).</p>
+</blockquote>
+
+<p><code>w.winfo_containing(rootX, rootY, displayof=0)</code></p>
+
+<blockquote>
+  <p>Этот метод используется для поиска окна, содержащего точку (<code>rootX</code>, <code>rootY</code>). Если параметр <code>displayof</code> равен false, координаты определяются относительно корневого окна приложения; если true, координаты считаются относительными к окну верхнего уровня, содержащему <code>w</code>. Если указанная точка находится в одном из окон верхнего уровня приложения, метод возвращает это окно; в противном случае он возвращает <code>None</code>.</p>
+</blockquote>
+
+<p><code>w.winfo_depth()</code></p>
+
+<blockquote>
+  <p>Возвращает количество бит на пиксель в отображении <code>w</code>.</p>
+</blockquote>
+
+<p><code>w.winfo_fpixels(number)</code></p>
+
+<blockquote>
+  <p>Для любой размерности <code>number</code> (см. <a href="dimensions.html">Раздел 5.1, "Размеры"</a>) этот метод возвращает это расстояние в пикселях на дисплее <code>w</code> в виде числа типа <code>float</code>.</p>
+</blockquote>
+
+<p><code>w.winfo_geometry()</code></p>
+
+<blockquote>
+  <p>Возвращает строку геометрии, описывающую размер и расположение <code>w</code> на экране. Смотрите <a href="geometry.html">Раздел 5.10, " Строки геометрии"</a>.</p>
+</blockquote>
+
+<blockquote>
+  <h4>Внимание!</h4>
+</blockquote>
+
+<blockquote>
+  <p>Геометрия не является точной до тех пор, пока приложение не обновит свои незадействованные задачи. В частности, все геометрии изначально имеют вид <code>'1x1+0+0'</code>, пока виджеты и менеджер геометрии не согласуют свои размеры и позиции. Как убедиться, что геометрия виджета актуальна, смотрите метод <a href="#idletasks">.update_idletasks()</a>, приведенный выше в этом разделе.</p>
+</blockquote>
+
+<p><code>w.winfo_height()</code></p>
+
+<blockquote>
+  <p>Возвращает текущую высоту <code>w</code> в пикселях. См. замечания по обновлению геометрии в разделе <code>.winfo_geometry()</code>, выше. Вы можете предпочесть использовать <code>.winfo_reqheight()</code>, описанную ниже, которая всегда актуальна.</p>
+</blockquote>
+
+<p><code>w.winfo_id()</code></p>
+
+<blockquote>
+  <p>Возвращает целое число, которое однозначно идентифицирует <code>w</code> в пределах окна верхнего уровня. Оно понадобится для метода <code>.winfo_pathname()</code>, описанного ниже.</p>
+</blockquote>
+
+<p><code>w.winfo_ismapped()</code></p>
+
+<blockquote>
+  <p>Этот метод возвращает true, если виджет <code>w</code> отображен, false - в противном случае. Виджет отображается, если он был помещен в сетку (или размещен, или упакован, если вы используете один из других менеджеров геометрии) в своем родителе, и если его родитель отображается, и так далее вплоть до окна верхнего уровня.</p>
+</blockquote>
+
+<p><code>w.winfo_manager()</code></p>
+
+<blockquote>
+  <p>Если <code>w</code> не было отображено на сетке (или размещено с помощью одного из других менеджеров геометрии), этот метод возвращает пустую строку. Если <code>w</code> был размещен на сетке или иным образом, то возвращается строка с названием менеджера геометрии для <code>w</code>: это значение будет одним из <code>'grid'</code>, <code>'pack'</code>, <code>'place'</code>, <code>'canvas'</code> или <code>'text'</code>.</p>
+</blockquote>
+
+<p><code>w.winfo_name()</code></p>
+
+<blockquote>
+  <p>Этот метод возвращает имя <code>w</code> относительно его родителя. Смотрите <a href="window-names.html">Раздел 5.11, "Имена окон"</a>. Также смотрите <code>.winfo_pathname()</code>, ниже, чтобы узнать, как получить имя пути виджета.</p>
+</blockquote>
+
+<p><code>w.winfo_parent()</code></p>
+
+<blockquote>
+  <p>Возвращает имя пути родителя <code>w</code>, или пустую строку, если <code>w</code> является окном верхнего уровня. Подробнее об именах путей виджетов см. в <a href="window-names.html">Раздел 5.11, "Имена окон"</a> выше.</p>
+</blockquote>
+
+<p><code>w.winfo_pathname(id, displayof=0)</code></p>
+
+<blockquote>
+  <p>Если аргумент <code>displayof</code> равен false, возвращает имя пути к окну виджета с уникальным идентификатором <code>id</code> в главном окне приложения. Если <code>displayof</code> равен true, то номер <code>id</code> указывает на виджет в том же окне верхнего уровня, что и <code>w</code>. Обсуждение путей к именам виджетов см. в <a href="window-names.html">Раздел 5.11, "Имена окон"</a>.</p>
+</blockquote>
+
+<p><code>w.winfo_pixels(number)</code></p>
+
+<blockquote>
+  <p>Для любого размера <code>number</code> (см. раздел "Размеры", выше) этот метод возвращает это расстояние в пикселях на экране <code>w</code> в виде целого числа.</p>
+</blockquote>
+
+<p><code>w.winfo_pointerx()</code></p>
+
+<blockquote>
+  <p>Возвращает то же значение, что и координата <code>x</code>, возвращаемая методом <code>.winfo_pointerxy()</code>.</p>
+</blockquote>
+
+<p><code>w.winfo_pointerxy()</code></p>
+
+<blockquote>
+  <p>Возвращает кортеж <code>(x, y)</code>, содержащий координаты указателя мыши относительно корневого окна <code>w</code>. Если указатель мыши находится не на том же экране, возвращается <code>(-1, -1)</code>.</p>
+</blockquote>
+
+<p><code>w.winfo_pointery()</code></p>
+
+<blockquote>
+  <p>Возвращает то же значение, что и координата <code>y</code>, возвращаемая функцией <code>.winfo_pointerxy()</code>.</p>
+</blockquote>
+
+<p><code>w.winfo_reqheight()</code></p>
+
+<blockquote>
+  <p>Эти методы возвращают запрашиваемую высоту виджета <code>w</code>. Это минимальная высота, необходимая для того, чтобы все содержимое <code>w</code> имело необходимое пространство. Фактическая высота может быть другой из-за согласования с менеджером геометрии.</p>
+</blockquote>
+
+<p><code>w.winfo_reqwidth()</code></p>
+
+<blockquote>
+  <p>Возвращает запрашиваемую ширину виджета <code>w</code>, минимальную ширину, необходимую для размещения <code>w</code>. Как и в случае с <a href="universal.html#winfo_reqheight"><code>.winfo_reqheight()</code></a>, фактическая ширина может быть другой из-за согласования с менеджером геометрии.</p>
+</blockquote>
+
+<p><code>w.winfo_rgb(color)</code></p>
+
+<blockquote>
+  <p>Для любого заданного цвета этот метод возвращает эквивалентную спецификацию красно-зелено-синего цвета в виде 3-кортежа <code>(r, g, b)</code>, где каждое число является целым числом в диапазоне [0, 65536). Например, если <code>color</code> - <code>'green'</code>, этот метод возвращает 3-кортеж <code>(0, 65535, 0)</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Подробнее о задании цветов см. в <a href="colors.html">Раздел 5.3, "Цвета"</a>.</p>
+</blockquote>
+
+<p><code>w.winfo_rootx()</code></p>
+
+<blockquote>
+  <p>Возвращает координаты <code>x</code> левой стороны корневого окна <code>w</code> относительно родителя <code>w</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если у <code>w</code> есть граница, то это внешний край границы.</p>
+</blockquote>
+
+<p><code>w.winfo_rooty()</code></p>
+
+<blockquote>
+  <p>Возвращает координату <code>y</code> верхней стороны корневого окна <code>w</code> относительно родителя <code>w</code>.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если у <code>w</code> есть граница, то это верхний край границы.</p>
+</blockquote>
+
+<p><code>w.winfo_screenheight()</code></p>
+
+<blockquote>
+  <p>Возвращает высоту экрана в пикселях.</p>
+</blockquote>
+
+<p><code>w.winfo_screenmmheight()</code></p>
+
+<blockquote>
+  <p>Возвращает высоту экрана в миллиметрах.</p>
+</blockquote>
+
+<p><code>w.winfo_screenmmwidth()</code></p>
+
+<blockquote>
+  <p>Возвращает ширину экрана в миллиметрах.</p>
+</blockquote>
+
+<p><code>w.winfo_screenvisual()</code></p>
+
+<blockquote>
+  <p>Возвращает строку, описывающую метод цветопередачи дисплея. Обычно это <code>'truecolor'</code> для 16- или 24-битных дисплеев, <code>'pseudocolor'</code> для 256-цветных дисплеев.</p>
+</blockquote>
+
+<p><code>w.winfo_screenwidth()</code></p>
+
+<blockquote>
+  <p>Возвращает ширину экрана в пикселях.</p>
+</blockquote>
+
+<p><code>w.winfo_toplevel()</code></p>
+
+<blockquote>
+  <p>Возвращает окно верхнего уровня, содержащее <code>w</code>. Это окно поддерживает все методы виджетов <code>Toplevel</code>; см. <a href="toplevel.html">Раздел 25, "Toplevel: методы окон верхнего уровня"</a>.</p>
+</blockquote>
+
+<p><code>w.winfo_viewable()</code></p>
+
+<blockquote>
+  <p>Предикат, возвращающий значение <code>True</code>, если <code>w</code> доступно для просмотра, то есть если оно и все его предки в том же <code>Toplevel</code> отображены.</p>
+</blockquote>
+
+<p><code>w.winfo_width()</code></p>
+
+<blockquote>
+  <p>Возвращает текущую ширину <code>w</code> в пикселях. См. замечания по обновлению геометрии в разделе <code>.winfo_geometry()</code>, выше. Вы можете предпочесть использовать метод <code>.winfo_reqwidth()</code>, описанный выше; он всегда актуален.</p>
+</blockquote>
+
+<p><code>w.winfo_x()</code></p>
+
+<blockquote>
+  <p>Возвращает координату <code>x</code> левой стороны <code>w</code> относительно его родителя. Если у <code>w</code> есть граница, то это внешний край границы.</p>
+</blockquote>
+
+<p><code>w.winfo_y()</code></p>
+
+<blockquote>
+  <p>Возвращает координату <code>y</code> верхней стороны <code>w</code> относительно его родителя. Если у <code>w</code> есть граница, это внешний край границы.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="option-database.html">&gt;&gt; Стандартизация внешнего вида и база данных опций</a></em></strong></p>
+
+</body>
+</html>

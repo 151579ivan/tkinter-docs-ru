@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>28.1. Импортирование ttk</h2>
+
+<p>Существуют различные способы импорта модуля ttk.</p>
+
+<ul>
+<li><p>Если вы предпочитаете, чтобы все виджеты и другие возможности Tkinter и ttk находились в вашем глобальном пространстве имен, используйте эту форму импорта:</p>
+
+<pre><code>from tkinter import *
+from tkinter.ttk import *
+</code></pre>
+
+<p>Важно выполнить эти два импорта именно в таком порядке, чтобы все типы виджетов из ttk заменили эквивалентные виджеты из Tkinter. Например, все ваши виджеты <code>Button</code> будут взяты из ttk, а не из Tkinter.</p></li>
+<li><p>Вы можете использовать использовать эту форму импорта:</p>
+
+<pre><code>import tkinter.ttk as ttk
+</code></pre>
+
+<p>Таким образом, после этого импорта <code>ttk.Label</code> - это конструктор виджета <code>Label</code>, <code>ttk.Button</code> - это <code>Button</code> и так далее.</p>
+
+<p>Если вам нужно обратиться к элементам из модуля Tkinter, они доступны в виде <code>ttk.tkinter</code>. Например, для создания корневого окна используйте <code>root = ttk.tkinter.Tk()</code>, а код привязки для <em>"northeast"</em> (северо-восток) - это <code>ttk.tkinter.NE</code>.</p></li>
+<li><p>Также вы можете импортировать Tkinter и ttk отдельно следующим образом:</p>
+
+<pre><code>import tkinter as tk
+from tkinter import ttk
+</code></pre>
+
+<p>После такой формы импорта вам будут доступны как виджеты Tkinter (например <code>tk.Button</code>), так и виджеты ttk (<code>ttk.Button</code>).</p></li>
+</ul>
+
+<hr />
+
+<p><strong><em><a href="ttk-widget-set.html">&gt;&gt; Набор виджетов ttk</a></em></strong></p>
+
+</body>
+</html>

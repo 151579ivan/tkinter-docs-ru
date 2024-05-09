@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>42. ttk.Scrollbar</h2>
+
+<p>Это ttk-версия виджета <a href="scrollbar.html">Scrollbar</a>. Чтобы создать <em>ttk.Scrollbar</em> в качестве дочернего виджета данного <code>parent</code>:</p>
+
+<pre><code>w = ttk.Scrollbar(parent, option=value, ...)
+</code></pre>
+
+<p>Опции:</p>
+
+<p><strong>Таблица 59. Опции ttk.Scrollbar</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>class_</code></td>
+  <td>Имя класса виджета. Оно может быть указано при создании виджета, но не может быть изменено позже. Для объяснения классов виджетов смотрите <a href="option-database.html">Раздел 27, "Стандартизация внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>command</code></td>
+  <td>Процедура, которая будет вызываться при каждом перемещении полосы прокрутки. Последовательность вызова описана в <a href="scrollbar-callback.html">Раздел 22.1, "Обратный вызов команды Scrollbar"</a>.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который будет появляться при наведении мыши на полосу прокрутки; см. <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>orient</code></td>
+  <td>Установите <code>orient=tk.HORIZONTAL</code> для горизонтальной полосы прокрутки, <code>orient=tk.VERTICAL</code> для вертикальной (ориентация по умолчанию).</td>
+</tr>
+<tr>
+  <td><code>style</code></td>
+  <td>Стиль, который будет использоваться при отображении этой полосы прокрутки; см. <a href="ttk-style-layer.html">Раздел 49, "Использование и настройка стилей ttk"</a>.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>По умолчанию <em>ttk.Scrollbar</em> не будет включен в обход фокуса; см. раздел <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>. Чтобы добавить виджет в обход фокуса, используйте <code>takefocus=True</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Эти параметры виджета <em>tkinter.Scrollbar</em> <em>не</em> поддерживаются конструктором <em>ttk.Scrollbar</em>:</p>
+
+<p><strong>Таблица 60. Опции tkinter.Scrollbar, отсутствующие в ttk.Scrollbar</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activebackground</code></td>
+  <td>Используйте карту стилей для управления опцией <code>background</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамические изменения внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>activerelief</code></td>
+  <td>Используйте карту стилей для управления опцией <code>relief</code>; смотрите <a href="ttk-map.html">Раздел 50.2, "Карты стилей ttk: динамические изменения внешнего вида"</a>.</td>
+</tr>
+<tr>
+  <td><code>background</code> или <code>bg</code></td>
+  <td>Настройте опцию <code>background</code> с помощью стиля; эта опция управляет цветом ползунка. Сокращение <code>bg</code> не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>borderwidth</code> или <code>bd</code></td>
+  <td>Настройте опцию <code>borderwidth</code> с помощью стиля. Аббревиатура <code>bd</code> не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>elementborderwidth</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>jump</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Настройте этот параметр с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>repeatdelay</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>repeatinterval</code></td>
+  <td>Не поддерживается.</td>
+</tr>
+<tr>
+  <td><code>troughcolor</code></td>
+  <td>Настройте этот параметр с помощью стиля.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Настройте этот параметр с помощью стиля. Вы можете обнаружить, что настройка <code>arrowsize</code> является лучшим выбором; в некоторых темах увеличение <code>width</code> может не увеличить размер стрелок.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Методы ttk.Scrollbar включают все те, что описаны в <a href="ttk-Widget.html">разделе 46, "Методы, общие для всех виджетов ttk"</a>, плюс:</strong></p>
+
+<p><code>.delta(dx, dy)</code>.</p>
+
+<blockquote>
+  <p>Учитывая перемещение мыши на <code>(dx, dy)</code> в пикселях, этот метод возвращает значение <code>float</code>, которое должно быть добавлено к текущему положению ползунка для достижения такого же перемещения. Значение должно находиться в замкнутом интервале [-1.0, 1.0].</p>
+</blockquote>
+
+<p><code>.fraction(x, y)</code></p>
+
+<blockquote>
+  <p>При задании местоположения пикселя <code>(x, y)</code> этот метод возвращает соответствующее нормализованное положение ползунка в интервале [0.0, 1.0], которое ближе всего к этому местоположению.</p>
+</blockquote>
+
+<p><code>.get()</code></p>
+
+<blockquote>
+  <p>Возвращает два числа (<code>a</code>, <code>b</code>), описывающие текущее положение ползунка. Значение <code>a</code> определяет положение левого или верхнего края ползунка, для горизонтальной и вертикальной полос прокрутки соответственно; значение <code>b</code> определяет положение правого или нижнего края. Каждое значение находится в интервале [0.0, 1.0], где 0.0 - это крайнее левое или верхнее положение, а 1.0 - крайнее правое или нижнее положение. Например, если ползунок охватывает от половины пути до трех четвертей пути по желобу, вы можете получить кортеж (0.5,0.75).</p>
+</blockquote>
+
+<p><code>.set(first, last)</code></p>
+
+<blockquote>
+  <p>Чтобы подключить полосу прокрутки к другому виджету <code>w</code>, задайте <code>xscrollcommand</code> или <code>yscrollcommand</code> виджета <code>w</code> методу <code>.set</code> полосы прокрутки. Аргументы имеют то же значение, что и значения, возвращаемые методом <code>.get()</code>. Обратите внимание, что перемещение ползунка полосы прокрутки <em>не</em> приводит к перемещению соответствующего виджета.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="ttk-Separator.html">&gt;&gt; ttk.Separator</a></em></strong></p>
+
+</body>
+</html>

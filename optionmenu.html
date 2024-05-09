@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>18. Виджет OptionMenu</h2>
+
+<p>Цель этого виджета - предложить пользователю фиксированный набор пунктов меню в виде выпадающего меню.</p>
+
+<p><img src="img/optionmenu.png" alt="" /></p>
+
+<p>На иллюстрациях выше показано <code>OptionMenu</code> в двух состояниях. Левый пример показывает виджет в его начальной форме. В правом примере показано, как он выглядит, когда мышь кликнула на нем и провела вниз до пункта меню 'boat'.</p>
+
+<p>Чтобы создать новый виджет OptionMenu в качестве дочернего элемента корневого окна или фрейма с именем <code>parent</code>:</p>
+
+<pre><code>w = tk.OptionMenu(parent, variable, choice1, choice2, ...)
+</code></pre>
+
+<p>Этот конструктор возвращает новый виджет <code>OptionMenu</code>. Переменная <code>variable</code> - это экземпляр <code>StringVar</code> (см. <a href="control-variables.html">Раздел 52, "Управляющие переменные: значения за виджетами"</a>), которая связана с виджетом, а остальные аргументы - это пункты меню, которые будут отображаться в виджете в виде строк.</p>
+
+<p>Иллюстрация выше была создана с помощью этого фрагмента кода:</p>
+
+<pre><code>optionList = ('train', 'plane', 'boat')
+self.v = tk.StringVar()
+self.v.set(optionList[0])
+self.om = tk.OptionMenu(self, self.v, *optionList)
+</code></pre>
+
+<p>Чтобы узнать, какой пункт меню выбран в данный момент в виджете <code>OptionMenu</code>, метод <code>.get()</code> для связанной с ним управляющей переменной вернет этот пункт меню в виде строки.</p>
+
+<hr />
+
+<p><a href="panedwindow.html">&gt;&gt; Виджет PanedWindow</a></p>
+
+</body>
+</html>

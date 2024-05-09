@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>48. Поиск и использование тем ttk</h2>
+
+<p>Ряд операций, связанных с темами, требует наличия экземпляра класса <code>ttk.Style()</code> (в смысле класса в Python). Например, чтобы получить список доступных тем в вашей установке:</p>
+
+<pre><code>&gt;&gt;&gt; from tkinter import ttk
+&gt;&gt;&gt; s=ttk.Style()
+&gt;&gt;&gt; s.theme_names()
+('clam', 'alt', 'default', 'classic')
+</code></pre>
+
+<p>Метод <code>.theme_names()</code> возвращает кортеж, содержащий названия доступных стилей. Тема <code>'classic'</code> дает вам оригинальный, ранний вид.</p>
+
+<p>Чтобы определить, какую тему вы получите по умолчанию, используйте метод <code>.theme_use()</code> без аргументов. Чтобы сменить текущую тему, вызовите этот же метод с желаемым именем темы в качестве аргумента:</p>
+
+<pre><code>&gt;&gt;&gt; s.theme_use()
+'default'
+&gt;&gt;&gt; s.theme_use('alt')
+&gt;&gt;&gt; s.theme_use()
+'alt'
+</code></pre>
+
+<hr />
+
+<p><strong><em><a href="ttk-style-layer.html">&gt;&gt; Использование и настройка стилей ttk</a></em></strong></p>
+
+</body>
+</html>

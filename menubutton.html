@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>16. Виджет Menubutton (Кнопка меню)</h2>
+
+<p><em>Menubutton</em> - это часть выпадающего меню, которая постоянно находится на экране. Каждый <em>menubutton</em> связан с виджетом <em>Menu</em> (см. выше), который может отображать пункты меню для этого <em>menubutton</em>, когда пользователь нажимает на него.</p>
+
+<p>Чтобы создать <em>Кнопку Меню</em> в корневом окне или фрейме <code>parent</code>:</p>
+
+<pre><code>w = tk.Menubutton(parent, option, ...)
+</code></pre>
+
+<p>Конструктор возвращает новый виджет <code>Menubutton</code>. Опции:</p>
+
+<p><strong>Таблица 25. Опции виджета Menubutton</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activebackground</code></td>
+  <td>Цвет фона при наведении мыши на <em>Menubutton</em>. См. <a href="colors.html">Раздел 5.3, "Цвета"</a>.</td>
+</tr>
+<tr>
+  <td><code>activeforeground</code></td>
+  <td>Цвет переднего плана <a href="colors.html">цвет</a>, когда мышь находится над <em>menubutton</em>.</td>
+</tr>
+<tr>
+  <td><code>anchor</code></td>
+  <td>Эта опция определяет, где будет располагаться текст, если виджет имеет больше места, чем требуется для текста. По умолчанию используется <code>anchor=tk.CENTER</code>, который выравнивает текст по центру. Другие параметры см. в <a href="anchors.html">Раздел 5.5, "Якоря"</a>. Например, если вы используете <code>anchor=tk.W</code>, текст будет отцентрирован относительно левой стороны виджета.</td>
+</tr>
+<tr>
+  <td><code>bg</code> или <code>background</code></td>
+  <td><a href="colors.html">Цвет фона</a>, когда мышь не находится над <em>menubutton</em>.</td>
+</tr>
+<tr>
+  <td><code>bitmap</code></td>
+  <td>Чтобы отобразить битмап на <em>menubutton</em>, установите этот параметр на имя битмапа; смотрите <a href="bitmaps.html">Раздел 5.7, "Битовые изображения"</a>.</td>
+</tr>
+<tr>
+  <td><code>bd</code> или <code>borderwidth</code></td>
+  <td>Ширина границы вокруг <em>menubutton</em>. По умолчанию - два пикселя. Возможные значения см. в <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+<tr>
+  <td><code>compound</code></td>
+  <td>Если вы указываете и текст, и графику (битмап или изображение), этот параметр определяет, где отображается графика относительно текста. Возможные значения: <code>tk.NONE</code> (значение по умолчанию), <code>tk.TOP</code>, <code>tk.BOTTOM</code>, <code>tk.LEFT</code>, <code>tk.RIGHT</code> и <code>tk.CENTER</code>. Например, <code>compound=tk.RIGHT</code> будет позиционировать графику справа от текста. Если вы укажете <code>compound=tk.NONE</code>, графика будет отображаться, но <code>text</code> (если таковой имеется) не будет.</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, который появляется при наведении мыши на этот <em>menubutton</em>. См. <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>direction</code></td>
+  <td>Эта опция определяет в каком направлении будет расположено меню относительно <em>menubutton</em>. Обычно меню отображается под <em>menubutton</em>. Установите <code>direction=tk.LEFT</code> для отображения меню слева от кнопки; используйте <code>direction=tk.RIGHT</code> для отображения меню справа от кнопки; или используйте <code>direction='above'</code> для размещения меню над кнопкой.</td>
+</tr>
+<tr>
+  <td><code>disabledforeground</code></td>
+  <td>Цвет переднего плана <a href="colors.html">color</a>, отображаемый на этой <em>menubutton</em>, когда она отключена.</td>
+</tr>
+<tr>
+  <td><code>fg</code> или <code>foreground</code></td>
+  <td>Цвет переднего плана <a href="colors.html">color</a>, когда мышь не находится над <em>menubutton</em>.</td>
+</tr>
+<tr>
+  <td><code>font</code></td>
+  <td>Указывает шрифт, используемый для отображения текста; см. <a href="fonts.html">Раздел 5.4, "Шрифты"</a>.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td>Высота <em>menubutton</em> в <em>строках</em> текста (не в пикселях!). По умолчанию размер <em>menubutton</em> соответствует его содержимому.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td><a href="colors.html">Цвет</a> фокусного выделения, когда виджет не имеет фокуса. См. <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td><a href="colors.html">Цвет</a>, отображаемый в подсветке фокуса, когда виджет имеет <a href="focus.html">фокус</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Толщина выделения <a href="focus.html">фокусного выделения</a>.</td>
+</tr>
+<tr>
+  <td><code>image</code></td>
+  <td>Чтобы отобразить изображение на этом <em>menubutton</em>, установите этот параметр для объекта <em>Image</em>. См. <a href="images.html">Раздел 5.9, "Изображения"</a>.</td>
+</tr>
+<tr>
+  <td><code>justify</code></td>
+  <td>Этот параметр управляет расположением текста, когда текст не заполняет всё пространство в <em>menubutton</em>: используйте <code>justify=tk.LEFT</code>, чтобы выровнять текст по левому краю (это используется по умолчанию); используйте <code>justify=tk.CENTER</code>, чтобы выровнять его по центру, или <code>justify=tk.RIGHT</code>, чтобы выровнять по правому краю.</td>
+</tr>
+<tr>
+  <td><code>menu</code></td>
+  <td>Чтобы связать <em>menubutton</em> с набором пунктов меню, установите этот параметр для объекта <em>Menu</em>, содержащего эти пункты меню. Этот объект меню должен быть создан путем передачи связанного с ним <em>menubutton</em> в конструктор в качестве первого аргумента. Ниже приведен пример, показывающий, как связать <em>menubutton</em> и меню.</td>
+</tr>
+<tr>
+  <td><code>padx</code></td>
+  <td>Сколько места оставить слева и справа от текста <em>menubutton</em>. По умолчанию 1.</td>
+</tr>
+<tr>
+  <td><code>pady</code></td>
+  <td>Сколько места оставить над и под текстом <em>menubutton</em>. По умолчанию равно 1.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Обычно кнопки <em>menubutton</em> имеют вид <code>tk.RAISED</code>. Другие трехмерные эффекты см. в <a href="relief.html">Раздел 5.6, " Стили рельефа"</a>.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>Обычно кнопки <em>menubutton</em> реагируют на мышь. Установите <code>state=tk.DISABLED</code>, чтобы закрасить <em>menubutton</em> и сделать его не реагирующим на мышь.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>Обычно кнопки <em>menubutton</em> не принимают фокус клавиатуры (см. <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>). Используйте <code>takefocus=True</code>, чтобы добавить <em>menubutton</em> в очередь обхода фокуса.</td>
+</tr>
+<tr>
+  <td><code>text</code></td>
+  <td>Чтобы отобразить текст на <em>menubutton</em>, установите этот параметр в строку, содержащую нужный текст. Новые строки (<code>'\n'</code>) в строке будут вызывать разрывы строк.</td>
+</tr>
+<tr>
+  <td><code>textvariable</code></td>
+  <td>Вы можете связать управляющую переменную класса <code>StringVar</code> с этой <em>menubutton</em>. Установка этой управляющей переменной изменит отображаемый текст. См. раздел [Раздел 52, "Управляющие переменные: значения, скрывающиеся за виджетами"] (control-variables.html).</td>
+</tr>
+<tr>
+  <td><code>underline</code></td>
+  <td>Обычно под текстом на <em>menubutton</em> не появляется подчеркивание. Чтобы подчеркнуть один из символов, установите этот параметр на индекс этого символа.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Ширина <em>menubutton</em> в <em>символах</em> (не пикселях!). Если этот параметр не задан, размер кнопки будет соответствовать её содержимому.</td>
+</tr>
+<tr>
+  <td><code>wraplength</code></td>
+  <td>Обычно строки не переносятся. Вы можете задать число символов, и все строки будут разбиты на фрагменты не длиннее этого числа.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Вот краткий пример создания <em>menubutton</em> и связанного с ним меню с двумя чекбоксами:</p>
+
+<pre><code>self.mb = tk.Menubutton(self, text='condiments',
+                         relief=RAISED)
+self.mb.grid()
+
+self.mb.menu = tk.Menu(self.mb, tearoff=0)
+self.mb['menu'] = self.mb.menu
+
+self.mayoVar  = tk.IntVar()
+self.ketchVar = tk.IntVar()
+self.mb.menu.add_checkbutton(label='mayo',
+    variable=self.mayoVar)
+self.mb.menu.add_checkbutton(label='ketchup',
+    variable=self.ketchVar)
+</code></pre>
+
+<p>Этот пример создает <em>menubutton</em> с меткой <code>condiments</code>. При нажатии на нее выпадают две кнопки с надписями <code>mayo</code> и <code>ketchup</code>.</p>
+
+<hr />
+
+<p><strong><em><a href="message.html">&gt;&gt; Виджет Message</a></em></strong></p>
+
+</body>
+</html>

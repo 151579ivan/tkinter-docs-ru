@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>55.1. Модуль диалоговых окон MessageBox</h2>
+
+<p>Импортировав модуль <em>"messagebox"</em></p>
+
+<pre><code>from tkinter import messagebox
+</code></pre>
+
+<p>вы можете создать любое, из восьми распространенных всплывающих меню, вызывая функции из этой таблицы.</p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><img src="img/askokcancel.png" alt="Снимок экрана askokcancel." /></td>
+  <td><code>.askokcancel(title, message, options)</code></td>
+</tr>
+<tr>
+  <td><img src="img/askquestion.png" alt="Снимок экрана askquestion." /></td>
+  <td><code>.askquestion(title, message, options)</code></td>
+</tr>
+<tr>
+  <td><img src="img/askretrycancel.png" alt="Снимок экрана askretrycancel." /></td>
+  <td><code>.askretrycancel(title, message, options)</code></td>
+</tr>
+<tr>
+  <td><img src="img/askyesno.png" alt="Снимок экрана askyesno." /></td>
+  <td><code>.askyesno(title, message, options)</code></td>
+</tr>
+<tr>
+  <td><img src="img/askyesnocancel.png" alt="Снимок экрана askyesnocancel." /></td>
+  <td><code>.askyesnocancel(title, message, options)</code></td>
+</tr>
+<tr>
+  <td><img src="img/showerror.png" alt="Снимок экрана showerror." /></td>
+  <td><code>.showerror(title, message, options)</code></td>
+</tr>
+<tr>
+  <td><img src="img/showinfo.png" alt="Снимок экрана showinfo." /></td>
+  <td><code>.showinfo(title, message, options)</code></td>
+</tr>
+<tr>
+  <td><img src="img/showwarning.png" alt="Снимок экрана showwarning." /></td>
+  <td><code>.showwarning(title, message, options)</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>В каждом случае:</p>
+
+<ul>
+<li><p><code>title</code> - это строка, которая будет отображаться в верхней части оформления окна.</p></li>
+<li><p><code>message</code> - это строка, которая отображается в теле всплывающего окна; текст в этой строке переносится на символах новой строки (<code>'\n'</code>).</p></li>
+<li><p><code>options</code> - этот аргумент может быть любым из следующих вариантов:</p>
+
+<ul>
+<li><p><code>default</code></p>
+
+<p>Кнопка, которая будет выделена по умолчанию. Если вы не укажете этот параметр, то это будет первая слева кнопка (<em>"OK", "Да"</em> или <em>"Повторить"</em>).</p>
+
+<p>Чтобы указать, какая кнопка будет выделена, используйте <code>default=c</code>, где <code>c</code> - одна из этих констант, определенных в <em>MessageBox</em>: <code>'abort'</code>, <code>'retry'</code>, <code>'ignore'</code>, <code>'ok'</code>, <code>'cancel'</code>, <code>'no'</code>, или <code>'yes'</code>.</p></li>
+<li><p><code>icon</code></p>
+
+<p>Указывает, какая иконка будет отображаться во всплывающем окне. Используйте аргумент вида <code>icon=i</code>, где <code>i</code> - одна из этих констант, определенных в <em>MessageBox</em>: <code>'error'</code>, <code>'info'</code>, <code>'question'</code>, или <code>'warning'</code>.</p></li>
+<li><p><code>parent</code></p>
+
+<p>Если вы не укажете этот параметр, всплывающее окно появится над вашим корневым окном. Чтобы заставить всплывающее окно отображаться над каким-либо дочерним окном <code>W</code>, используйте аргумент <code>parent=W</code>.</p></li>
+</ul></li>
+</ul>
+
+<p>В зависимости от того какую кнопку выберет пользователь, функции возвращают следующие значения:  </p>
+
+<table>
+<thead>
+<tr>
+  <th style="text-align:center;">Функция</th>
+  <th style="text-align:center;"><code>Кнопка</code><br><code>OK</code></th>
+  <th style="text-align:center;"><code>Кнопка</code><br><code>Да</code></th>
+  <th style="text-align:center;"><code>Кнопка</code><br><code>Нет</code></th>
+  <th style="text-align:center;"><code>Кнопка</code><br><code>Отмена</code></th>
+  <th style="text-align:center;"><code>Кнопка</code><br><code>Повторить</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:center;"><code>askokcancel</code></td>
+  <td style="text-align:center;"><code>True</code></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"><code>False</code></td>
+  <td style="text-align:center;"></td>
+</tr>
+<tr>
+  <td style="text-align:center;"><code>askquestion</code></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"><code>'yes'</code></td>
+  <td style="text-align:center;"><code>'no'</code></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+</tr>
+<tr>
+  <td style="text-align:center;"><code>askretrycancel</code></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"><code>False</code></td>
+  <td style="text-align:center;"><code>True</code></td>
+</tr>
+<tr>
+  <td style="text-align:center;"><code>askyesno</code></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"><code>True</code></td>
+  <td style="text-align:center;"><code>False</code></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+</tr>
+<tr>
+  <td style="text-align:center;"><code>askyesnocancel</code></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"><code>True</code></td>
+  <td style="text-align:center;"><code>False</code></td>
+  <td style="text-align:center;"><code>None</code></td>
+  <td style="text-align:center;"></td>
+</tr>
+<tr>
+  <td style="text-align:center;"><code>showerror</code></td>
+  <td style="text-align:center;"><code>'ok'</code></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+</tr>
+<tr>
+  <td style="text-align:center;"><code>showinfo</code></td>
+  <td style="text-align:center;"><code>'ok'</code></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+</tr>
+<tr>
+  <td style="text-align:center;"><code>showwarning</code></td>
+  <td style="text-align:center;"><code>'ok'</code></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+  <td style="text-align:center;"></td>
+</tr>
+</tbody>
+</table>
+
+<p>Например, этот код:</p>
+
+<pre><code>result = messagebox.askyesnocancel(title='Выход из приложения',
+                               message='Сохранить ваши файлы перед выходом из приложения?',
+                               default='cancel', icon='warning')
+</code></pre>
+
+<p>создаст окно с заголовком <code>title</code>, сообщением <code>message</code>, иконкой предупреждения и выделит кнопку <em>"Отмена"</em>. Переменная <code>result</code> получит значение, соответствующее нажатой кнопке; См. таблицу выше.</p>
+
+<hr />
+
+<p><strong><em><a href="tkFileDialog.html">&gt;&gt; Модуль FileDialog</a></em></strong></p>
+
+</body>
+</html>

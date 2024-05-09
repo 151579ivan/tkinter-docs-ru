@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>27.1. Как назвать класс виджета</h2>
+
+<p>Например, предположим, что <code>Jukebox</code> - это новый класс виджетов, который вы создали. Вероятно, лучше всего, чтобы новые классы виджетов наследовались от класса <code>Frame</code>, так как в Tkinter он действует как фрейм, и вы можете расположить внутри него другие виджеты, такие как метки, списки и кнопки.</p>
+
+<p>Вы задаете имя класса нового виджета, передавая это имя в качестве опции <code>class_</code> конструктору родителя в конструкторе вашего нового класса. Вот фрагмент кода, определяющий новый класс:</p>
+
+<pre><code>class Jukebox(tk.Frame):
+    def __init__(self, master):
+        '''Constructor for the Jukebox class
+        '''
+        tk.Frame.__init__(self, master, class_='Jukebox')
+        self.__createWidgets()
+        ...
+</code></pre>
+
+<hr />
+
+<p><strong><em><a href="naming-widgets.html">&gt;&gt; Как назвать экземпляр виджета</a></em></strong></p>
+
+</body>
+</html>

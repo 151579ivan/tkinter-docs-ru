@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>46. Методы, общие для всех виджетов ttk</h2>
+
+<p><strong>Методы, показанные здесь, доступны для всех виджетов ttk.</strong></p>
+
+<p><code>.cget(option)</code>.</p>
+
+<blockquote>
+  <p>Этот метод возвращает значение для указанной <code>option</code>.</p>
+</blockquote>
+
+<p><code>.configure(option=value, ...)</code>.</p>
+
+<blockquote>
+  <p>Чтобы задать одну или несколько опций виджета, используйте ключевые аргументы вида <code>option=value</code>. Например, чтобы задать шрифт виджета, можно использовать такой аргумент, как "<code>font=('serif', 12)</code>".</p>
+</blockquote>
+
+<blockquote>
+  <p>Если вы не указали никаких аргументов, метод вернет словарь всех текущих значений опций виджета. В этом словаре ключами будут имена опций, а каждое связанное с ними значение будет кортежем <code>(name, dbName, dbClass, default, current)</code>, где:</p>
+</blockquote>
+
+<blockquote>
+  <table>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>name</code></td>
+    <td>Имя опции.</td>
+  </tr>
+  <tr>
+    <td><code>dbName</code></td>
+    <td>Имя базы данных для опции.</td>
+  </tr>
+  <tr>
+    <td><code>dbClass</code></td>
+    <td>Класс базы данных опции.</td>
+  </tr>
+  <tr>
+    <td><code>default</code></td>
+    <td>Значение по умолчанию для опции.</td>
+  </tr>
+  <tr>
+    <td><code>current</code></td>
+    <td>Текущее значение опции.</td>
+  </tr>
+  </tbody>
+  </table>
+</blockquote>
+
+<p><code>.identify(x, y)</code>.</p>
+
+<blockquote>
+  <p>Используется для определения элемента, находящегося в заданном месте виджета. Если точка <code>(x, y)</code> относительно виджета находится где-то внутри виджета, этот метод возвращает имя элемента в этой позиции; в противном случае он возвращает пустую строку.</p>
+</blockquote>
+
+<p><code>.instate(stateSpec, callback=None, *args, **kw)</code>.</p>
+
+<blockquote>
+  <p>Цель этой функции - определить, находится ли виджет в указанном состоянии или комбинации состояний.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если в качестве аргумента <code>callback</code> указано вызываемое значение, и виджет соответствует состоянию или комбинации состояний, указанных в аргументе <code>stateSpec</code>, то этот вызываемый элемент будет вызван с позиционными аргументами <code>*args</code> и аргументами ключевых слов <code>**kw</code>. Если состояние виджета не соответствует <code>stateSpec</code>, то <code>callback</code> не будет вызван.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если не указать аргумент <code>callback</code>, метод вернет <code>True</code>, если состояние виджета соответствует <code>stateSpec</code>, <code>False</code> в противном случае.</p>
+</blockquote>
+
+<blockquote>
+  <p>Структуру аргумента <code>stateSpec</code> смотрите в <a href="ttk-state-spec.html">разделе 46.1, "Указание состояний виджетов в ttk"</a>.</p>
+</blockquote>
+
+<p><code>.state(stateSpec=None)</code>.</p>
+
+<blockquote>
+  <p>Используйте этот метод либо для запроса к виджету, чтобы определить его текущие состояния, либо для установки или очистки одного состояния.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если вы предоставите аргумент <code>stateSpec</code> в форме, описанной в <a href="ttk-state-spec.html">разделе 46.1, "Указание состояний виджетов в ttk"</a>, метод установит или очистит состояния виджета в соответствии с этим аргументом.</p>
+</blockquote>
+
+<blockquote>
+  <p>Например, для виджета <code>w</code> метод <code>w.state(['!disabled', 'selected'])</code> очистит состояние виджета <code>'disabled'</code> и установит состояние <code>'selected'</code>.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="ttk-state-spec.html">&gt;&gt; Указание состояний виджетов в ttk</a></em></strong></p>
+
+</body>
+</html>

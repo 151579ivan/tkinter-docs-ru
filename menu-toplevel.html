@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>15.2. Меню верхнего уровня</h2>
+
+<p>Как правило, в MacOS требуется создать меню, отображаемое как часть окна верхнего уровня. Для этого выполните следующие действия.</p>
+
+<ol>
+<li><p>Используя любой виджет <code>W</code>, получите окно верхнего уровня с помощью метода <code>W.winfo_toplevel()</code>.</p></li>
+<li><p>Создайте виджет <code>Menu</code>, используя окно верхнего уровня в качестве первого аргумента.</p></li>
+<li><p>Элементы, добавленные в этот <em>Menu-виджет</em>, будут отображаться в верхней части приложения.</p></li>
+</ol>
+
+<p>Вот краткий пример. Предположим, что <code>self</code> - это экземпляр приложения, экземпляр класса, который наследуется от <code>Frame</code>. Этот код создаст меню верхнего уровня под названием "<strong>Help</strong>" с одним элементом меню под названием "<strong>About</strong>", который вызывает обработчик под названием <code>self.__aboutHandler</code>:</p>
+
+<pre><code>top = self.winfo_toplevel()
+self.menuBar = tk.Menu(top)
+top['menu'] = self.menuBar
+
+self.subMenu = tk.Menu(self.menuBar)
+self.menuBar.add_cascade(label='Help', menu=self.subMenu)
+self.subMenu.add_command(label='About', command=self.__aboutHandler)
+</code></pre>
+
+<p>В зависимости от платформы поведение может быть разным.</p>
+
+<ul>
+<li><p>В системах Windows или Unix пункты меню верхнего уровня появляются в верхней части главного окна вашего приложения.</p></li>
+<li><p>В MacOS X пункты меню верхнего уровня появляются в верхней части экрана, когда приложение активно, именно там, где пользователи Mac ожидают их увидеть.</p>
+
+<p>Вы должны использовать метод <code>.add_cascade()</code> для всех пунктов, которые вы хотите видеть в меню верхнего уровня. Вызовы методов <code>.add_checkbutton()</code>, <code>.add_command()</code> или <code>.add_radiobutton()</code> будут проигнорированы.</p></li>
+</ul>
+
+<hr />
+
+<p><strong><em><a href="menubutton.html">&gt;&gt; Виджет Menubutton</a></em></strong></p>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>22.1. Обратный вызов команды Scrollbar</h2>
+
+<p>Когда пользователь манипулирует полосой прокрутки, она вызывает обратный вызов <code>command</code>. Аргументы этого вызова зависят от того, что делает пользователь:</p>
+
+<ul>
+<li><p>Когда пользователь запрашивает перемещение на одну единицу <em>(unit)</em> влево или вверх, например, нажав кнопку B1 на левой или верхней стрелке, аргументы обратного вызова выглядят следующим образом:</p>
+
+<pre><code>command(tk.SCROLL, -1, tk.UNITS)
+</code></pre></li>
+<li><p>Когда пользователь запрашивает перемещение на одну единицу вправо или вниз, аргументы имеют следующий вид:</p>
+
+<pre><code>command(tk.SCROLL, 1, tk.UNITS)
+</code></pre></li>
+<li><p>Когда пользователь запрашивает перемещение на одну страницу <em>(page)</em> влево или вверх:</p>
+
+<pre><code>command(tk.SCROLL, -1, tk.PAGES)
+</code></pre></li>
+<li><p>Когда пользователь запрашивает перемещение на одну страницу вправо или вниз:</p>
+
+<pre><code>command(tk.SCROLL, 1, tk.PAGES)
+</code></pre></li>
+<li><p>Когда пользователь перетаскивает ползунок до значения <code>f</code> в диапазоне [0,1], где 0 означает полностью влево или вверх, а 1 - полностью вправо или вниз, вызов будет следующим:</p>
+
+<pre><code>command(tk.MOVETO, f)
+</code></pre></li>
+</ul>
+
+<p>Эти последовательности вызовов соответствуют аргументам, ожидаемым методами <code>.xview()</code> и <code>.yview()</code> в <em>Canvas</em>, <em>Listbox</em> и текстовых виджетах. Виджет <code>Entry</code> не имеет метода <code>.yview()</code>. Смотрите <a href="entry-scrolling.html">Раздел 10.1, "Прокрутка виджета Entry"</a>.</p>
+
+<hr />
+
+<p><strong><em><a href="connecting-scrollbars.html">&gt;&gt; Подключение Scrollbar к другому виджету</a></em></strong></p>
+
+</body>
+</html>

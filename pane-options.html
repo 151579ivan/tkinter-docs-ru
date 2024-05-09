@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>19.1. Опции конфигурации дочерних объектов PanedWindow</h2>
+
+<p>Каждый дочерний элемент <em>PanedWindow</em> имеет набор опций конфигурации, которые управляют его положением и внешним видом. Эти параметры могут быть предоставлены при добавлении дочернего окна методом <code>.add()</code>, заданы методом <code>.paneconfig()</code> или запрошены методами <code>.panecget()</code>, описанными выше.</p>
+
+<p><strong>Таблица 28. Опции дочернего виджета PanedWindow</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>after</code></td>
+  <td>Обычно, когда вы используете <code>.add()</code> для добавления нового дочернего виджета к <em>PanedWindow</em>, он добавляется после всех существующих дочерних виджетов. Вы можете использовать опцию <code>after=w</code>, чтобы вставить новый виджет в позицию сразу после существующего дочернего виджета <code>w</code>.</td>
+</tr>
+<tr>
+  <td><code>before</code></td>
+  <td>При использовании опции <code>before=w</code> в вызове метода <code>.add()</code> помещает новый виджет в позицию непосредственно перед существующим дочерним виджетом <code>w</code>.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td>Эта опция задает желаемую высоту дочернего виджета; смотрите <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+<tr>
+  <td><code>minsize</code></td>
+  <td>Используйте эту опцию, чтобы указать минимальный размер дочернего виджета в направлении ориентации <em>PanedWindow</em>. Для <code>orient=tk.HORIZONTAL</code> это минимальная ширина, для <code>orient=tk.VERTICAL</code> - минимальная высота. Допустимые значения см. в <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+<tr>
+  <td><code>padx</code></td>
+  <td>Количество дополнительного пространства, которое будет добавлено слева и справа от дочернего виджета; смотрите <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+<tr>
+  <td><code>pady</code></td>
+  <td>Количество дополнительного пространства, которое будет добавлено над и под дочерним виджетом; см. раздел <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+<tr>
+  <td><code>sticky</code></td>
+  <td>Эта опция работает как аргумент <code>sticky</code> метода <code>.grid()</code>; смотрите <a href="grid.html">Раздел 4.1, "Метод <code>.grid()</code>"</a>. Он указывает, как позиционировать дочерний виджет, если панель больше виджета. Например, <code>sticky=tk.NW</code> будет позиционировать виджет в левом верхнем ("северо-западном") углу панели.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Желаемая ширина дочернего виджета; см. <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="radiobutton.html">&gt;&gt; Виджет Radiobutton</a></em></strong></p>
+
+</body>
+</html>

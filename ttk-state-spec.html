@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>46.1. Указание состояний виджета в ttk</h2>
+
+<p>Некоторые методы в <em>ttk</em> требуют аргумент <code>stateSpec</code>, который определяет конкретное состояние виджета или комбинацию состояний. Этот аргумент может быть любым из следующих:</p>
+
+<ul>
+<li><p>Одно имя состояния, например <code>'pressed'</code>. Виджет <em>ttk.Button</em> находится в этом состоянии, например, когда курсор мыши находится над виджетом <em>Button</em> и кнопка мыши 1 нажата.</p></li>
+<li><p>Одиночное имя состояния, которому предшествует восклицательный знак (<code>!</code>); оно соответствует состоянию виджета только тогда, когда это состояние отключено.</p>
+
+<p>Например, аргумент <code>stateSpec</code> <code>'!pressed'</code> определяет виджет, который в данный момент не нажат.</p></li>
+<li><p>Последовательность имен состояний или имена состояний, которым предшествует <code>'!'</code>. Такой <code>stateSpec</code> подходит только в том случае, если все его компоненты совпадают. Например, значение <code>stateSpec</code> <code>('!disabled', 'focus')</code> соответствует виджету только тогда, когда этот виджет не отключен и у него есть фокус.</p></li>
+</ul>
+
+<hr />
+
+<p><strong><em><a href="ttk-themes.html">&gt;&gt; Настройка и создание тем и стилей ttk</a></em></strong></p>
+
+</body>
+</html>
