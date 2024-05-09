@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>8.11. Объекты овалов на холсте</h2>
+
+<p>Овалы, математически, являются эллипсами, включая круги как особый случай. Эллипс вписывается в прямоугольник, определенный координатами <code>(x0, y0)</code> верхнего левого угла и координатами <code>(x1, y1)</code> точки, находящейся снаружи правого нижнего угла.</p>
+
+<p><img src="img/ellip_geom.png" alt="" /></p>
+
+<p>Овал будет совпадать с верхней и левой границами этого прямоугольника, но будет помещен внутрь правой и нижней сторон.</p>
+
+<p>Для создания эллипса на холсте <code>C</code> используйте:</p>
+
+<pre><code>id = C.create_oval(x0, y0, x1, y1, option, ...)
+</code></pre>
+
+<p>который возвращает <a href="canvas-oid.html">ID</a> нового объекта овала на холсте <code>C</code>.</p>
+
+<p>Опции для овалов:</p>
+
+<p><strong>Таблица 11. Опции объекта овала на холсте</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activedash</code><br><code>activefill</code><br><code>activeoutline</code><br><code>activeoutlinestipple</code><br><code>activestipple</code><br><code>activewidth</code><br></td>
+  <td>Эти параметры определяют шаблон пунктира, цвет заливки, цвет контура, шаблон контура, шаблон заливки и толщину контура, используемые, когда овал находится в состоянии <code>tk.ACTIVE</code>, то есть когда указатель мыши находится над овалом.</td>
+</tr>
+<tr>
+  <td><code>dash</code></td>
+  <td>Чтобы создать пунктирную границу вокруг овала, установите эту опцию в шаблон пунктира; см. <a href="dash-patterns.html">раздел 5.13, "Шаблоны пунктира"</a></td>
+</tr>
+<tr>
+  <td><code>dashoffset</code></td>
+  <td>При использовании опции <code>dash</code> опция <code>dashoffset</code> используется для изменения выравнивания шаблона пунктира границы относительно овала. См. <a href="stipple-offset.html">раздел 5.14, "Согласование шаблонов пунктира"</a>.</td>
+</tr>
+<tr>
+  <td><code>disableddash</code><br><code>disabledfill</code><br><code>disabledoutline</code><br><code>disabledoutlinestipple</code><br><code>disabledstipple</code><br><code>disabledwidth</code></td>
+  <td>Эти параметры определяют внешний вид овала, когда состояние элемента равно <code>tk.DISABLED</code>.</td>
+</tr>
+<tr>
+  <td><code>fill</code></td>
+  <td>По умолчанию внутренняя часть овала прозрачна, и значение <code>fill=''</code> выбирает это поведение. Вы также можете установить эту опцию на любой цвет, и внутренняя часть эллипса будет заполнена этим <a href="colors.html">цветом</a>.</td>
+</tr>
+<tr>
+  <td><code>offset</code></td>
+  <td>Смещение шаблона заливки внутренней части. См. <a href="stipple-offset.html">раздел 5.14, "Согласование шаблонов пунктира"</a>.</td>
+</tr>
+<tr>
+  <td><code>outline</code></td>
+  <td>Цвет границы вокруг овала. По умолчанию <code>outline='black'</code>.</td>
+</tr>
+<tr>
+  <td><code>outlineoffset</code></td>
+  <td>Смещение шаблона пунктира границы. См. <a href="stipple-offset.html">раздел 5.14, "Согласование шаблонов пунктира"</a>.</td>
+</tr>
+<tr>
+  <td><code>outlinestipple</code></td>
+  <td>Шаблон заливки, используемый для границы. Для значений см. ниже <code>stipple</code>.</td>
+</tr>
+<tr>
+  <td><code>stipple</code></td>
+  <td>Битовое изображение, указывающее, как будет заштриховываться внутренняя часть эллипса. По умолчанию <code>stipple=''</code>, что означает сплошной цвет. Возможное значение: <code>stipple='gray25'</code>. Не влияет, если <code>fill</code> не был установлен в какой-либо цвет. См. <a href="bitmaps.html">раздел 5.7, "Битовые изображения"</a>.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>По умолчанию элементы овала создаются в состоянии <code>tk.NORMAL</code>. Установите эту опцию в <code>tk.DISABLED</code>, чтобы овал не реагировал на действия мыши. Установите ее в <code>tk.HIDDEN</code>, чтобы сделать элемент невидимым.</td>
+</tr>
+<tr>
+  <td><code>tags</code></td>
+  <td>Если строка, то овал помечен этой строкой. Используйте кортеж строк, чтобы пометить овал несколькими тегами. См. <a href="canvas-tags.html">раздел 8.4, "Теги холста"</a>.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Ширина границы вокруг внешнего края овала. По умолчанию 1 пиксель; см. <a href="dimensions.html">раздел 5.1, "Размеры"</a> для возможных значений. Если вы установите эту опцию на ноль, граница не будет отображаться. Если вы установите эту опцию на ноль и сделаете заливку прозрачной, вы можете сделать весь овал невидимым.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="create_polygon.html">&gt;&gt; Объекты многоугольников на холсте</a></em></strong></p>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>8.7. Объекты дуг на холсте</h2>
+
+<p><em>Объект дуги</em> на холсте, в самой общей форме, представляет собой клиновидный сегмент, вырезанный из эллипса. Это включает в себя целые эллипсы и круги как частные случаи. См. <a href="create_oval.html">Раздел 8.11, “Объекты овалов на холсте”</a> для более подробной информации о геометрии нарисованного эллипса.</p>
+
+<p>Для создания объекта дуги на холсте <code>C</code> используйте:</p>
+
+<pre><code>id = C.create_arc(x0, y0, x1, y1, option, ...)
+</code></pre>
+
+<p>Конструктор возвращает <a href="canvas-oid.html">идентификатор</a> нового объекта дуги на холсте <code>C</code>.</p>
+
+<p>Точка (<code>x0</code>, <code>y0</code>) - верхний левый угол, а (<code>x1</code>, <code>y1</code>) - нижний правый угол прямоугольника, в который вписан эллипс. Если этот прямоугольник квадратный, то получится круг.</p>
+
+<p>Различные опции включают:</p>
+
+<p><strong>Таблица 7. Опции объекта дуги на холсте</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activedash</code><br><code>activefill</code><br><code>activeoutline</code><br><code>activeoutlinestipple</code><br><code>activestipple</code><br><code>activewidth</code></td>
+  <td>Эти опции применяются, когда дуга находится в состоянии <code>tk.ACTIVE</code>, то есть, когда мышь находится над дугой. Например, опция <code>activefill</code> указывает цвет заливки при активной дуге. Для значений опций см. соответственно <code>dash</code>, <code>fill</code>, <code>outline</code>, <code>outlinestipple</code>, <code>stipple</code> и <code>width</code>.</td>
+</tr>
+<tr>
+  <td><code>dash</code></td>
+  <td>Шаблон пунктира для контура. См. <a href="dash-patterns.html">Раздел 5.13, “Шаблоны пунктира”</a>.</td>
+</tr>
+<tr>
+  <td><code>dashoffset</code></td>
+  <td>Смещение шаблона пунктира для контура. См. <a href="dash-patterns.html">Раздел 5.13, “Шаблоны пунктира”</a>.</td>
+</tr>
+<tr>
+  <td><code>disableddash</code><br><code>disabledfill</code><br><code>disabledoutline</code><br><code>disabledoutlinestipple</code><br><code>disabledstipple</code><br><code>disabledwidth</code></td>
+  <td>Эти опции применяются, когда <code>state</code> дуги - <code>tk.DISABLED</code>.</td>
+</tr>
+<tr>
+  <td><code>extent</code></td>
+  <td>Ширина сегмента в градусах. Сегмент начинается под углом, заданным опцией <code>start</code>, и продолжается против часовой стрелки на <code>extent</code> градусов.</td>
+</tr>
+<tr>
+  <td><code>fill</code></td>
+  <td>По умолчанию заливка дуги прозрачна, и <code>fill=''</code> выберет это поведение. Вы также можете установить эту опцию на любой <a href="colors.html">цвет</a>, и внутренее пространство дуги будет заполнено этим цветом.</td>
+</tr>
+<tr>
+  <td><code>offset</code></td>
+  <td>Смещение шаблона штриховки для интерьера дуги. См. <a href="stipple-offset.html">Раздел 5.14, “Согласование шаблонов пунктира”</a>.</td>
+</tr>
+<tr>
+  <td><code>outline</code></td>
+  <td>Цвет границы вокруг внешней части сегмента. По умолчанию - черный.</td>
+</tr>
+<tr>
+  <td><code>outlineoffset</code></td>
+  <td>Смещение шаблона штриховки для контура. См. <a href="stipple-offset.html">Раздел 5.14, “Согласование шаблонов пунктира”</a>.</td>
+</tr>
+<tr>
+  <td><code>outlinestipple</code></td>
+  <td>Если используется опция <code>outline</code>, эта опция указывает битовое изображение, используемое для штриховки границы. По умолчанию - черный, и это значение по умолчанию можно задать, установив <code>outlinestipple=''</code>.</td>
+</tr>
+<tr>
+  <td><code>start</code></td>
+  <td>Начальный угол сегмента, в градусах, измеренный от направления +x. Если опущено, вы получите весь эллипс.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>По умолчанию эта опция равна <code>tk.NORMAL</code>. Ее можно установить в <code>tk.HIDDEN</code>, чтобы сделать дугу невидимой, или в <code>tk.DISABLED</code>, чтобы сделать ее серой и нереагирующей на события.</td>
+</tr>
+<tr>
+  <td><code>stipple</code></td>
+  <td>Битовое изображение, указывающее, как будет штриховаться интерьер дуги. По умолчанию - <code>stipple=''</code> (сплошной). Вероятно, вам понадобится что-то вроде <code>stipple='gray25'</code>. Не имеет эффекта, если <code>fill</code> установлен на какой-либо цвет.</td>
+</tr>
+<tr>
+  <td><code>style</code></td>
+  <td>По умолчанию рисуется весь сегмент; используйте <code>style=tk.PIESLICE</code> для этого стиля. Чтобы нарисовать только круговой сегмент, используйте <code>style=tk.ARC</code>. Чтобы нарисовать круговой сегмент и хорду (прямую линию, соединяющую конечные точки сегмента), используйте <code>style=tk.CHORD</code>. <br><br><img src="img/chord.png" alt="" /></td>
+</tr>
+<tr>
+  <td><code>tags</code></td>
+  <td>Если это строка, дуга помечается этой строкой. Используйте кортеж строк, чтобы пометить дугу несколькими тегами. См. <a href="canvas-tags.html">Раздел 8.4, “Теги холста”</a>.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Ширина границы вокруг внешней части дуги. По умолчанию - 1 пиксель.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="create_bitmap.html">&gt;&gt; Объекты битовых изображений на холсте</a></em></strong></p>
+
+</body>
+</html>

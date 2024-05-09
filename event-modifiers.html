@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>54.4. Модификаторы событий</h2>
+
+<p>Имена модификаторов, которые можно использовать в последовательностях событий, включают:</p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>Alt</code></td>
+  <td>Истинно, когда пользователь удерживает клавишу <em>Alt</em>.</td>
+</tr>
+<tr>
+  <td><code>Any</code></td>
+  <td>Этот модификатор обобщает тип события. Например, шаблон события <code>'&lt;Any-KeyPress&gt;'</code> применяется к нажатию любой клавиши.</td>
+</tr>
+<tr>
+  <td><code>Control</code></td>
+  <td>Истинно, если пользователь удерживает нажатой клавишу <em>Control</em>.</td>
+</tr>
+<tr>
+  <td><code>Double</code></td>
+  <td>Указывает два события, происходящих близко друг к другу по времени. Например, <code>&lt;Double-Button-1&gt;</code> описывает два нажатия кнопки 1 в быстрой последовательности.</td>
+</tr>
+<tr>
+  <td><code>Lock</code></td>
+  <td>Истина, если пользователь нажал <em>Shift Lock</em>.</td>
+</tr>
+<tr>
+  <td><code>Shift</code></td>
+  <td>Истинно, если пользователь удерживает клавишу <em>Shift</em>.</td>
+</tr>
+<tr>
+  <td><code>Triple</code></td>
+  <td>Как и <code>Double</code>, но указывает три события в быстрой последовательности.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Вы можете использовать более короткие формы событий. Вот несколько примеров:</p>
+
+<ul>
+<li><p><code>'&lt;1&gt;'</code> - то же самое, что <code>'&lt;Button-1&gt;'</code>.</p></li>
+<li><p><code>'x'</code> - то же самое, что <code>'&lt;KeyPress-x&gt;'</code>.</p></li>
+</ul>
+
+<p>Обратите внимание, что для большинства односимвольных клавиш можно опустить заключающий символ <code>'&lt;...&gt;'</code>, но нельзя сделать это для символа пробела (его имя <code>'&lt;space&gt;'</code>) или символа "меньше" (<code>&lt;</code>) (его имя <code>'&lt;less&gt;'</code>).</p>
+
+<hr />
+
+<p><strong><em><a href="key-names.html">&gt;&gt; Наименования клавиш</a></em></strong></p>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>8.9. Объекты изображений на холсте</h2>
+
+<p>Чтобы отобразить графическое изображение на холсте <code>C</code>, используйте:</p>
+
+<pre><code>id = C.create_image(x, y, option, ...)
+</code></pre>
+
+<p>Этот конструктор возвращает целочисленный идентификационный номер объекта изображения для этого холста.</p>
+
+<p>Изображение позиционируется относительно точки <code>(x, y)</code>.</p>
+
+<p>Опции включают в себя:</p>
+
+<p><strong>Таблица 9. Опции объекта изображеня на холсте</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activeimage</code></td>
+  <td>Изображение, которое отображается, когда указатель мыши находится над элементом. См. опцию <code>image</code> ниже для возможных значений.</td>
+</tr>
+<tr>
+  <td><code>anchor</code></td>
+  <td>По умолчанию установлено <code>anchor=tk.CENTER</code>, что означает, что изображение центрируется по позиции <code>(x, y)</code>. См.  <a href="anchors.html">раздел 5.5, "Якоря"</a> для возможных значений этой опции. Например, если вы укажете <code>anchor=tk.S</code>, изображение будет расположено так, чтобы точка <code>(x, y)</code> находилась в центре нижнего (южного) края изображения.</td>
+</tr>
+<tr>
+  <td><code>disabledimage</code></td>
+  <td>Изображение, которое отображается, когда элемент неактивен. См. опцию <code>image</code> ниже для возможных значений.</td>
+</tr>
+<tr>
+  <td><code>image</code></td>
+  <td>Изображение, которое должно быть отображено. См. <a href="images.html">раздел 5.9, "Изображения"</a> для информации о том, как создавать изображения, которые можно загружать на холсты.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>Обычно объекты изображения создаются в состоянии <code>tk.NORMAL</code>. Установите это значение в <code>tk.DISABLED</code>, чтобы сделать его серым и нереагирующим на указатель мыши. Если установить его в <code>tk.HIDDEN</code>, элемент станет невидимым.</td>
+</tr>
+<tr>
+  <td><code>tags</code></td>
+  <td>Если это строка, изображение помечается этой строкой. Используйте кортеж строк, чтобы пометить изображение несколькими тегами. См. <a href="canvas-tags.html">раздел 8.4, "Теги холста"</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="create_line.html">&gt;&gt; Объекты линий на холсте</a></em></strong></p>
+
+</body>
+</html>

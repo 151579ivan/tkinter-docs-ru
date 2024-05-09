@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>8.13. Объекты прямоугольников на холсте</h2>
+
+<p>Каждый прямоугольник определяется двумя точками: <code>(x0, y0)</code> - верхний левый угол, и <code>(x1, y1)</code> - расположение пикселя вне правого нижнего угла.</p>
+
+<p>Например, прямоугольник, определенный верхним левым углом <code>(100,100)</code> и правым нижним углом <code>(102,102)</code>, является квадратом два пикселя на два пикселя, включая пиксель <code>(101,101)</code>, но не включая <code>(102,102)</code>.</p>
+
+<p>Прямоугольники рисуются из двух частей:</p>
+
+<ul>
+<li><p>Контур находится внутри прямоугольника по его верхней и левой сторонам, но снаружи прямоугольника по его нижней и правой сторонам. По умолчанию контур имеет черную рамку шириной в один пиксель.</p>
+
+<p>Например, рассмотрим прямоугольник с верхним левым углом <code>(10,10)</code> и правым нижним углом <code>(11,11)</code>. Если вы запросите отсутствие рамки (<code>width=0</code>) и заливку зеленым цветом (<code>fill='green'</code>), вы получите один зеленый пиксель в <code>(10,10)</code>. Однако, если вы запросите те же параметры с черной рамкой <code>(width=1)</code>, вы получите четыре черных пикселя в <code>(10,10)</code>, <code>(10,11)</code>, (<code>11,10)</code> и <code>(11,11)</code>.</p></li>
+<li><p>Заливка - это область внутри контура. По умолчанию она прозрачная.</p></li>
+</ul>
+
+<p>Чтобы создать объект прямоугольника на холсте <code>C</code>:</p>
+
+<pre><code>id = C.create_rectangle(x0, y0, x1, y1, option, ...)
+</code></pre>
+
+<p>Этот конструктор возвращает <a href="canvas-oid.html">идентификатор объекта</a> прямоугольника на этом холсте. Опции включают:</p>
+
+<p><strong>Таблица 13. Опции объекта прямоугольника на холсте</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>activedash</code><br><code>activefill</code><br><code>activeoutline</code><br><code>activeoutlinestipple</code><br><code>activestipple</code><br><code>activewidth</code></td>
+  <td>Эти опции определяют внешний вид прямоугольника, когда его <code>state</code> равен <code>tk.ACTIVE</code>, то есть когда указатель мыши находится над прямоугольником. Для значений опций см. ниже: <code>dash</code>, <code>fill</code>, <code>outline</code>, <code>outlinestipple</code>, <code>stipple</code> и <code>width</code>.</td>
+</tr>
+<tr>
+  <td><code>dash</code></td>
+  <td>Для создания пунктирной границы вокруг прямоугольника используйте эту опцию для указания шаблона пунктира. См. <a href="dash-patterns.html">раздел 5.13, Шаблоны пунктира</a>.</td>
+</tr>
+<tr>
+  <td><code>dashoffset</code></td>
+  <td>Используйте эту опцию для начала пунктирного узора границы в другой точке цикла; см. <a href="dash-patterns.html">раздел 5.13, Шаблоны пунктира</a>.</td>
+</tr>
+<tr>
+  <td><code>disableddash</code><br><code>disabledfill</code><br><code>disabledoutline</code><br><code>disabledoutlinestipple</code><br><code>disabledstipple</code><br><code>disabledwidth</code></td>
+  <td>Эти опции определяют внешний вид прямоугольника, когда его <code>state</code> равен <code>tk.DISABLED</code>.</td>
+</tr>
+<tr>
+  <td><code>fill</code></td>
+  <td>По умолчанию внутри прямоугольник пуст, и вы можете получить это поведение с <code>fill=''</code>. Вы также можете установить <a href="colors.html">цвет</a> внутреннего пространства.</td>
+</tr>
+<tr>
+  <td><code>offset</code></td>
+  <td>Используйте эту опцию, чтобы изменить <a href="stipple-offset.html">смещение шаблона пунктира внутреннего пространства</a>.</td>
+</tr>
+<tr>
+  <td><code>outline</code></td>
+  <td>Цвет границы. По умолчанию <code>outline='black'</code>.</td>
+</tr>
+<tr>
+  <td><code>outlineoffset</code></td>
+  <td>Используйте эту опцию для корректировки <a href="stipple-offset.html">смещения шаблона пунктира в контуре</a>.</td>
+</tr>
+<tr>
+  <td><code>outlinestipple</code></td>
+  <td>Используйте эту опцию, чтобы получить контур со штриховкой. Шаблон задается <a href="bitmaps.html">битовым изображением</a>.</td>
+</tr>
+<tr>
+  <td><code>state</code></td>
+  <td>По умолчанию прямоугольники создаются в состоянии <code>tk.NORMAL</code>. Состояние становится <code>tk.ACTIVE</code>, когда указатель мыши над прямоугольником. Установите эту опцию в <code>tk.DISABLED</code>, чтобы сделать прямоугольник серым и не реагирующим на события мыши.</td>
+</tr>
+<tr>
+  <td><code>stipple</code></td>
+  <td><a href="bitmaps.html">Битовое изображение</a>, указывающее, как будет закрашена область внутри прямоугольника. По умолчанию <code>stipple=''</code>, что означает сплошной цвет. Типичное значение может быть <code>stipple='gray25'</code>. Не оказывает влияния, если <code>fill</code> был установлен на какой-либо цвет.</td>
+</tr>
+<tr>
+  <td><code>tags</code></td>
+  <td>Если это одна строка, прямоугольник помечается этой строкой. Используйте кортеж строк, чтобы пометить прямоугольник несколькими <a href="canvas-tags.html">тегами</a>.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Ширина границы. <a href="dimensions.html">Размер</a> по умолчанию 1 пиксель. Используйте <code>width=0</code>, чтобы сделать границу невидимой.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="create_text.html">&gt;&gt; Объекты текста на холсте</a></em></strong></p>
+
+</body>
+</html>

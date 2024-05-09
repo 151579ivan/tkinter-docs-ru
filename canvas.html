@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>8. Виджет Canvas</h2>
+
+<p>Холст (Canvas) - это прямоугольная область, предназначенная для рисования изображений или других сложных макетов. На нем можно размещать графику, текст, виджеты или фреймы.</p>
+
+<h3>Также в этом разделе:</h3>
+
+<p><a href="canvas-window-coords.html">8.1. Координаты холста</a><br />
+<a href="display-list.html">8.2. Список отображаемых объектов холста</a><br />
+<a href="canvas-oid.html">8.3. Идентификаторы объектов холста</a><br />
+<a href="canvas-tags.html">8.4. Теги холста</a><br />
+<a href="tag-or-id.html">8.5. Аргументы тега или ID холста (tagOrId)</a><br />
+<a href="canvas-methods.html">8.6. Методы виджетов Canvas</a><br />
+<a href="create_arc.html">8.7. Объекты дуг на холсте</a><br />
+<a href="create_bitmap.html">8.8. Объекты битовых изображений на холсте</a><br />
+<a href="create_image.html">8.9. Объекты изображений на холсте</a><br />
+<a href="create_line.html">8.10. Объекты линий на холсте</a><br />
+<a href="create_oval.html">8.11. Объекты овалов на холсте</a><br />
+<a href="create_polygon.html">8.12. Объекты многоугольников на холсте</a><br />
+<a href="create_rectangle.html">8.13. Объекты прямоугольников на холсте</a><br />
+<a href="create_text.html">8.14. Объекты текста на холсте</a><br />
+<a href="create_window.html">8.15. Объекты окон на холсте</a></p>
+
+<p>Для создания объекта <code>Canvas</code>:</p>
+
+<div class="codehilite">
+<pre><span></span><code><span class="n">w</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">option</span><span class="o">=</span><span class="n">value</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Конструктор возвращает новый виджет <code>Canvas</code>. Поддерживаемые опции включают:</p>
+
+<p><strong>Таблица 6. Опции виджета Canvas</strong></p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>bd</code> или <code>borderwidth</code></td>
+  <td>Ширина границы вокруг холста; см. <a href="dimensions.html">Раздел 5.1, "Размеры"</a>. По умолчанию два пикселя.</td>
+</tr>
+<tr>
+  <td><code>bg</code> или <code>background</code></td>
+  <td>Цвет фона холста. По умолчанию светло-серый, около <code>'#E4E4E4'</code>.</td>
+</tr>
+<tr>
+  <td><code>closeenough</code></td>
+  <td>Число с плавающей запятой, указывающее, насколько близко должна находиться мышь к элементу, чтобы считаться внутри него. По умолчанию 1.0.</td>
+</tr>
+<tr>
+  <td><code>confine</code></td>
+  <td>Если установлено значение True (по умолчанию), холст не может быть прокручен за пределы <code>scrollregion</code> (см. ниже).</td>
+</tr>
+<tr>
+  <td><code>cursor</code></td>
+  <td>Курсор, используемый на холсте. См. <a href="cursors.html">Раздел 5.8, "Курсоры"</a>.</td>
+</tr>
+<tr>
+  <td><code>height</code></td>
+  <td>Размер холста по оси Y. См. <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightbackground</code></td>
+  <td>Цвет выделения фокуса, когда виджет не имеет фокуса. См. <a href="focus.html">Раздел 53, "Фокус: маршрутизация ввода с клавиатуры"</a>.</td>
+</tr>
+<tr>
+  <td><code>highlightcolor</code></td>
+  <td>Цвет, отображаемый в выделении фокуса.</td>
+</tr>
+<tr>
+  <td><code>highlightthickness</code></td>
+  <td>Толщина выделения фокуса. Значение по умолчанию - 1.</td>
+</tr>
+<tr>
+  <td><code>relief</code></td>
+  <td>Стиль обрамления холста. По умолчанию <code>tk.FLAT</code>. См. <a href="relief.html">Раздел 5.6, "Стили обрамления"</a>.</td>
+</tr>
+<tr>
+  <td><code>scrollregion</code></td>
+  <td>Кортеж <code>(w, n, e, s)</code>, который определяет размер области, которую можно прокручивать по холсту, где <code>w</code> - левая сторона, <code>n</code> - верхняя, <code>e</code> - правая сторона и <code>s</code> - нижняя.</td>
+</tr>
+<tr>
+  <td><code>selectbackground</code></td>
+  <td>Фоновый цвет для отображения выбранных элементов.</td>
+</tr>
+<tr>
+  <td><code>selectborderwidth</code></td>
+  <td>Ширина границы для отображения выбранных элементов.</td>
+</tr>
+<tr>
+  <td><code>selectforeground</code></td>
+  <td>Цвет переднего плана для отображения выбранных элементов.</td>
+</tr>
+<tr>
+  <td><code>takefocus</code></td>
+  <td>Обычно <a href="focus.html">фокус</a> перемещается по этому виджету только при наборе клавиш табуляции, если для него установлены <a href="events.html">привязки клавиатуры</a>. Если установить эту опцию равной 1, фокус всегда будет перемещаться на этот виджет. Установите ее в <code>''</code>, чтобы получить поведение по умолчанию.</td>
+</tr>
+<tr>
+  <td><code>width</code></td>
+  <td>Размер холста по оси X. См. <a href="dimensions.html">Раздел 5.1, "Размеры"</a>.</td>
+</tr>
+<tr>
+  <td><code>xscrollincrement</code></td>
+  <td>Обычно холсты могут прокручиваться горизонтально в любую позицию. Вы можете получить это поведение, установив <code>xscrollincrement</code> равным нулю. Если установить эту опцию на какое-нибудь положительное <a href="dimensions.html">расстояние</a>, холст можно будет позиционировать только на кратные этому расстоянию промежутки, и это значение будет использоваться для прокрутки по <em>единицам прокрутки</em>, например, когда пользователь щелкает на стрелках в концах полосы прокрутки. Для получения дополнительной информации о единицах прокрутки см. <a href="scrollbar.html">Раздел 22, "Виджет Scrollbar"</a>.</td>
+</tr>
+<tr>
+  <td><code>xscrollcommand</code></td>
+  <td>Если холст прокручивается, установите эту опцию на метод <code>.set()</code> горизонтальной полосы прокрутки.</td>
+</tr>
+<tr>
+  <td><code>yscrollincrement</code></td>
+  <td>Работает так же, как <code>xscrollincrement</code>, но управляет вертикальным перемещением.</td>
+</tr>
+<tr>
+  <td><code>yscrollcommand</code></td>
+  <td>Если холст прокручивается, установите эту опцию на метод <code>.set()</code> вертикальной полосы прокрутки.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<p><strong><em><a href="canvas-window-coords.html">&gt;&gt; Координаты холста</a></em></strong></p>
+
+</body>
+</html>

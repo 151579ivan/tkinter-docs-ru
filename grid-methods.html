@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>4.2. Другие методы управления сеткой</h2>
+
+<p>Эти методы, связанные с сеткой, определены для всех виджетов:</p>
+
+<p><code>w.grid_bbox(column=None, row=None, col2=None, row2=None)</code></p>
+
+<blockquote>
+  <p>Возвращает 4-кортеж, описывающий ограничивающий прямоугольник некоторой или всех ячеек сетки в виджете <code>w</code>. Первые два возвращенных числа - это <code>x</code> и <code>y</code> координаты верхнего левого угла области, а вторые два числа - это ширина и высота.</p>
+</blockquote>
+
+<blockquote>
+  <p>Если вы передаете аргументы <code>column</code> и <code>row</code>, возвращаемый ограничивающий прямоугольник описывает область ячейки в этом столбце и строке. Если вы также передаете аргументы <code>col2</code> и <code>row2</code>, возвращаемый ограничивающий прямоугольник описывает область сетки от столбцов <code>column</code> до <code>col2</code> включительно и от строк <code>row</code> до <code>row2</code> включительно.</p>
+</blockquote>
+
+<blockquote>
+  <p>Например, <code>w.grid_bbox(0, 0, 1, 1)</code> возвращает ограничивающий прямоугольник из четырех ячеек, а не одной.</p>
+</blockquote>
+
+<p><code>w.grid_forget()</code></p>
+
+<blockquote>
+  <p>Этот метод заставляет виджет <code>w</code> исчезнуть с экрана. Он все еще существует, просто не виден. Вы можете использовать <code>.grid()</code>, чтобы снова сделать его видимым, но он не будет помнить свои параметры сетки.</p>
+</blockquote>
+
+<p><code>w.grid_info()</code></p>
+
+<blockquote>
+  <p>Возвращает словарь, ключами которого являются имена параметров <code>w</code>, с соответствующими значениями этих параметров.</p>
+</blockquote>
+
+<p><code>w.grid_location(x, y)</code></p>
+
+<blockquote>
+  <p>Учитывая координаты <code>(x, y)</code> относительно содержащего виджета, этот метод возвращает кортеж <code>(col, row)</code>, описывающий, какая ячейка сетки <code>w</code> содержит эту координату экрана.</p>
+</blockquote>
+
+<p><code>w.grid_propagate()</code></p>
+
+<blockquote>
+  <p>Обычно все виджеты <em>пропагируют</em> свои размеры, что означает, что они подстраиваются под содержимое. Однако иногда вы хотите заставить виджет иметь определенный размер, независимо от размера его содержимого. Для этого вызовите <code>w.grid_propagate(0)</code>, где <code>w</code> - это виджет, размер которого вы хотите зафиксировать.</p>
+</blockquote>
+
+<p><code>w.grid_remove()</code></p>
+
+<blockquote>
+  <p>Этот метод похож на <code>.grid_forget()</code>, но его параметры сетки запоминаются, поэтому если вы снова используете <code>.grid()</code>, он будет использовать те же параметры сетки.</p>
+</blockquote>
+
+<p><code>w.grid_size()</code></p>
+
+<blockquote>
+  <p>Возвращает 2-кортеж, содержащий количество столбцов и количество строк соответственно в сетке <code>w</code>.</p>
+</blockquote>
+
+<p><code>w.grid_slaves(row=None, column=None)</code></p>
+
+<blockquote>
+  <p>Возвращает список виджетов, управляемых виджетом <code>w</code>. Если не переданы аргументы, вы получите список всех управляемых виджетов. Используйте аргумент <code>row=</code>, чтобы выбрать только виджеты в одной строке, или аргумент <code>column=</code>, чтобы выбрать только виджеты в одном столбце.</p>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="grid-config.html">&gt;&gt; Настройка размеров столбцов и строк</a></em></strong></p>
+
+</body>
+</html>

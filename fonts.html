@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+   <title>Библиотека Tkinter</title>
+   <link rel="stylesheet" href="css/xt256.min.css">
+   <link rel="stylesheet" href="css/styles.css">
+   <script src="css/highlight.min.js"></script>
+   <script>hljs.highlightAll();</script>
+</head>
+<body>
+
+<p><strong><em><a href="index.html">Главная</a></em></strong></p>
+
+<hr />
+
+<h2>5.4. Шрифты</h2>
+
+<p>В зависимости от вашей платформы может быть до трех способов указания стиля шрифта.</p>
+
+<ul>
+<li><p>Как кортеж, первый элемент которого - это семейство шрифтов, за которым следует размер (в пунктах, если положительный, в пикселях, если отрицательный), необязательно за которым следует строка, содержащая один или несколько модификаторов стиля <code>bold</code>, <code>italic</code>, <code>underline</code> и <code>overstrike</code>.</p>
+
+<p>Примеры: <code>('Helvetica', '16')</code> для обычного шрифта Helvetica размером 16 пунктов; <code>('Times', '24', 'bold italic')</code> для жирного курсива Times размером 24 пункта. Для получения шрифта Times жирного начертания размером 20 пикселей используйте <code>('Times', -20, 'bold')</code>.</p></li>
+<li><p>Вы можете создать «объект шрифта», импортировав модуль <code>tkFont</code> и используя его конструктор класса <code>Font</code>:</p>
+
+<pre><code>import tkFont
+
+font = tkFont.Font(*`опция`*, ...)
+</code></pre>
+
+<p>где опции включают в себя:</p>
+
+<table>
+<thead>
+<tr>
+  <th></th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>family</code></td>
+  <td>Имя семейства шрифтов в виде строки.</td>
+</tr>
+<tr>
+  <td><code>size</code></td>
+  <td>Высота шрифта как целое число в пунктах. Для получения шрифта высотой <code>n</code> пикселей, используйте <code>-n</code>.</td>
+</tr>
+<tr>
+  <td><code>weight</code></td>
+  <td><code>'bold'</code> - для полужирного шрифта, <code>'normal'</code> - для обычного.</td>
+</tr>
+<tr>
+  <td><code>slant</code></td>
+  <td><code>'italic'</code> для курсива, <code>'roman'</code> для обычного начертания.</td>
+</tr>
+<tr>
+  <td><code>underline</code></td>
+  <td><code>1</code> - для подчеркивания текста, <code>0</code> для обычного.</td>
+</tr>
+<tr>
+  <td><code>overstrike</code></td>
+  <td><code>1</code> - для зачеркивания текста, <code>0</code> для обычного.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Например, чтобы получить жирный курсив <em>Helvetica</em> размером 36 пунктов:</p>
+
+<pre><code>helv36 = tkFont.Font(family='Helvetica', size=36, weight='bold')
+</code></pre></li>
+<li><p>Если вы работаете под системой <em>X Window</em>, вы можете использовать любое из имен шрифтов X. Например, шрифт с именем <code>'-*-lucidatypewriter-medium-r-*-*-*-140-*-*-*-*-*-*'</code> - это хороший моноширинный шрифт для экранного использования. Используйте программу <strong>xfontsel</strong>, чтобы помочь вам выбрать подходящие шрифты.</p></li>
+</ul>
+
+<p>Чтобы получить список всех семейств шрифтов, доступных на вашей платформе, вызовите эту функцию:</p>
+
+<pre><code>tkFont.families()
+</code></pre>
+
+<blockquote>
+  <p>Возвращаемое значение - это список строк.</p>
+</blockquote>
+
+<blockquote>
+  <p><em>Примечание</em>: Вы должны создать свое основное окно перед вызовом этой функции.</p>
+</blockquote>
+
+<hr />
+
+<p>Эти методы определены для всех объектов <em>Font</em>:</p>
+
+<p><code>.actual(option=None)</code></p>
+
+<blockquote>
+  <p>Если вы не передаете аргументы, вы получите словарь фактических атрибутов шрифта, которые могут отличаться от тех, которые вы запросили. Чтобы получить значение атрибута, передайте его имя как аргумент.</p>
+</blockquote>
+
+<p><code>.cget(option)</code></p>
+
+<blockquote>
+  <p>Возвращает значение данной <code>option</code>.</p>
+</blockquote>
+
+<p><code>.configure(option, ...)</code></p>
+
+<blockquote>
+  <p>Используйте этот метод, чтобы изменить одну или несколько опций шрифта. Например, если у вас есть объект <code>Font</code> с именем <code>titleFont</code>, если вы вызовете <code>titleFont.configure(family='times', size=18)</code>, этот шрифт изменится на Times размером 18 пунктов, и любые виджеты, использующие этот шрифт, также изменятся.</p>
+</blockquote>
+
+<p><code>.copy()</code></p>
+
+<blockquote>
+  <p>Возвращает копию объекта <code>Font</code>.</p>
+</blockquote>
+
+<p><code>.measure(text)</code></p>
+
+<blockquote>
+  <p>Передайте этому методу строку, и он вернет количество пикселей ширины, которое займет эта строка в шрифте. Предупреждение: некоторые наклонные символы могут выходить за пределы этой области.</p>
+</blockquote>
+
+<p><code>.metrics(option)</code></p>
+
+<blockquote>
+  <p>Если вы вызовете этот метод без аргументов, он вернет словарь всех <em>метрик шрифта</em>. Вы можете извлечь значение только одной метрики, передав ее имя в качестве аргумента. Метрики включают:</p>
+  
+  <table>
+  <thead>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><code>ascent</code></td>
+    <td>Количество пикселей высоты между базовой линией и верхней частью самого высокого подъемника.</td>
+  </tr>
+  <tr>
+    <td><code>descent</code></td>
+    <td>Количество пикселей высоты между базовой линией и нижней частью самого нижнего подъемника.</td>
+  </tr>
+  <tr>
+    <td><code>fixed</code></td>
+    <td>Это значение равно <code>0</code> для переменного шрифта и <code>1</code> для моноширинного шрифта.</td>
+  </tr>
+  <tr>
+    <td><code>linespace</code></td>
+    <td>Количество пикселей высоты всей строки текста, включая пробелы между строками (интерлиньяж). Это означает, что <code>linespace</code> указывает на общую высоту, которую занимает строка текста, включая высоту символов и любой дополнительный пространственный интервал между строками.</td>
+  </tr>
+  </tbody>
+  </table>
+</blockquote>
+
+<hr />
+
+<p><strong><em><a href="anchors.html">&gt;&gt; Якоря</a></em></strong></p>
+
+</body>
+</html>
